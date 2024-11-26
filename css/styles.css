@@ -1,0 +1,117 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Roboto;
+  line-height: 1.6;
+  background-color: #F9F9F9;
+  color: #333333;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #B22222;
+  /* Wine red */
+  color: white;
+}
+
+header h1 {
+  font-size: 2em;
+}
+
+/* Main Content */
+main {
+  margin: 20px auto;
+  max-width: 1200px;
+}
+
+/* Chart Sections */
+.chart-section {
+  margin: 40px auto;
+  padding: 40px 50px;
+  width: 80%;
+  background-color: #FFFFFF;
+  border: 1px solid #EFEFEF;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chart-section h2 {
+  color: #B22222;
+  margin-bottom: 10px;
+}
+
+.chart-section p {
+  margin-bottom: 15px;
+}
+
+/* Chart Containers */
+.chart-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.chart-svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.chart-controls {
+  margin: 20px 0;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #B22222;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #B22222;
+}
+
+button:hover,
+button.active {
+  color: white;
+  background-color: #B22222;
+  /* Wine red */
+}
+
+.chart-tooltip {
+  position: fixed;
+  display: none;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 20px;
+  background-color: #EFEFEF;
+  /* Light gray */
+  color: #555555;
+  /* Mid gray */
+}
+
+footer p {
+  font-size: 0.9em;
+}

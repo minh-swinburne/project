@@ -1,20 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="COS30045 Data Visualisation Project Web">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="COS30045 Data Visualisation Project Website">
   <meta name="author" content="Nguyen Thi Thanh Minh, Nguyen Sy Thanh Trung">
   <meta name="keywords" content="Data Visualisation, D3">
 
-  <title>Data Visualisation with D3</title>
+  <title>Alcohol and Health: Consumption, Consequence and Control | COS30045 Data Visualisation Project</title>
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <h1>Data Visualisation Project</h1>
+  <header>
+    <h1>Alcohol and Health: Consumption, Consequences, and Control</h1>
+  </header>
 
-  <!-- Should download to local -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <main>
+    <!-- Section 1 -->
+    <section class="chart-section">
+      <h2>1. Global Patterns of Alcohol Consumption by Type</h2>
+      <p>This map offers a visual comparison of alcohol consumption rates across countries by type (wine, beer, spirits). It highlights cultural preferences and consumption patterns globally.</p>
+      <div class="chart-container" id="chart-1">
+        <div class="chart-controls">
+          <div class="data-toggle">
+            <!-- Buttons for toggling between files -->
+            <button data-file="litres-per-capita-by-record-status.csv" data-id="1" class="active">Consumption by Record Status</button>
+            <button data-file="recorded-litres-per-capita-by-beverage-type.csv" data-id="2">Consumption by Beverage Type</button>
+            <button data-file="total-litres-per-capita.csv" data-id="3">Total Consumption in OECD Countries</button>
+          </div>
+
+          <div class="filters">
+            <!-- Dropdown for RecordStatus -->
+            <label class="filter-label" for="filter-1">Record Status:</label>
+            <select class="filter-select" id="filter-1">
+              <option value="Total">Total</option>
+              <option value="Recorded">Recorded</option>
+              <option value="Unrecorded">Unrecorded</option>
+            </select>
+          </div>
+
+          <div class="sliders">
+            <!-- Year slider -->
+            <label class="slider-label" for="year-slider">Year:</label>
+            <input class="slider-input" id="year-slider" type="range" min="2000" max="2020" step="1" value="2000">
+            <span class="slider-display" for="year-slider">2000</span>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <svg class="chart-svg" width="900" height="500"></svg>
+          <div class="tooltip"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="chart-section">
+      <h2>2. Alcohol Consumption Patterns by Demographics</h2>
+      <p>The stacked bar chart breaks down alcohol consumption by age and gender within each country, enabling demographic comparisons.</p>
+      <div class="chart-container" id="chart-2">
+        <!-- Placeholder for Grouped/Stacked Bar Chart -->
+        <p>Chart loading...</p>
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="chart-section">
+      <h2>3. Correlation Between Alcohol Consumption and Health Outcomes</h2>
+      <p>This bubble chart shows the relationship between alcohol consumption and various health and social consequences, enabling a nuanced view of its impacts by country and gender.</p>
+      <div class="chart-container" id="chart-3">
+        <!-- Placeholder for Bubble Chart -->
+        <p>Chart loading...</p>
+      </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="chart-section">
+      <h2>4. Trends in Alcohol-Related Impacts Over Time</h2>
+      <p>The line chart illustrates the trends in health and social consequences linked to alcohol use over the years, showing whether they are worsening, improving, or stabilizing.</p>
+      <div class="chart-container" id="chart-4">
+        <!-- Placeholder for Line Chart -->
+        <p>Chart loading...</p>
+      </div>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="chart-section">
+      <h2>5. Alcohol-Related Policies Across Countries</h2>
+      <p>This geo chart provides a comparative view of alcohol-related policies, including taxes, prices, and restrictions, across countries.</p>
+      <div class="chart-container" id="chart-5">
+        <!-- Placeholder for Geo Map -->
+        <p>Chart loading...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Alcohol and Health Project. All rights reserved.</p>
+  </footer>
+
+  <script src="js/d3.v7.min.js"></script>
+  <!-- <script src="js/Chart.js"></script>
+  <script src="js/GeoChart.js"></script> -->
+  <script src="js/q1.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
