@@ -7,22 +7,43 @@
   <meta name="author" content="Nguyen Thi Thanh Minh, Nguyen Sy Thanh Trung">
   <meta name="keywords" content="Data Visualisation, D3">
 
-  <title>Alcohol and Health: Consumption, Consequence and Control | COS30045 Data Visualisation Project</title>
+  <title>From Alcohol to Health: Consumption, Consequence and Control | COS30045 Data Visualisation Project</title>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <header>
-    <h1>Alcohol and Health: Consumption, Consequences, and Control</h1>
+    <h1>From Alcohol to Health: Consumption, Consequences, and Control</h1>
   </header>
 
   <main>
     <!-- Section 1 -->
     <section class="chart-section">
       <h2>1. Global Patterns of Alcohol Consumption by Type</h2>
+
       <p>This map offers a visual comparison of alcohol consumption rates across countries by type (wine, beer, spirits). It highlights cultural preferences and consumption patterns globally.</p>
-      <div class="chart-container" id="chart-1">
+
+      <p>
+        <strong>Sources:</strong>
+        <ul>
+          <li>
+            <a href="https://data-explorer.oecd.org/vis?df[ds]=DisseminateFinalDMZ&df[id]=DSD_HEALTH_LVNG%40DF_HEALTH_LVNG_AC&df[ag]=OECD.ELS.HD&df[vs]=1.0&dq=.A.....&pd=%2C&to[TIME_PERIOD]=false&ly[cl]=TIME_PERIOD&ly[rs]=AGE&ly[rw]=REF_AREA">2023 OECD Health Statistics, Alcohol Consumption</a>:
+            Total alcohol consumption in pure litres of alcohol per capita (15+) in OECD countries, 1960-2023
+          </li>
+          <li>
+            <a href="https://www.who.int/data/gho/data/indicators/indicator-details/GHO/alcohol-recorded-per-capita-(15-)-consumption-(in-litres-of-pure-alcohol)">WHO, Alcohol levels of consumption</a>:
+            RECORDED alcohol consumption in pure litres of alcohol per capita (15+), 1961-2020, by beverage type
+          </li>
+          <li>
+            WHO,
+            <a href="https://www.who.int/data/gho/data/indicators/indicator-details/GHO/alcohol-recorded-per-capita-(15-)-consumption-(in-litres-of-pure-alcohol)-3-year-average-with-95-ci">recorded</a> and
+            <a href="https://www.who.int/data/gho/data/indicators/indicator-details/GHO/alcohol-unrecorded-per-capita-(15-)-consumption-(in-litres-of-pure-alcohol)-with-95-ci">unrecorded</a> alcohol consumption in pure litres of alcohol per capita (15+)
+          </li>
+        </ul>
+      </p>
+
+      <div class="chart" id="chart-1">
         <div class="chart-controls">
           <div class="data-toggle">
             <!-- Buttons for toggling between files -->
@@ -43,9 +64,9 @@
 
           <div class="sliders">
             <!-- Year slider -->
-            <label class="slider-label" for="year-slider">Year:</label>
-            <input class="slider-input" id="year-slider" type="range" min="2000" max="2020" step="1" value="2000">
-            <span class="slider-display" for="year-slider">2000</span>
+            <label class="slider-label" for="slider-1">Year:</label>
+            <input class="slider-input" id="slider-1" type="range" min="2000" max="2020" step="1" value="2000">
+            <span class="slider-display" for="slider-1">2000</span>
           </div>
         </div>
 
@@ -54,6 +75,15 @@
           <div class="tooltip"></div>
         </div>
       </div>
+
+      <p>
+        <strong>Notes:</strong>
+        <ul>
+          <li>Recorded alcohol consumption refers to the consumption of alcohol that is recorded in official statistics, while unrecorded alcohol consumption refers to the consumption of alcohol that is not officially recorded.</li>
+          <li>The data is presented in pure litres of alcohol per capita (15+), which provides a standardized measure of alcohol consumption across countries.</li>
+          <li>The consumption of alcohol is broken down by type (wine, beer, spirits) to show the relative popularity of each type of alcohol in different countries.</li>
+        </ul>
+      </p>
     </section>
 
     <!-- Section 2 -->
@@ -69,11 +99,79 @@
     <!-- Section 3 -->
     <section class="chart-section">
       <h2>3. Correlation Between Alcohol Consumption and Health Outcomes</h2>
+
       <p>This bubble chart shows the relationship between alcohol consumption and various health and social consequences, enabling a nuanced view of its impacts by country and gender.</p>
-      <div class="chart-container" id="chart-3">
-        <!-- Placeholder for Bubble Chart -->
-        <p>Chart loading...</p>
+
+      <p>
+        <strong>Sources:</strong>
+        <ul>
+          <li>
+            <a href="https://www.who.int/data/gho/data/indicators/indicator-details/GHO/alcohol-attributable-fractions-all-cause-deaths-(-)">WHO, Alcohol Harms and Consequences - Mortality</a>:
+            Alcohol-attributable fractions, prevalence of death (%) in 2019, by cause and sex
+          </li>
+          <li>
+            <a href="https://vizhub.healthdata.org/gbd-results?params=gbd-api-2021-permalink/9864bcfda554b275076a55fee3fc9373">IHME GBD 2021</a>,
+            Alcohol-related Deaths (+15) in 2019, by cause and sex.
+          </li>
+        </ul>
+      </p>
+
+      <div class="chart" id="chart-3">
+        <div class="chart-controls">
+          <div class="data-toggle">
+            <!-- Buttons for toggling between files -->
+            <button data-file="population-consumption-deaths-2019-by-cause-and-sex.csv" data-id="1" class="active">Consumption & Deaths (2019)</button>
+            <!-- <button data-file="recorded-litres-per-capita-by-beverage-type.csv" data-id="2">Consumption by Beverage Type</button>
+            <button data-file="total-litres-per-capita.csv" data-id="3">Total Consumption in OECD Countries</button> -->
+          </div>
+
+          <div class="filters">
+            <div class="filter">
+              <label for="cause-filter">Cause:</label>
+              <select id="cause-filter">
+                <option value="AllCause">All</option>
+                <option value="AlcoholicCardiomyopathy">Alcoholic Cardiomyopathy</option>
+                <option value="AlcoholUseDisorders">Alcohol Use Disorders</option>
+                <option value="LiverCancer">Liver Cancer</option>
+                <option value="LiverCirrhosis">Liver Cirrhosis</option>
+                <option value="RoadTraffic">Road Traffic</option>
+              <!-- Add more causes if applicable -->
+              </select>
+            </div>
+
+            <div class="filter">
+              <label for="sex-filter">Sex:</label>
+              <select id="sex-filter">
+                <option value="Both">Both</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+              </select>
+            </div>
+
+            <div class="filter">
+              <label for="unit-filter">Unit of Measure:</label>
+              <select id="unit-filter">
+                <option value="Number">Number</option>
+                <option value="Percent">Percent</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <svg class="chart-svg" width="900" height="500"></svg>
+          <div class="tooltip"></div>
+        </div>
       </div>
+
+      <p>
+        <strong>Notes:</strong>
+        <ul>
+          <li>The bubble chart visualizes the relationship between alcohol consumption and health outcomes, such as mortality, by country, cause, and sex.</li>
+          <li>The size of the bubble represents the number of deaths or the prevalence of death (%) attributable to alcohol consumption for a specific cause, while the color indicates the level of alcohol consumption.</li>
+          <li>The chart allows for comparisons between different causes of death and providing insights into the health and social consequences of alcohol consumption.</li>
+        </ul>
+      </p>
     </section>
 
     <!-- Section 4 -->
@@ -89,22 +187,68 @@
     <!-- Section 5 -->
     <section class="chart-section">
       <h2>5. Alcohol-Related Policies Across Countries</h2>
+
       <p>This geo chart provides a comparative view of alcohol-related policies, including taxes, prices, and restrictions, across countries.</p>
-      <div class="chart-container" id="chart-5">
-        <!-- Placeholder for Geo Map -->
-        <p>Chart loading...</p>
+
+      <p>
+        <strong>Sources:</strong>
+        <ul>
+          <li>
+            <a href="https://www.who.int/data/gho/data/indicators/indicator-details/GHO/blood-alcohol-concentration-(bac)-limit-for-drivers">WHO, Road safety : blood alcohol concentration (BAC) limit</a>:
+            Blood Alcohol Concentration (BAC) limit for drivers in 2017 by driver type
+          </li>
+        </ul>
+      </p>
+
+      <div class="chart" id="chart-5">
+        <div class="chart-controls">
+          <div class="data-toggle">
+            <!-- Buttons for toggling between files -->
+            <button data-file="bac-limit-for-drivers-2017-by-type.csv" data-id="1" class="active">BAC Limit for Drivers (2017)</button>
+            <!-- <button data-file="excise-taxes-are-applied-on-alcoholic-beverages-2022.csv" data-id="2">Excise Taxed are Applied on Alcoholic Beverages (2022)</button>
+            <button data-file="taxes-on-alcoholic-beverages-2022-by-category-and-type.csv" data-id="3">Taxes on Alcoholic Beverages (2022)</button>
+            <button data-file="price-of-alcoholic-beverages-2022-by-category-and-type.csv" data-id="4">Price of Alcoholic Beverages (2022)</button>
+            <button data-file="restrictions-on-alcohol-use-in-public-places-2016.csv" data-id="5">Restrictions on Alcoholic use in Public Places (2016)</button> -->
+          </div>
+
+          <div class="filters">
+            <!-- Dropdown for RecordStatus -->
+            <label class="filter-label" for="filter-5">Record Status:</label>
+            <select class="filter-select" id="filter-5">
+              <option value="Total">Total</option>
+              <option value="Recorded">Recorded</option>
+              <option value="Unrecorded">Unrecorded</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <svg class="chart-svg" width="900" height="500"></svg>
+          <div class="tooltip"></div>
+        </div>
+
+        <p>
+          <strong>Notes:</strong>
+          <ul>
+            <li>The geo chart visualizes the variation in alcohol-related policies across countries, including blood alcohol concentration (BAC) limits for drivers, excise taxes on alcoholic beverages, and restrictions on alcohol use in public places.</li>
+            <li>The color intensity on the map represents the level of policy stringency, with darker shades indicating stricter policies and lighter shades indicating more lenient policies.</li>
+            <li>The chart provides insights into the regulatory environment for alcohol consumption and the effectiveness of policies in reducing alcohol-related harms.</li>
+          </ul>
+        </p>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2024 Alcohol and Health Project. All rights reserved.</p>
+    <p>&copy; 2024, Swinburne University of Technology. All rights reserved.</p>
   </footer>
 
   <script src="js/d3.v7.min.js"></script>
   <!-- <script src="js/Chart.js"></script>
   <script src="js/GeoChart.js"></script> -->
   <script src="js/q1.js"></script>
+  <script src="js/q3.js"></script>
+  <script src="js/q5.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>

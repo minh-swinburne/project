@@ -101,6 +101,19 @@ button.active {
   z-index: 10;
 }
 
+ul {
+  margin-left: 2em;
+}
+
+a, a:visited {
+  color: #B22222;
+}
+
+a:hover {
+  color: #B22222;
+  text-decoration: none;
+}
+
 /* Footer */
 footer {
   text-align: center;

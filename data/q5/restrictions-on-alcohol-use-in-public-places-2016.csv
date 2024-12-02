@@ -1,0 +1,1747 @@
+AreaCode,PublicPlace,Restriction
+AFG,Educational buildings,Ban
+AFG,Sporting events,Ban
+AFG,Places of worship,Ban
+AFG,Public transport,Ban
+AFG,Workplaces,Ban
+AFG,Leisure events,Ban
+AFG,Healthcare establishments,Ban
+AFG,Government offices,Ban
+AFG,Parks and streets,Ban
+AGO,Public transport,No restrictions
+AGO,Workplaces,Partial restriction
+AGO,Places of worship,Partial restriction
+AGO,Healthcare establishments,Partial restriction
+AGO,Government offices,Partial restriction
+AGO,Educational buildings,Partial restriction
+AGO,Parks and streets,No restrictions
+AGO,Sporting events,No restrictions
+AGO,Leisure events,No restrictions
+ALB,Workplaces,Ban
+ALB,Public transport,Voluntary/self-restricted
+ALB,Leisure events,Voluntary/self-restricted
+ALB,Educational buildings,Ban
+ALB,Healthcare establishments,Ban
+ALB,Places of worship,Ban
+ALB,Sporting events,Ban
+ALB,Government offices,Partial restriction
+ALB,Parks and streets,No restrictions
+AND,Sporting events,No restrictions
+AND,Places of worship,No restrictions
+AND,Public transport,No restrictions
+AND,Healthcare establishments,No restrictions
+AND,Educational buildings,Partial restriction
+AND,Leisure events,Partial restriction
+AND,Parks and streets,Partial restriction
+AND,Workplaces,Partial restriction
+AND,Government offices,No restrictions
+ARE,Leisure events,Ban
+ARE,Healthcare establishments,Ban
+ARE,Government offices,Ban
+ARE,Places of worship,Ban
+ARE,Sporting events,Ban
+ARE,Public transport,Ban
+ARE,Workplaces,Ban
+ARE,Educational buildings,Ban
+ARE,Parks and streets,Ban
+ARG,Educational buildings,Voluntary/self-restricted
+ARG,Government offices,Voluntary/self-restricted
+ARG,Leisure events,Voluntary/self-restricted
+ARG,Parks and streets,Voluntary/self-restricted
+ARG,Public transport,Voluntary/self-restricted
+ARG,Places of worship,Voluntary/self-restricted
+ARG,Sporting events,Voluntary/self-restricted
+ARG,Workplaces,Voluntary/self-restricted
+ARG,Healthcare establishments,Voluntary/self-restricted
+ARM,Sporting events,No restrictions
+ARM,Educational buildings,Ban
+ARM,Healthcare establishments,Ban
+ARM,Public transport,Ban
+ARM,Places of worship,No restrictions
+ARM,Parks and streets,No restrictions
+ARM,Leisure events,No restrictions
+ARM,Workplaces,Ban
+ARM,Government offices,Partial restriction
+ATG,Sporting events,No restrictions
+ATG,Public transport,No restrictions
+ATG,Leisure events,No restrictions
+ATG,Parks and streets,No restrictions
+ATG,Places of worship,Voluntary/self-restricted
+ATG,Educational buildings,Voluntary/self-restricted
+ATG,Government offices,Voluntary/self-restricted
+ATG,Healthcare establishments,Voluntary/self-restricted
+ATG,Workplaces,Voluntary/self-restricted
+AUS,Healthcare establishments,Voluntary/self-restricted
+AUS,Government offices,Voluntary/self-restricted
+AUS,Educational buildings,Voluntary/self-restricted
+AUS,Places of worship,Voluntary/self-restricted
+AUS,Sporting events,Partial restriction
+AUS,Public transport,Partial restriction
+AUS,Parks and streets,Partial restriction
+AUS,Leisure events,Partial restriction
+AUS,Workplaces,Voluntary/self-restricted
+AUT,Healthcare establishments,Voluntary/self-restricted
+AUT,Places of worship,Voluntary/self-restricted
+AUT,Leisure events,Partial restriction
+AUT,Parks and streets,Partial restriction
+AUT,Public transport,Partial restriction
+AUT,Sporting events,Partial restriction
+AUT,Educational buildings,Voluntary/self-restricted
+AUT,Workplaces,Voluntary/self-restricted
+AUT,Government offices,Voluntary/self-restricted
+AZE,Leisure events,Partial restriction
+AZE,Public transport,Ban
+AZE,Parks and streets,Partial restriction
+AZE,Educational buildings,Ban
+AZE,Government offices,Ban
+AZE,Sporting events,Ban
+AZE,Places of worship,Ban
+AZE,Healthcare establishments,Ban
+AZE,Workplaces,Partial restriction
+BDI,Places of worship,Voluntary/self-restricted
+BDI,Sporting events,No restrictions
+BDI,Parks and streets,No restrictions
+BDI,Public transport,No restrictions
+BDI,Workplaces,Ban
+BDI,Healthcare establishments,Ban
+BDI,Government offices,Ban
+BDI,Educational buildings,Ban
+BDI,Leisure events,No restrictions
+BEL,Places of worship,Voluntary/self-restricted
+BEL,Educational buildings,Partial restriction
+BEL,Healthcare establishments,Partial restriction
+BEL,Sporting events,Voluntary/self-restricted
+BEL,Public transport,Voluntary/self-restricted
+BEL,Workplaces,Partial restriction
+BEL,Leisure events,Voluntary/self-restricted
+BEL,Government offices,Voluntary/self-restricted
+BEL,Parks and streets,Voluntary/self-restricted
+BEN,Educational buildings,Voluntary/self-restricted
+BEN,Workplaces,No restrictions
+BEN,Sporting events,No restrictions
+BEN,Public transport,No restrictions
+BEN,Places of worship,No restrictions
+BEN,Leisure events,No restrictions
+BEN,Healthcare establishments,No restrictions
+BEN,Government offices,No restrictions
+BEN,Parks and streets,No restrictions
+BFA,Workplaces,Ban
+BFA,Leisure events,No restrictions
+BFA,Public transport,No restrictions
+BFA,Places of worship,No restrictions
+BFA,Sporting events,Ban
+BFA,Parks and streets,No restrictions
+BFA,Government offices,Ban
+BFA,Educational buildings,Ban
+BFA,Healthcare establishments,Ban
+BGD,Sporting events,Ban
+BGD,Workplaces,Ban
+BGD,Government offices,Ban
+BGD,Healthcare establishments,Ban
+BGD,Educational buildings,Ban
+BGD,Places of worship,Ban
+BGD,Leisure events,Ban
+BGD,Parks and streets,Ban
+BGD,Public transport,Ban
+BGR,Public transport,Voluntary/self-restricted
+BGR,Leisure events,Partial restriction
+BGR,Parks and streets,Voluntary/self-restricted
+BGR,Healthcare establishments,Ban
+BGR,Educational buildings,Ban
+BGR,Government offices,Partial restriction
+BGR,Places of worship,No restrictions
+BGR,Workplaces,Voluntary/self-restricted
+BGR,Sporting events,Ban
+BHR,Sporting events,No data
+BHR,Government offices,No data
+BHR,Healthcare establishments,No data
+BHR,Leisure events,No data
+BHR,Parks and streets,No data
+BHR,Public transport,No data
+BHR,Places of worship,No data
+BHR,Workplaces,No data
+BHR,Educational buildings,No data
+BHS,Government offices,Voluntary/self-restricted
+BHS,Educational buildings,Voluntary/self-restricted
+BHS,Leisure events,Voluntary/self-restricted
+BHS,Parks and streets,Voluntary/self-restricted
+BHS,Public transport,Voluntary/self-restricted
+BHS,Places of worship,Voluntary/self-restricted
+BHS,Sporting events,Voluntary/self-restricted
+BHS,Workplaces,Voluntary/self-restricted
+BHS,Healthcare establishments,Voluntary/self-restricted
+BIH,Healthcare establishments,Voluntary/self-restricted
+BIH,Leisure events,Voluntary/self-restricted
+BIH,Public transport,Voluntary/self-restricted
+BIH,Government offices,Voluntary/self-restricted
+BIH,Educational buildings,Voluntary/self-restricted
+BIH,Places of worship,Voluntary/self-restricted
+BIH,Sporting events,Ban
+BIH,Workplaces,Voluntary/self-restricted
+BIH,Parks and streets,No restrictions
+BLR,Government offices,Ban
+BLR,Educational buildings,Ban
+BLR,Healthcare establishments,Ban
+BLR,Leisure events,Ban
+BLR,Parks and streets,Ban
+BLR,Sporting events,Ban
+BLR,Public transport,Ban
+BLR,Places of worship,Ban
+BLR,Workplaces,Ban
+BLZ,Public transport,Voluntary/self-restricted
+BLZ,Sporting events,Voluntary/self-restricted
+BLZ,Places of worship,Voluntary/self-restricted
+BLZ,Parks and streets,Voluntary/self-restricted
+BLZ,Leisure events,Voluntary/self-restricted
+BLZ,Healthcare establishments,Voluntary/self-restricted
+BLZ,Government offices,Voluntary/self-restricted
+BLZ,Educational buildings,Voluntary/self-restricted
+BLZ,Workplaces,Voluntary/self-restricted
+BOL,Parks and streets,No data
+BOL,Leisure events,No data
+BOL,Healthcare establishments,No data
+BOL,Government offices,No data
+BOL,Workplaces,No data
+BOL,Sporting events,No data
+BOL,Places of worship,No data
+BOL,Educational buildings,No data
+BOL,Public transport,No data
+BRA,Educational buildings,Ban
+BRA,Healthcare establishments,Ban
+BRA,Workplaces,Voluntary/self-restricted
+BRA,Leisure events,Voluntary/self-restricted
+BRA,Sporting events,Voluntary/self-restricted
+BRA,Places of worship,No restrictions
+BRA,Parks and streets,No restrictions
+BRA,Public transport,Partial restriction
+BRA,Government offices,Partial restriction
+BRB,Workplaces,Voluntary/self-restricted
+BRB,Leisure events,No restrictions
+BRB,Educational buildings,Voluntary/self-restricted
+BRB,Government offices,Voluntary/self-restricted
+BRB,Public transport,Voluntary/self-restricted
+BRB,Sporting events,No restrictions
+BRB,Places of worship,Voluntary/self-restricted
+BRB,Healthcare establishments,Voluntary/self-restricted
+BRB,Parks and streets,No restrictions
+BRN,Parks and streets,No data
+BRN,Public transport,No data
+BRN,Places of worship,No data
+BRN,Workplaces,No data
+BRN,Government offices,No data
+BRN,Educational buildings,No data
+BRN,Leisure events,No data
+BRN,Sporting events,No data
+BRN,Healthcare establishments,No data
+BTN,Government offices,Ban
+BTN,Healthcare establishments,Voluntary/self-restricted
+BTN,Sporting events,Voluntary/self-restricted
+BTN,Educational buildings,Ban
+BTN,Places of worship,Ban
+BTN,Public transport,Ban
+BTN,Workplaces,Ban
+BTN,Parks and streets,No restrictions
+BTN,Leisure events,No restrictions
+BWA,Healthcare establishments,Ban
+BWA,Parks and streets,Ban
+BWA,Educational buildings,Ban
+BWA,Sporting events,Partial restriction
+BWA,Leisure events,Partial restriction
+BWA,Workplaces,Ban
+BWA,Places of worship,Ban
+BWA,Public transport,Ban
+BWA,Government offices,Ban
+CAF,Parks and streets,Voluntary/self-restricted
+CAF,Leisure events,Voluntary/self-restricted
+CAF,Government offices,Partial restriction
+CAF,Healthcare establishments,Partial restriction
+CAF,Places of worship,Ban
+CAF,Public transport,Ban
+CAF,Educational buildings,Ban
+CAF,Sporting events,Voluntary/self-restricted
+CAF,Workplaces,Partial restriction
+CAN,Educational buildings,No data
+CAN,Workplaces,No data
+CAN,Sporting events,No data
+CAN,Places of worship,No data
+CAN,Public transport,No data
+CAN,Government offices,No data
+CAN,Healthcare establishments,No data
+CAN,Leisure events,No data
+CAN,Parks and streets,No data
+CHE,Educational buildings,Voluntary/self-restricted
+CHE,Sporting events,Voluntary/self-restricted
+CHE,Government offices,No restrictions
+CHE,Places of worship,Voluntary/self-restricted
+CHE,Healthcare establishments,No restrictions
+CHE,Parks and streets,No restrictions
+CHE,Public transport,No restrictions
+CHE,Workplaces,Voluntary/self-restricted
+CHE,Leisure events,Voluntary/self-restricted
+CHL,Leisure events,Voluntary/self-restricted
+CHL,Places of worship,Voluntary/self-restricted
+CHL,Healthcare establishments,Voluntary/self-restricted
+CHL,Government offices,Voluntary/self-restricted
+CHL,Workplaces,Voluntary/self-restricted
+CHL,Public transport,Ban
+CHL,Parks and streets,Ban
+CHL,Educational buildings,Ban
+CHL,Sporting events,Voluntary/self-restricted
+CHN,Healthcare establishments,No restrictions
+CHN,Places of worship,No restrictions
+CHN,Public transport,No restrictions
+CHN,Parks and streets,No restrictions
+CHN,Leisure events,No restrictions
+CHN,Workplaces,No restrictions
+CHN,Sporting events,No restrictions
+CHN,Educational buildings,Ban
+CHN,Government offices,Ban
+CIV,Public transport,Ban
+CIV,Healthcare establishments,Ban
+CIV,Government offices,Ban
+CIV,Educational buildings,Ban
+CIV,Leisure events,Voluntary/self-restricted
+CIV,Places of worship,Ban
+CIV,Workplaces,Ban
+CIV,Sporting events,No restrictions
+CIV,Parks and streets,No restrictions
+CMR,Educational buildings,Ban
+CMR,Places of worship,No restrictions
+CMR,Government offices,No restrictions
+CMR,Healthcare establishments,No restrictions
+CMR,Leisure events,No restrictions
+CMR,Parks and streets,No restrictions
+CMR,Public transport,No restrictions
+CMR,Sporting events,No restrictions
+CMR,Workplaces,No restrictions
+COD,Places of worship,Ban
+COD,Workplaces,No restrictions
+COD,Sporting events,No restrictions
+COD,Public transport,No restrictions
+COD,Parks and streets,No restrictions
+COD,Leisure events,No restrictions
+COD,Government offices,No restrictions
+COD,Educational buildings,Ban
+COD,Healthcare establishments,Partial restriction
+COG,Healthcare establishments,Ban
+COG,Government offices,Ban
+COG,Public transport,Ban
+COG,Places of worship,Ban
+COG,Sporting events,Ban
+COG,Workplaces,Ban
+COG,Leisure events,No restrictions
+COG,Parks and streets,No restrictions
+COG,Educational buildings,Ban
+COK,Healthcare establishments,No data
+COK,Workplaces,No data
+COK,Sporting events,No data
+COK,Places of worship,No data
+COK,Leisure events,No data
+COK,Educational buildings,No data
+COK,Parks and streets,No data
+COK,Public transport,No data
+COK,Government offices,No data
+COL,Government offices,Ban
+COL,Sporting events,Partial restriction
+COL,Public transport,Ban
+COL,Workplaces,Ban
+COL,Places of worship,Voluntary/self-restricted
+COL,Parks and streets,Partial restriction
+COL,Leisure events,Partial restriction
+COL,Healthcare establishments,Partial restriction
+COL,Educational buildings,Ban
+COM,Sporting events,Ban
+COM,Workplaces,Ban
+COM,Public transport,Ban
+COM,Educational buildings,Ban
+COM,Government offices,Ban
+COM,Places of worship,Ban
+COM,Leisure events,Ban
+COM,Healthcare establishments,Ban
+COM,Parks and streets,Ban
+CPV,Educational buildings,Ban
+CPV,Healthcare establishments,Ban
+CPV,Workplaces,Ban
+CPV,Places of worship,Voluntary/self-restricted
+CPV,Sporting events,No restrictions
+CPV,Public transport,No restrictions
+CPV,Parks and streets,No restrictions
+CPV,Government offices,Ban
+CPV,Leisure events,No restrictions
+CRI,Leisure events,Partial restriction
+CRI,Parks and streets,Partial restriction
+CRI,Sporting events,Ban
+CRI,Educational buildings,Ban
+CRI,Government offices,Ban
+CRI,Healthcare establishments,Ban
+CRI,Public transport,Ban
+CRI,Places of worship,Ban
+CRI,Workplaces,Ban
+CUB,Government offices,No data
+CUB,Educational buildings,No data
+CUB,Sporting events,No data
+CUB,Public transport,No data
+CUB,Places of worship,No data
+CUB,Healthcare establishments,No data
+CUB,Workplaces,No data
+CUB,Parks and streets,No data
+CUB,Leisure events,No data
+CYP,Workplaces,Partial restriction
+CYP,Sporting events,Partial restriction
+CYP,Parks and streets,Partial restriction
+CYP,Leisure events,Partial restriction
+CYP,Educational buildings,Ban
+CYP,Government offices,Ban
+CYP,Healthcare establishments,Ban
+CYP,Public transport,Ban
+CYP,Places of worship,Ban
+CZE,Educational buildings,Ban
+CZE,Parks and streets,Partial restriction
+CZE,Workplaces,Ban
+CZE,Healthcare establishments,Ban
+CZE,Government offices,Ban
+CZE,Public transport,Partial restriction
+CZE,Sporting events,Partial restriction
+CZE,Places of worship,Voluntary/self-restricted
+CZE,Leisure events,Voluntary/self-restricted
+DEU,Sporting events,No restrictions
+DEU,Public transport,Partial restriction
+DEU,Workplaces,Voluntary/self-restricted
+DEU,Healthcare establishments,Voluntary/self-restricted
+DEU,Government offices,Voluntary/self-restricted
+DEU,Places of worship,No restrictions
+DEU,Parks and streets,No restrictions
+DEU,Leisure events,No restrictions
+DEU,Educational buildings,Voluntary/self-restricted
+DJI,Workplaces,Ban
+DJI,Parks and streets,Ban
+DJI,Public transport,Ban
+DJI,Places of worship,Ban
+DJI,Leisure events,Ban
+DJI,Healthcare establishments,Ban
+DJI,Sporting events,Ban
+DJI,Educational buildings,Ban
+DJI,Government offices,Ban
+DMA,Public transport,No restrictions
+DMA,Leisure events,No restrictions
+DMA,Healthcare establishments,No restrictions
+DMA,Government offices,No restrictions
+DMA,Educational buildings,Ban
+DMA,Parks and streets,No restrictions
+DMA,Workplaces,No restrictions
+DMA,Sporting events,No restrictions
+DMA,Places of worship,No restrictions
+DNK,Healthcare establishments,No restrictions
+DNK,Educational buildings,Voluntary/self-restricted
+DNK,Public transport,Partial restriction
+DNK,Government offices,Voluntary/self-restricted
+DNK,Workplaces,Voluntary/self-restricted
+DNK,Parks and streets,No restrictions
+DNK,Places of worship,No restrictions
+DNK,Sporting events,No restrictions
+DNK,Leisure events,No restrictions
+DOM,Government offices,No restrictions
+DOM,Educational buildings,No restrictions
+DOM,Places of worship,Ban
+DOM,Public transport,Ban
+DOM,Sporting events,No restrictions
+DOM,Healthcare establishments,No restrictions
+DOM,Workplaces,No restrictions
+DOM,Parks and streets,No restrictions
+DOM,Leisure events,No restrictions
+DZA,Government offices,Ban
+DZA,Leisure events,Ban
+DZA,Parks and streets,Ban
+DZA,Public transport,Ban
+DZA,Places of worship,Ban
+DZA,Workplaces,Ban
+DZA,Sporting events,Ban
+DZA,Healthcare establishments,Ban
+DZA,Educational buildings,Ban
+ECU,Sporting events,Partial restriction
+ECU,Workplaces,Ban
+ECU,Public transport,Ban
+ECU,Parks and streets,Ban
+ECU,Leisure events,Ban
+ECU,Healthcare establishments,Ban
+ECU,Government offices,Ban
+ECU,Places of worship,No restrictions
+ECU,Educational buildings,Ban
+EGY,Sporting events,Ban
+EGY,Places of worship,Ban
+EGY,Public transport,Ban
+EGY,Workplaces,Ban
+EGY,Parks and streets,Ban
+EGY,Educational buildings,Ban
+EGY,Government offices,Ban
+EGY,Leisure events,Ban
+EGY,Healthcare establishments,Ban
+ERI,Places of worship,Ban
+ERI,Educational buildings,Ban
+ERI,Public transport,Ban
+ERI,Leisure events,No restrictions
+ERI,Healthcare establishments,Ban
+ERI,Government offices,Ban
+ERI,Parks and streets,Voluntary/self-restricted
+ERI,Sporting events,Ban
+ERI,Workplaces,Ban
+ESP,Educational buildings,Ban
+ESP,Workplaces,Partial restriction
+ESP,Parks and streets,Partial restriction
+ESP,Leisure events,Partial restriction
+ESP,Government offices,Partial restriction
+ESP,Places of worship,No restrictions
+ESP,Public transport,No restrictions
+ESP,Healthcare establishments,Partial restriction
+ESP,Sporting events,Ban
+EST,Government offices,No restrictions
+EST,Workplaces,No restrictions
+EST,Sporting events,No restrictions
+EST,Educational buildings,Partial restriction
+EST,Places of worship,No restrictions
+EST,Leisure events,No restrictions
+EST,Public transport,Partial restriction
+EST,Parks and streets,Ban
+EST,Healthcare establishments,Ban
+ETH,Healthcare establishments,Ban
+ETH,Places of worship,Voluntary/self-restricted
+ETH,Workplaces,Ban
+ETH,Public transport,Ban
+ETH,Leisure events,No restrictions
+ETH,Parks and streets,No restrictions
+ETH,Sporting events,Ban
+ETH,Government offices,Ban
+ETH,Educational buildings,Ban
+FIN,Workplaces,Voluntary/self-restricted
+FIN,Educational buildings,Ban
+FIN,Sporting events,Ban
+FIN,Places of worship,Ban
+FIN,Public transport,Ban
+FIN,Leisure events,Ban
+FIN,Parks and streets,Partial restriction
+FIN,Healthcare establishments,Ban
+FIN,Government offices,Ban
+FJI,Educational buildings,No data
+FJI,Workplaces,No data
+FJI,Sporting events,No data
+FJI,Places of worship,No data
+FJI,Public transport,No data
+FJI,Parks and streets,No data
+FJI,Leisure events,No data
+FJI,Healthcare establishments,No data
+FJI,Government offices,No data
+FRA,Educational buildings,Ban
+FRA,Parks and streets,No restrictions
+FRA,Leisure events,No restrictions
+FRA,Government offices,No restrictions
+FRA,Places of worship,Ban
+FRA,Healthcare establishments,Ban
+FRA,Workplaces,Partial restriction
+FRA,Sporting events,Partial restriction
+FRA,Public transport,Partial restriction
+FSM,Sporting events,No data
+FSM,Places of worship,No data
+FSM,Parks and streets,No data
+FSM,Leisure events,No data
+FSM,Healthcare establishments,No data
+FSM,Workplaces,No data
+FSM,Educational buildings,No data
+FSM,Government offices,No data
+FSM,Public transport,No data
+GAB,Leisure events,No restrictions
+GAB,Workplaces,Ban
+GAB,Places of worship,Ban
+GAB,Government offices,Ban
+GAB,Educational buildings,Ban
+GAB,Parks and streets,No restrictions
+GAB,Public transport,No restrictions
+GAB,Sporting events,Partial restriction
+GAB,Healthcare establishments,Ban
+GBR,Places of worship,No restrictions
+GBR,Government offices,No restrictions
+GBR,Workplaces,Voluntary/self-restricted
+GBR,Parks and streets,Partial restriction
+GBR,Healthcare establishments,Voluntary/self-restricted
+GBR,Educational buildings,Voluntary/self-restricted
+GBR,Sporting events,Partial restriction
+GBR,Public transport,Partial restriction
+GBR,Leisure events,Partial restriction
+GEO,Places of worship,Ban
+GEO,Healthcare establishments,Ban
+GEO,Sporting events,Ban
+GEO,Workplaces,Ban
+GEO,Public transport,Ban
+GEO,Leisure events,Ban
+GEO,Government offices,Ban
+GEO,Educational buildings,Ban
+GEO,Parks and streets,Ban
+GHA,Parks and streets,No restrictions
+GHA,Educational buildings,Voluntary/self-restricted
+GHA,Government offices,Voluntary/self-restricted
+GHA,Leisure events,No restrictions
+GHA,Public transport,Voluntary/self-restricted
+GHA,Places of worship,Voluntary/self-restricted
+GHA,Sporting events,Voluntary/self-restricted
+GHA,Workplaces,Voluntary/self-restricted
+GHA,Healthcare establishments,Voluntary/self-restricted
+GIN,Workplaces,Ban
+GIN,Sporting events,Voluntary/self-restricted
+GIN,Places of worship,Partial restriction
+GIN,Educational buildings,Ban
+GIN,Government offices,Ban
+GIN,Healthcare establishments,Ban
+GIN,Parks and streets,Ban
+GIN,Public transport,Ban
+GIN,Leisure events,No restrictions
+GMB,Leisure events,Voluntary/self-restricted
+GMB,Public transport,Voluntary/self-restricted
+GMB,Government offices,Ban
+GMB,Places of worship,Voluntary/self-restricted
+GMB,Sporting events,Voluntary/self-restricted
+GMB,Workplaces,Voluntary/self-restricted
+GMB,Parks and streets,No restrictions
+GMB,Educational buildings,Ban
+GMB,Healthcare establishments,Ban
+GNB,Parks and streets,No restrictions
+GNB,Leisure events,No restrictions
+GNB,Workplaces,Partial restriction
+GNB,Sporting events,Partial restriction
+GNB,Places of worship,Partial restriction
+GNB,Healthcare establishments,Partial restriction
+GNB,Government offices,Partial restriction
+GNB,Educational buildings,Partial restriction
+GNB,Public transport,No restrictions
+GNQ,Sporting events,Partial restriction
+GNQ,Public transport,Partial restriction
+GNQ,Parks and streets,Partial restriction
+GNQ,Leisure events,Partial restriction
+GNQ,Places of worship,Ban
+GNQ,Educational buildings,Ban
+GNQ,Government offices,Ban
+GNQ,Workplaces,Ban
+GNQ,Healthcare establishments,Ban
+GRC,Workplaces,Ban
+GRC,Parks and streets,No restrictions
+GRC,Leisure events,No restrictions
+GRC,Educational buildings,Ban
+GRC,Government offices,Ban
+GRC,Healthcare establishments,Ban
+GRC,Public transport,Ban
+GRC,Places of worship,Ban
+GRC,Sporting events,Ban
+GRD,Healthcare establishments,Voluntary/self-restricted
+GRD,Leisure events,Voluntary/self-restricted
+GRD,Sporting events,Voluntary/self-restricted
+GRD,Places of worship,Voluntary/self-restricted
+GRD,Parks and streets,Voluntary/self-restricted
+GRD,Government offices,Voluntary/self-restricted
+GRD,Educational buildings,Voluntary/self-restricted
+GRD,Public transport,Voluntary/self-restricted
+GRD,Workplaces,Voluntary/self-restricted
+GTM,Parks and streets,No data
+GTM,Workplaces,No data
+GTM,Leisure events,No data
+GTM,Public transport,No data
+GTM,Healthcare establishments,No data
+GTM,Government offices,No data
+GTM,Educational buildings,No data
+GTM,Places of worship,No data
+GTM,Sporting events,No data
+GUY,Healthcare establishments,Voluntary/self-restricted
+GUY,Government offices,Voluntary/self-restricted
+GUY,Educational buildings,Voluntary/self-restricted
+GUY,Sporting events,Voluntary/self-restricted
+GUY,Parks and streets,Voluntary/self-restricted
+GUY,Public transport,Voluntary/self-restricted
+GUY,Leisure events,Voluntary/self-restricted
+GUY,Workplaces,Partial restriction
+GUY,Places of worship,Voluntary/self-restricted
+HND,Leisure events,Voluntary/self-restricted
+HND,Sporting events,Voluntary/self-restricted
+HND,Educational buildings,No restrictions
+HND,Healthcare establishments,No restrictions
+HND,Government offices,No restrictions
+HND,Parks and streets,No restrictions
+HND,Public transport,No restrictions
+HND,Places of worship,No restrictions
+HND,Workplaces,No restrictions
+HRV,Public transport,Ban
+HRV,Sporting events,Voluntary/self-restricted
+HRV,Educational buildings,Ban
+HRV,Healthcare establishments,Ban
+HRV,Government offices,Partial restriction
+HRV,Workplaces,Ban
+HRV,Leisure events,Partial restriction
+HRV,Parks and streets,Partial restriction
+HRV,Places of worship,Partial restriction
+HTI,Public transport,No data
+HTI,Leisure events,No data
+HTI,Parks and streets,No data
+HTI,Places of worship,No data
+HTI,Healthcare establishments,No data
+HTI,Government offices,No data
+HTI,Workplaces,No data
+HTI,Sporting events,No data
+HTI,Educational buildings,No data
+HUN,Leisure events,No restrictions
+HUN,Public transport,Partial restriction
+HUN,Sporting events,Partial restriction
+HUN,Parks and streets,Partial restriction
+HUN,Places of worship,Voluntary/self-restricted
+HUN,Healthcare establishments,Ban
+HUN,Government offices,Voluntary/self-restricted
+HUN,Educational buildings,Ban
+HUN,Workplaces,Ban
+IDN,Places of worship,No restrictions
+IDN,Healthcare establishments,No restrictions
+IDN,Leisure events,No restrictions
+IDN,Educational buildings,Ban
+IDN,Public transport,Voluntary/self-restricted
+IDN,Workplaces,No restrictions
+IDN,Parks and streets,No restrictions
+IDN,Government offices,Voluntary/self-restricted
+IDN,Sporting events,No restrictions
+IND,Workplaces,Ban
+IND,Sporting events,Ban
+IND,Parks and streets,Ban
+IND,Healthcare establishments,Ban
+IND,Government offices,Ban
+IND,Educational buildings,Ban
+IND,Places of worship,Ban
+IND,Public transport,Ban
+IND,Leisure events,Voluntary/self-restricted
+IRL,Educational buildings,Partial restriction
+IRL,Government offices,Partial restriction
+IRL,Healthcare establishments,Partial restriction
+IRL,Leisure events,Partial restriction
+IRL,Places of worship,Partial restriction
+IRL,Sporting events,Partial restriction
+IRL,Workplaces,Partial restriction
+IRL,Parks and streets,Voluntary/self-restricted
+IRL,Public transport,Voluntary/self-restricted
+IRN,Healthcare establishments,Ban
+IRN,Educational buildings,Ban
+IRN,Places of worship,Ban
+IRN,Workplaces,Ban
+IRN,Sporting events,Ban
+IRN,Parks and streets,Ban
+IRN,Public transport,Ban
+IRN,Government offices,Ban
+IRN,Leisure events,Ban
+IRQ,Leisure events,Partial restriction
+IRQ,Workplaces,Ban
+IRQ,Places of worship,Ban
+IRQ,Sporting events,Ban
+IRQ,Public transport,Ban
+IRQ,Parks and streets,Ban
+IRQ,Healthcare establishments,Ban
+IRQ,Educational buildings,Ban
+IRQ,Government offices,Ban
+ISL,Leisure events,Voluntary/self-restricted
+ISL,Educational buildings,Partial restriction
+ISL,Parks and streets,Voluntary/self-restricted
+ISL,Sporting events,Voluntary/self-restricted
+ISL,Places of worship,Voluntary/self-restricted
+ISL,Healthcare establishments,Voluntary/self-restricted
+ISL,Public transport,Voluntary/self-restricted
+ISL,Government offices,Voluntary/self-restricted
+ISL,Workplaces,Voluntary/self-restricted
+ISR,Parks and streets,Ban
+ISR,Workplaces,Partial restriction
+ISR,Sporting events,Partial restriction
+ISR,Places of worship,Partial restriction
+ISR,Leisure events,Partial restriction
+ISR,Healthcare establishments,Partial restriction
+ISR,Government offices,Partial restriction
+ISR,Educational buildings,Partial restriction
+ISR,Public transport,Partial restriction
+ITA,Healthcare establishments,Ban
+ITA,Educational buildings,Ban
+ITA,Places of worship,No restrictions
+ITA,Public transport,Ban
+ITA,Workplaces,Partial restriction
+ITA,Parks and streets,Partial restriction
+ITA,Leisure events,Partial restriction
+ITA,Sporting events,Partial restriction
+ITA,Government offices,Voluntary/self-restricted
+JAM,Places of worship,Voluntary/self-restricted
+JAM,Public transport,Voluntary/self-restricted
+JAM,Parks and streets,Voluntary/self-restricted
+JAM,Leisure events,Voluntary/self-restricted
+JAM,Workplaces,Voluntary/self-restricted
+JAM,Educational buildings,Voluntary/self-restricted
+JAM,Government offices,Ban
+JAM,Sporting events,Voluntary/self-restricted
+JAM,Healthcare establishments,Voluntary/self-restricted
+JOR,Educational buildings,Ban
+JOR,Sporting events,Ban
+JOR,Places of worship,Ban
+JOR,Public transport,Ban
+JOR,Parks and streets,Ban
+JOR,Leisure events,Ban
+JOR,Healthcare establishments,Ban
+JOR,Government offices,Ban
+JOR,Workplaces,Ban
+JPN,Educational buildings,No restrictions
+JPN,Government offices,No restrictions
+JPN,Healthcare establishments,No restrictions
+JPN,Leisure events,No restrictions
+JPN,Parks and streets,No restrictions
+JPN,Public transport,No restrictions
+JPN,Places of worship,No restrictions
+JPN,Sporting events,No restrictions
+JPN,Workplaces,No restrictions
+KAZ,Healthcare establishments,Ban
+KAZ,Educational buildings,Ban
+KAZ,Government offices,Ban
+KAZ,Workplaces,Ban
+KAZ,Sporting events,Ban
+KAZ,Places of worship,Ban
+KAZ,Public transport,Ban
+KAZ,Parks and streets,Ban
+KAZ,Leisure events,Ban
+KEN,Places of worship,Partial restriction
+KEN,Healthcare establishments,Ban
+KEN,Public transport,No restrictions
+KEN,Parks and streets,No restrictions
+KEN,Leisure events,No restrictions
+KEN,Government offices,Ban
+KEN,Educational buildings,Ban
+KEN,Workplaces,Ban
+KEN,Sporting events,No restrictions
+KGZ,Parks and streets,No data
+KGZ,Educational buildings,No data
+KGZ,Government offices,No data
+KGZ,Healthcare establishments,No data
+KGZ,Leisure events,No data
+KGZ,Public transport,No data
+KGZ,Places of worship,No data
+KGZ,Sporting events,No data
+KGZ,Workplaces,No data
+KHM,Workplaces,Voluntary/self-restricted
+KHM,Places of worship,Ban
+KHM,Healthcare establishments,Ban
+KHM,Government offices,Ban
+KHM,Sporting events,No restrictions
+KHM,Public transport,No restrictions
+KHM,Parks and streets,No restrictions
+KHM,Leisure events,No restrictions
+KHM,Educational buildings,Ban
+KIR,Leisure events,No restrictions
+KIR,Parks and streets,No restrictions
+KIR,Places of worship,Partial restriction
+KIR,Sporting events,No restrictions
+KIR,Educational buildings,Ban
+KIR,Government offices,Ban
+KIR,Healthcare establishments,Ban
+KIR,Public transport,Ban
+KIR,Workplaces,Ban
+KNA,Workplaces,No restrictions
+KNA,Sporting events,No restrictions
+KNA,Places of worship,No restrictions
+KNA,Educational buildings,Partial restriction
+KNA,Public transport,No restrictions
+KNA,Leisure events,No restrictions
+KNA,Parks and streets,No restrictions
+KNA,Healthcare establishments,No restrictions
+KNA,Government offices,No restrictions
+KOR,Educational buildings,No restrictions
+KOR,Government offices,No restrictions
+KOR,Healthcare establishments,No restrictions
+KOR,Leisure events,No restrictions
+KOR,Parks and streets,No restrictions
+KOR,Public transport,No restrictions
+KOR,Sporting events,No restrictions
+KOR,Workplaces,No restrictions
+KOR,Places of worship,No restrictions
+KWT,Parks and streets,No data
+KWT,Healthcare establishments,No data
+KWT,Sporting events,No data
+KWT,Places of worship,No data
+KWT,Leisure events,No data
+KWT,Public transport,No data
+KWT,Government offices,No data
+KWT,Workplaces,No data
+KWT,Educational buildings,No data
+LAO,Sporting events,Ban
+LAO,Places of worship,Ban
+LAO,Public transport,Ban
+LAO,Healthcare establishments,Ban
+LAO,Educational buildings,Ban
+LAO,Parks and streets,No restrictions
+LAO,Government offices,Ban
+LAO,Leisure events,No restrictions
+LAO,Workplaces,Ban
+LBN,Workplaces,Ban
+LBN,Educational buildings,Ban
+LBN,Places of worship,Ban
+LBN,Leisure events,No restrictions
+LBN,Healthcare establishments,Ban
+LBN,Parks and streets,No restrictions
+LBN,Sporting events,No restrictions
+LBN,Government offices,Ban
+LBN,Public transport,Voluntary/self-restricted
+LBR,Government offices,Voluntary/self-restricted
+LBR,Healthcare establishments,Voluntary/self-restricted
+LBR,Sporting events,Voluntary/self-restricted
+LBR,Public transport,No restrictions
+LBR,Parks and streets,No restrictions
+LBR,Leisure events,No restrictions
+LBR,Places of worship,Ban
+LBR,Workplaces,Ban
+LBR,Educational buildings,Voluntary/self-restricted
+LBY,Workplaces,Ban
+LBY,Sporting events,Ban
+LBY,Places of worship,Ban
+LBY,Parks and streets,Ban
+LBY,Public transport,Ban
+LBY,Healthcare establishments,Ban
+LBY,Government offices,Ban
+LBY,Educational buildings,Ban
+LBY,Leisure events,Ban
+LCA,Public transport,Voluntary/self-restricted
+LCA,Parks and streets,Voluntary/self-restricted
+LCA,Leisure events,Voluntary/self-restricted
+LCA,Healthcare establishments,Voluntary/self-restricted
+LCA,Government offices,Voluntary/self-restricted
+LCA,Educational buildings,Voluntary/self-restricted
+LCA,Places of worship,Voluntary/self-restricted
+LCA,Sporting events,Voluntary/self-restricted
+LCA,Workplaces,Voluntary/self-restricted
+LKA,Public transport,Partial restriction
+LKA,Sporting events,Partial restriction
+LKA,Workplaces,Ban
+LKA,Leisure events,No restrictions
+LKA,Places of worship,Voluntary/self-restricted
+LKA,Parks and streets,Partial restriction
+LKA,Healthcare establishments,Partial restriction
+LKA,Government offices,Partial restriction
+LKA,Educational buildings,Partial restriction
+LSO,Parks and streets,No restrictions
+LSO,Educational buildings,Voluntary/self-restricted
+LSO,Public transport,No restrictions
+LSO,Sporting events,No restrictions
+LSO,Government offices,Voluntary/self-restricted
+LSO,Leisure events,No restrictions
+LSO,Places of worship,Voluntary/self-restricted
+LSO,Healthcare establishments,Voluntary/self-restricted
+LSO,Workplaces,Partial restriction
+LTU,Sporting events,Partial restriction
+LTU,Leisure events,Partial restriction
+LTU,Public transport,Ban
+LTU,Places of worship,Ban
+LTU,Parks and streets,Ban
+LTU,Healthcare establishments,Ban
+LTU,Government offices,Ban
+LTU,Educational buildings,Ban
+LTU,Workplaces,Ban
+LUX,Parks and streets,No restrictions
+LUX,Educational buildings,No restrictions
+LUX,Leisure events,No restrictions
+LUX,Public transport,No restrictions
+LUX,Government offices,No restrictions
+LUX,Sporting events,No restrictions
+LUX,Workplaces,No restrictions
+LUX,Places of worship,No restrictions
+LUX,Healthcare establishments,Voluntary/self-restricted
+LVA,Sporting events,Partial restriction
+LVA,Places of worship,Partial restriction
+LVA,Public transport,Partial restriction
+LVA,Parks and streets,Partial restriction
+LVA,Leisure events,Partial restriction
+LVA,Healthcare establishments,Ban
+LVA,Government offices,Ban
+LVA,Educational buildings,Ban
+LVA,Workplaces,Ban
+MAR,Parks and streets,Ban
+MAR,Educational buildings,Ban
+MAR,Government offices,Ban
+MAR,Healthcare establishments,Ban
+MAR,Leisure events,Ban
+MAR,Public transport,Ban
+MAR,Places of worship,Ban
+MAR,Sporting events,Ban
+MAR,Workplaces,Ban
+MCO,Educational buildings,Ban
+MCO,Places of worship,Voluntary/self-restricted
+MCO,Workplaces,Voluntary/self-restricted
+MCO,Sporting events,Ban
+MCO,Government offices,Ban
+MCO,Healthcare establishments,No restrictions
+MCO,Leisure events,No restrictions
+MCO,Parks and streets,No restrictions
+MCO,Public transport,No restrictions
+MDA,Sporting events,Partial restriction
+MDA,Educational buildings,Ban
+MDA,Healthcare establishments,Ban
+MDA,Parks and streets,Ban
+MDA,Government offices,Ban
+MDA,Workplaces,Ban
+MDA,Leisure events,Partial restriction
+MDA,Places of worship,Voluntary/self-restricted
+MDA,Public transport,Ban
+MDG,Public transport,Ban
+MDG,Healthcare establishments,Ban
+MDG,Government offices,Ban
+MDG,Educational buildings,Ban
+MDG,Parks and streets,Ban
+MDG,Places of worship,Ban
+MDG,Sporting events,Ban
+MDG,Leisure events,Voluntary/self-restricted
+MDG,Workplaces,Ban
+MDV,Educational buildings,Ban
+MDV,Healthcare establishments,Ban
+MDV,Leisure events,Ban
+MDV,Government offices,Ban
+MDV,Places of worship,Ban
+MDV,Workplaces,Ban
+MDV,Public transport,Ban
+MDV,Sporting events,Ban
+MDV,Parks and streets,Ban
+MEX,Workplaces,Ban
+MEX,Government offices,Ban
+MEX,Educational buildings,Ban
+MEX,Healthcare establishments,Ban
+MEX,Sporting events,Voluntary/self-restricted
+MEX,Public transport,Voluntary/self-restricted
+MEX,Places of worship,Voluntary/self-restricted
+MEX,Parks and streets,Voluntary/self-restricted
+MEX,Leisure events,Voluntary/self-restricted
+MHL,Parks and streets,Ban
+MHL,Workplaces,Ban
+MHL,Sporting events,Ban
+MHL,Places of worship,Ban
+MHL,Public transport,Ban
+MHL,Government offices,Ban
+MHL,Leisure events,Ban
+MHL,Educational buildings,Ban
+MHL,Healthcare establishments,Ban
+MKD,Sporting events,Ban
+MKD,Leisure events,Voluntary/self-restricted
+MKD,Workplaces,Ban
+MKD,Government offices,Partial restriction
+MKD,Places of worship,Ban
+MKD,Public transport,Ban
+MKD,Parks and streets,No restrictions
+MKD,Healthcare establishments,Ban
+MKD,Educational buildings,Ban
+MLI,Leisure events,No restrictions
+MLI,Places of worship,Partial restriction
+MLI,Government offices,No restrictions
+MLI,Healthcare establishments,No restrictions
+MLI,Workplaces,No restrictions
+MLI,Sporting events,No restrictions
+MLI,Parks and streets,No restrictions
+MLI,Educational buildings,Partial restriction
+MLI,Public transport,No restrictions
+MLT,Public transport,Ban
+MLT,Healthcare establishments,Ban
+MLT,Educational buildings,Ban
+MLT,Leisure events,Partial restriction
+MLT,Parks and streets,Partial restriction
+MLT,Sporting events,Partial restriction
+MLT,Government offices,Partial restriction
+MLT,Places of worship,Voluntary/self-restricted
+MLT,Workplaces,Voluntary/self-restricted
+MMR,Places of worship,Ban
+MMR,Workplaces,Partial restriction
+MMR,Sporting events,Partial restriction
+MMR,Public transport,Partial restriction
+MMR,Parks and streets,Partial restriction
+MMR,Leisure events,Partial restriction
+MMR,Healthcare establishments,Ban
+MMR,Government offices,Ban
+MMR,Educational buildings,Ban
+MNE,Public transport,Ban
+MNE,Parks and streets,Ban
+MNE,Sporting events,Ban
+MNE,Places of worship,Ban
+MNE,Leisure events,Ban
+MNE,Workplaces,Ban
+MNE,Government offices,No restrictions
+MNE,Educational buildings,No restrictions
+MNE,Healthcare establishments,No restrictions
+MNG,Places of worship,No restrictions
+MNG,Government offices,Ban
+MNG,Public transport,Ban
+MNG,Healthcare establishments,Ban
+MNG,Sporting events,Partial restriction
+MNG,Leisure events,Voluntary/self-restricted
+MNG,Parks and streets,No restrictions
+MNG,Educational buildings,Ban
+MNG,Workplaces,Ban
+MOZ,Sporting events,No restrictions
+MOZ,Educational buildings,Ban
+MOZ,Government offices,Ban
+MOZ,Healthcare establishments,Ban
+MOZ,Public transport,Ban
+MOZ,Leisure events,No restrictions
+MOZ,Workplaces,Ban
+MOZ,Parks and streets,Partial restriction
+MOZ,Places of worship,Voluntary/self-restricted
+MRT,Public transport,Ban
+MRT,Parks and streets,Ban
+MRT,Government offices,Ban
+MRT,Healthcare establishments,Ban
+MRT,Educational buildings,Ban
+MRT,Sporting events,Ban
+MRT,Leisure events,Ban
+MRT,Places of worship,Ban
+MRT,Workplaces,Ban
+MUS,Government offices,Ban
+MUS,Educational buildings,Ban
+MUS,Public transport,Ban
+MUS,Places of worship,Ban
+MUS,Sporting events,Ban
+MUS,Workplaces,Ban
+MUS,Parks and streets,Ban
+MUS,Leisure events,Ban
+MUS,Healthcare establishments,Ban
+MWI,Public transport,Ban
+MWI,Parks and streets,Ban
+MWI,Healthcare establishments,Ban
+MWI,Government offices,Ban
+MWI,Educational buildings,Ban
+MWI,Sporting events,Ban
+MWI,Leisure events,No restrictions
+MWI,Places of worship,Ban
+MWI,Workplaces,Ban
+MYS,Educational buildings,Partial restriction
+MYS,Public transport,No restrictions
+MYS,Parks and streets,No restrictions
+MYS,Leisure events,No restrictions
+MYS,Sporting events,Voluntary/self-restricted
+MYS,Places of worship,Voluntary/self-restricted
+MYS,Workplaces,Ban
+MYS,Healthcare establishments,Voluntary/self-restricted
+MYS,Government offices,Partial restriction
+NAM,Parks and streets,Ban
+NAM,Government offices,Ban
+NAM,Workplaces,Ban
+NAM,Healthcare establishments,Ban
+NAM,Sporting events,No restrictions
+NAM,Educational buildings,Voluntary/self-restricted
+NAM,Leisure events,No restrictions
+NAM,Places of worship,Voluntary/self-restricted
+NAM,Public transport,Voluntary/self-restricted
+NER,Government offices,Ban
+NER,Educational buildings,Ban
+NER,Public transport,Ban
+NER,Places of worship,Ban
+NER,Sporting events,Ban
+NER,Healthcare establishments,Ban
+NER,Workplaces,Ban
+NER,Leisure events,No restrictions
+NER,Parks and streets,Ban
+NGA,Government offices,Ban
+NGA,Sporting events,Partial restriction
+NGA,Educational buildings,Ban
+NGA,Healthcare establishments,Ban
+NGA,Parks and streets,No restrictions
+NGA,Leisure events,No restrictions
+NGA,Places of worship,Ban
+NGA,Workplaces,Ban
+NGA,Public transport,Voluntary/self-restricted
+NIC,Educational buildings,No data
+NIC,Workplaces,No data
+NIC,Leisure events,Voluntary/self-restricted
+NIC,Public transport,Voluntary/self-restricted
+NIC,Places of worship,Voluntary/self-restricted
+NIC,Sporting events,Partial restriction
+NIC,Parks and streets,No restrictions
+NIC,Government offices,Voluntary/self-restricted
+NIC,Healthcare establishments,Voluntary/self-restricted
+NIU,Places of worship,No data
+NIU,Public transport,No data
+NIU,Government offices,No data
+NIU,Sporting events,No data
+NIU,Workplaces,No data
+NIU,Healthcare establishments,No data
+NIU,Leisure events,No data
+NIU,Parks and streets,No data
+NIU,Educational buildings,No data
+NLD,Leisure events,Partial restriction
+NLD,Public transport,Partial restriction
+NLD,Sporting events,Partial restriction
+NLD,Healthcare establishments,Partial restriction
+NLD,Places of worship,Partial restriction
+NLD,Government offices,Partial restriction
+NLD,Parks and streets,Voluntary/self-restricted
+NLD,Workplaces,Voluntary/self-restricted
+NLD,Educational buildings,Partial restriction
+NOR,Government offices,Partial restriction
+NOR,Healthcare establishments,Partial restriction
+NOR,Educational buildings,Partial restriction
+NOR,Public transport,Partial restriction
+NOR,Leisure events,Voluntary/self-restricted
+NOR,Places of worship,Voluntary/self-restricted
+NOR,Sporting events,Voluntary/self-restricted
+NOR,Workplaces,Voluntary/self-restricted
+NOR,Parks and streets,Ban
+NPL,Workplaces,No data
+NPL,Sporting events,No data
+NPL,Public transport,No data
+NPL,Places of worship,No data
+NPL,Leisure events,No data
+NPL,Government offices,No data
+NPL,Educational buildings,No data
+NPL,Healthcare establishments,No data
+NPL,Parks and streets,No data
+NRU,Sporting events,No data
+NRU,Government offices,No data
+NRU,Healthcare establishments,No data
+NRU,Leisure events,No data
+NRU,Parks and streets,No data
+NRU,Public transport,No data
+NRU,Places of worship,No data
+NRU,Workplaces,No data
+NRU,Educational buildings,No data
+NZL,Workplaces,Voluntary/self-restricted
+NZL,Sporting events,Partial restriction
+NZL,Public transport,Partial restriction
+NZL,Places of worship,No restrictions
+NZL,Parks and streets,Partial restriction
+NZL,Leisure events,Partial restriction
+NZL,Educational buildings,Voluntary/self-restricted
+NZL,Healthcare establishments,Voluntary/self-restricted
+NZL,Government offices,Voluntary/self-restricted
+OMN,Public transport,Ban
+OMN,Sporting events,Ban
+OMN,Workplaces,Ban
+OMN,Parks and streets,Ban
+OMN,Places of worship,Ban
+OMN,Leisure events,Ban
+OMN,Government offices,Ban
+OMN,Educational buildings,Ban
+OMN,Healthcare establishments,Ban
+PAK,Sporting events,Ban
+PAK,Workplaces,Ban
+PAK,Places of worship,Ban
+PAK,Public transport,Ban
+PAK,Parks and streets,Ban
+PAK,Healthcare establishments,Ban
+PAK,Government offices,Ban
+PAK,Leisure events,Ban
+PAK,Educational buildings,Ban
+PAN,Parks and streets,Ban
+PAN,Workplaces,Ban
+PAN,Public transport,Ban
+PAN,Healthcare establishments,Ban
+PAN,Government offices,Ban
+PAN,Educational buildings,Ban
+PAN,Leisure events,No restrictions
+PAN,Places of worship,Voluntary/self-restricted
+PAN,Sporting events,No restrictions
+PER,Public transport,Voluntary/self-restricted
+PER,Workplaces,Ban
+PER,Healthcare establishments,Ban
+PER,Leisure events,No restrictions
+PER,Sporting events,Ban
+PER,Educational buildings,Partial restriction
+PER,Government offices,No data
+PER,Places of worship,Voluntary/self-restricted
+PER,Parks and streets,Partial restriction
+PHL,Workplaces,Ban
+PHL,Educational buildings,Ban
+PHL,Healthcare establishments,Ban
+PHL,Leisure events,Ban
+PHL,Parks and streets,Ban
+PHL,Public transport,Ban
+PHL,Places of worship,Ban
+PHL,Sporting events,No restrictions
+PHL,Government offices,Ban
+PLW,Leisure events,No data
+PLW,Government offices,No data
+PLW,Educational buildings,No data
+PLW,Parks and streets,No data
+PLW,Public transport,No data
+PLW,Places of worship,No data
+PLW,Sporting events,No data
+PLW,Workplaces,No data
+PLW,Healthcare establishments,No data
+PNG,Workplaces,No data
+PNG,Sporting events,No data
+PNG,Places of worship,No data
+PNG,Public transport,No data
+PNG,Parks and streets,No data
+PNG,Healthcare establishments,No data
+PNG,Government offices,No data
+PNG,Educational buildings,No data
+PNG,Leisure events,No data
+POL,Workplaces,No restrictions
+POL,Sporting events,Partial restriction
+POL,Leisure events,Partial restriction
+POL,Places of worship,Voluntary/self-restricted
+POL,Healthcare establishments,Voluntary/self-restricted
+POL,Educational buildings,Ban
+POL,Government offices,Voluntary/self-restricted
+POL,Parks and streets,Ban
+POL,Public transport,Ban
+PRK,Workplaces,No data
+PRK,Sporting events,No data
+PRK,Public transport,No data
+PRK,Educational buildings,No data
+PRK,Parks and streets,No data
+PRK,Government offices,No data
+PRK,Leisure events,No data
+PRK,Places of worship,No data
+PRK,Healthcare establishments,No data
+PRT,Leisure events,Partial restriction
+PRT,Government offices,Partial restriction
+PRT,Educational buildings,Partial restriction
+PRT,Places of worship,Voluntary/self-restricted
+PRT,Public transport,Partial restriction
+PRT,Parks and streets,Partial restriction
+PRT,Healthcare establishments,Ban
+PRT,Workplaces,Partial restriction
+PRT,Sporting events,Partial restriction
+PRY,Sporting events,No restrictions
+PRY,Places of worship,No restrictions
+PRY,Public transport,No restrictions
+PRY,Leisure events,No restrictions
+PRY,Educational buildings,No restrictions
+PRY,Workplaces,No restrictions
+PRY,Government offices,No restrictions
+PRY,Healthcare establishments,No restrictions
+PRY,Parks and streets,No restrictions
+QAT,Sporting events,No data
+QAT,Places of worship,No data
+QAT,Workplaces,No data
+QAT,Public transport,No data
+QAT,Parks and streets,No data
+QAT,Leisure events,No data
+QAT,Educational buildings,No data
+QAT,Government offices,No data
+QAT,Healthcare establishments,No data
+ROU,Workplaces,Ban
+ROU,Educational buildings,Ban
+ROU,Places of worship,Voluntary/self-restricted
+ROU,Sporting events,Ban
+ROU,Public transport,Ban
+ROU,Parks and streets,Ban
+ROU,Government offices,Ban
+ROU,Healthcare establishments,Ban
+ROU,Leisure events,Ban
+RUS,Government offices,Partial restriction
+RUS,Leisure events,Partial restriction
+RUS,Workplaces,Partial restriction
+RUS,Places of worship,No restrictions
+RUS,Sporting events,Ban
+RUS,Public transport,Ban
+RUS,Healthcare establishments,Ban
+RUS,Educational buildings,Ban
+RUS,Parks and streets,Partial restriction
+RWA,Places of worship,No restrictions
+RWA,Leisure events,Voluntary/self-restricted
+RWA,Parks and streets,Partial restriction
+RWA,Sporting events,Partial restriction
+RWA,Workplaces,Ban
+RWA,Public transport,Ban
+RWA,Healthcare establishments,Ban
+RWA,Government offices,Ban
+RWA,Educational buildings,Ban
+SAU,Leisure events,No data
+SAU,Sporting events,No data
+SAU,Places of worship,No data
+SAU,Public transport,No data
+SAU,Parks and streets,No data
+SAU,Educational buildings,No data
+SAU,Government offices,No data
+SAU,Healthcare establishments,No data
+SAU,Workplaces,No data
+SDN,Healthcare establishments,Ban
+SDN,Leisure events,Ban
+SDN,Parks and streets,Ban
+SDN,Public transport,Ban
+SDN,Places of worship,Ban
+SDN,Sporting events,Ban
+SDN,Workplaces,Ban
+SDN,Government offices,Ban
+SDN,Educational buildings,Ban
+SEN,Public transport,Ban
+SEN,Places of worship,Ban
+SEN,Sporting events,Ban
+SEN,Workplaces,Ban
+SEN,Educational buildings,Ban
+SEN,Leisure events,Partial restriction
+SEN,Parks and streets,Partial restriction
+SEN,Healthcare establishments,Ban
+SEN,Government offices,Ban
+SGP,Leisure events,Partial restriction
+SGP,Parks and streets,Partial restriction
+SGP,Public transport,Partial restriction
+SGP,Sporting events,Partial restriction
+SGP,Workplaces,No restrictions
+SGP,Places of worship,No restrictions
+SGP,Government offices,No restrictions
+SGP,Healthcare establishments,Ban
+SGP,Educational buildings,No restrictions
+SLB,Workplaces,No data
+SLB,Places of worship,No data
+SLB,Sporting events,No data
+SLB,Parks and streets,No data
+SLB,Leisure events,No data
+SLB,Healthcare establishments,No data
+SLB,Government offices,No data
+SLB,Educational buildings,No data
+SLB,Public transport,No data
+SLE,Leisure events,No restrictions
+SLE,Sporting events,No restrictions
+SLE,Parks and streets,No restrictions
+SLE,Educational buildings,Ban
+SLE,Places of worship,Ban
+SLE,Government offices,Ban
+SLE,Healthcare establishments,Ban
+SLE,Workplaces,Ban
+SLE,Public transport,Voluntary/self-restricted
+SLV,Leisure events,Voluntary/self-restricted
+SLV,Public transport,Voluntary/self-restricted
+SLV,Places of worship,Voluntary/self-restricted
+SLV,Sporting events,Voluntary/self-restricted
+SLV,Workplaces,Voluntary/self-restricted
+SLV,Educational buildings,Voluntary/self-restricted
+SLV,Healthcare establishments,Voluntary/self-restricted
+SLV,Parks and streets,Voluntary/self-restricted
+SLV,Government offices,Voluntary/self-restricted
+SMR,Parks and streets,No restrictions
+SMR,Places of worship,No restrictions
+SMR,Public transport,No restrictions
+SMR,Leisure events,No restrictions
+SMR,Healthcare establishments,No restrictions
+SMR,Government offices,No restrictions
+SMR,Workplaces,No restrictions
+SMR,Educational buildings,No restrictions
+SMR,Sporting events,Partial restriction
+SOM,Workplaces,Ban
+SOM,Sporting events,Ban
+SOM,Places of worship,Ban
+SOM,Public transport,Ban
+SOM,Healthcare establishments,Ban
+SOM,Parks and streets,Ban
+SOM,Leisure events,Ban
+SOM,Educational buildings,Ban
+SOM,Government offices,Ban
+SRB,Sporting events,Voluntary/self-restricted
+SRB,Leisure events,Voluntary/self-restricted
+SRB,Places of worship,Voluntary/self-restricted
+SRB,Healthcare establishments,Ban
+SRB,Government offices,Ban
+SRB,Educational buildings,Ban
+SRB,Workplaces,Ban
+SRB,Public transport,Ban
+SRB,Parks and streets,Ban
+SSD,Educational buildings,Voluntary/self-restricted
+SSD,Leisure events,No restrictions
+SSD,Healthcare establishments,Voluntary/self-restricted
+SSD,Places of worship,Voluntary/self-restricted
+SSD,Public transport,No restrictions
+SSD,Government offices,Voluntary/self-restricted
+SSD,Workplaces,Voluntary/self-restricted
+SSD,Parks and streets,No restrictions
+SSD,Sporting events,No restrictions
+STP,Government offices,No restrictions
+STP,Healthcare establishments,No restrictions
+STP,Workplaces,No restrictions
+STP,Sporting events,No restrictions
+STP,Places of worship,No restrictions
+STP,Public transport,No restrictions
+STP,Parks and streets,No restrictions
+STP,Leisure events,No restrictions
+STP,Educational buildings,No restrictions
+SUR,Public transport,No restrictions
+SUR,Workplaces,No restrictions
+SUR,Leisure events,No restrictions
+SUR,Parks and streets,No restrictions
+SUR,Sporting events,No restrictions
+SUR,Places of worship,No restrictions
+SUR,Government offices,Partial restriction
+SUR,Healthcare establishments,Partial restriction
+SUR,Educational buildings,Partial restriction
+SVK,Leisure events,Ban
+SVK,Places of worship,No data
+SVK,Parks and streets,Voluntary/self-restricted
+SVK,Workplaces,Ban
+SVK,Sporting events,Ban
+SVK,Public transport,Ban
+SVK,Healthcare establishments,Ban
+SVK,Government offices,Ban
+SVK,Educational buildings,Ban
+SVN,Workplaces,Ban
+SVN,Healthcare establishments,Ban
+SVN,Sporting events,Ban
+SVN,Places of worship,No restrictions
+SVN,Public transport,No restrictions
+SVN,Educational buildings,Ban
+SVN,Parks and streets,No restrictions
+SVN,Leisure events,No restrictions
+SVN,Government offices,No restrictions
+SWE,Healthcare establishments,No restrictions
+SWE,Places of worship,Voluntary/self-restricted
+SWE,Leisure events,Voluntary/self-restricted
+SWE,Government offices,Voluntary/self-restricted
+SWE,Educational buildings,Voluntary/self-restricted
+SWE,Sporting events,Partial restriction
+SWE,Public transport,Partial restriction
+SWE,Parks and streets,Partial restriction
+SWE,Workplaces,Voluntary/self-restricted
+SWZ,Workplaces,Partial restriction
+SWZ,Educational buildings,Voluntary/self-restricted
+SWZ,Government offices,Partial restriction
+SWZ,Leisure events,No restrictions
+SWZ,Parks and streets,No restrictions
+SWZ,Public transport,No restrictions
+SWZ,Places of worship,No restrictions
+SWZ,Sporting events,No restrictions
+SWZ,Healthcare establishments,Partial restriction
+SYC,Public transport,Ban
+SYC,Educational buildings,Ban
+SYC,Leisure events,Voluntary/self-restricted
+SYC,Parks and streets,Partial restriction
+SYC,Sporting events,Ban
+SYC,Workplaces,Ban
+SYC,Places of worship,Ban
+SYC,Healthcare establishments,Ban
+SYC,Government offices,Ban
+SYR,Sporting events,Ban
+SYR,Places of worship,Ban
+SYR,Leisure events,Partial restriction
+SYR,Educational buildings,Ban
+SYR,Government offices,Ban
+SYR,Healthcare establishments,Ban
+SYR,Workplaces,Ban
+SYR,Parks and streets,Ban
+SYR,Public transport,Ban
+TCD,Workplaces,Ban
+TCD,Public transport,Ban
+TCD,Healthcare establishments,Ban
+TCD,Educational buildings,Ban
+TCD,Government offices,Ban
+TCD,Places of worship,Partial restriction
+TCD,Sporting events,Partial restriction
+TCD,Parks and streets,No restrictions
+TCD,Leisure events,No restrictions
+TGO,Leisure events,No restrictions
+TGO,Government offices,No restrictions
+TGO,Healthcare establishments,No restrictions
+TGO,Parks and streets,No restrictions
+TGO,Educational buildings,No restrictions
+TGO,Places of worship,No restrictions
+TGO,Sporting events,No restrictions
+TGO,Workplaces,Partial restriction
+TGO,Public transport,No restrictions
+THA,Public transport,Ban
+THA,Educational buildings,Partial restriction
+THA,Sporting events,No restrictions
+THA,Workplaces,Partial restriction
+THA,Places of worship,Partial restriction
+THA,Parks and streets,Partial restriction
+THA,Healthcare establishments,Partial restriction
+THA,Government offices,Partial restriction
+THA,Leisure events,No restrictions
+TJK,Parks and streets,Partial restriction
+TJK,Healthcare establishments,Ban
+TJK,Sporting events,Ban
+TJK,Leisure events,Partial restriction
+TJK,Educational buildings,Ban
+TJK,Government offices,Ban
+TJK,Public transport,Ban
+TJK,Places of worship,Ban
+TJK,Workplaces,Ban
+TKM,Workplaces,Ban
+TKM,Sporting events,Ban
+TKM,Government offices,Ban
+TKM,Healthcare establishments,Ban
+TKM,Leisure events,Ban
+TKM,Parks and streets,Ban
+TKM,Public transport,Ban
+TKM,Places of worship,Ban
+TKM,Educational buildings,Ban
+TLS,Government offices,Ban
+TLS,Educational buildings,Ban
+TLS,Public transport,Ban
+TLS,Workplaces,Partial restriction
+TLS,Sporting events,Partial restriction
+TLS,Places of worship,Partial restriction
+TLS,Parks and streets,Partial restriction
+TLS,Leisure events,Partial restriction
+TLS,Healthcare establishments,Ban
+TON,Educational buildings,No data
+TON,Parks and streets,No data
+TON,Sporting events,No data
+TON,Places of worship,No data
+TON,Public transport,No data
+TON,Leisure events,No data
+TON,Healthcare establishments,No data
+TON,Government offices,No data
+TON,Workplaces,No data
+TTO,Places of worship,Voluntary/self-restricted
+TTO,Sporting events,Voluntary/self-restricted
+TTO,Workplaces,Voluntary/self-restricted
+TTO,Educational buildings,Partial restriction
+TTO,Leisure events,Voluntary/self-restricted
+TTO,Healthcare establishments,Voluntary/self-restricted
+TTO,Government offices,Voluntary/self-restricted
+TTO,Parks and streets,No restrictions
+TTO,Public transport,Voluntary/self-restricted
+TUN,Workplaces,No data
+TUN,Sporting events,No data
+TUN,Places of worship,No data
+TUN,Public transport,No data
+TUN,Parks and streets,No data
+TUN,Healthcare establishments,No data
+TUN,Leisure events,No data
+TUN,Educational buildings,No data
+TUN,Government offices,No data
+TUR,Healthcare establishments,Ban
+TUR,Public transport,Ban
+TUR,Places of worship,Ban
+TUR,Government offices,Ban
+TUR,Leisure events,Ban
+TUR,Sporting events,Ban
+TUR,Parks and streets,No restrictions
+TUR,Educational buildings,Ban
+TUR,Workplaces,Ban
+TUV,Sporting events,No data
+TUV,Educational buildings,No data
+TUV,Government offices,No data
+TUV,Healthcare establishments,No data
+TUV,Leisure events,No data
+TUV,Public transport,No data
+TUV,Places of worship,No data
+TUV,Workplaces,No data
+TUV,Parks and streets,No data
+TZA,Parks and streets,No restrictions
+TZA,Government offices,Ban
+TZA,Educational buildings,Ban
+TZA,Healthcare establishments,Ban
+TZA,Public transport,Ban
+TZA,Sporting events,No restrictions
+TZA,Leisure events,No restrictions
+TZA,Workplaces,Ban
+TZA,Places of worship,Ban
+UGA,Sporting events,No restrictions
+UGA,Leisure events,No restrictions
+UGA,Government offices,Ban
+UGA,Healthcare establishments,Ban
+UGA,Educational buildings,Ban
+UGA,Places of worship,Voluntary/self-restricted
+UGA,Public transport,Voluntary/self-restricted
+UGA,Parks and streets,Voluntary/self-restricted
+UGA,Workplaces,Voluntary/self-restricted
+UKR,Places of worship,No restrictions
+UKR,Sporting events,Partial restriction
+UKR,Leisure events,Partial restriction
+UKR,Healthcare establishments,Partial restriction
+UKR,Educational buildings,Ban
+UKR,Government offices,Ban
+UKR,Public transport,Ban
+UKR,Workplaces,Ban
+UKR,Parks and streets,Ban
+URY,Parks and streets,Voluntary/self-restricted
+URY,Public transport,Voluntary/self-restricted
+URY,Leisure events,No restrictions
+URY,Places of worship,No restrictions
+URY,Educational buildings,Ban
+URY,Government offices,Ban
+URY,Sporting events,Ban
+URY,Workplaces,Ban
+URY,Healthcare establishments,Ban
+USA,Parks and streets,No data
+USA,Educational buildings,No data
+USA,Government offices,No data
+USA,Healthcare establishments,No data
+USA,Leisure events,No data
+USA,Public transport,No data
+USA,Places of worship,No data
+USA,Sporting events,No data
+USA,Workplaces,No data
+UZB,Educational buildings,Ban
+UZB,Government offices,Ban
+UZB,Healthcare establishments,Ban
+UZB,Leisure events,Ban
+UZB,Workplaces,Ban
+UZB,Public transport,Ban
+UZB,Places of worship,Ban
+UZB,Sporting events,Ban
+UZB,Parks and streets,Ban
+VCT,Educational buildings,Voluntary/self-restricted
+VCT,Workplaces,Voluntary/self-restricted
+VCT,Healthcare establishments,Voluntary/self-restricted
+VCT,Places of worship,Voluntary/self-restricted
+VCT,Leisure events,No restrictions
+VCT,Parks and streets,No restrictions
+VCT,Public transport,No restrictions
+VCT,Sporting events,No restrictions
+VCT,Government offices,Voluntary/self-restricted
+VEN,Leisure events,No data
+VEN,Healthcare establishments,No data
+VEN,Government offices,No data
+VEN,Educational buildings,No data
+VEN,Sporting events,No data
+VEN,Workplaces,No data
+VEN,Parks and streets,No data
+VEN,Public transport,Ban
+VEN,Places of worship,No data
+VNM,Public transport,No restrictions
+VNM,Educational buildings,Ban
+VNM,Government offices,Ban
+VNM,Healthcare establishments,Ban
+VNM,Workplaces,Ban
+VNM,Places of worship,No restrictions
+VNM,Sporting events,No restrictions
+VNM,Parks and streets,No restrictions
+VNM,Leisure events,No restrictions
+VUT,Sporting events,Partial restriction
+VUT,Government offices,Ban
+VUT,Healthcare establishments,Ban
+VUT,Public transport,Ban
+VUT,Parks and streets,Partial restriction
+VUT,Leisure events,Partial restriction
+VUT,Workplaces,No restrictions
+VUT,Places of worship,No restrictions
+VUT,Educational buildings,Ban
+WSM,Public transport,Ban
+WSM,Places of worship,Ban
+WSM,Sporting events,Ban
+WSM,Workplaces,Ban
+WSM,Educational buildings,Ban
+WSM,Government offices,Ban
+WSM,Leisure events,Ban
+WSM,Parks and streets,Ban
+WSM,Healthcare establishments,Ban
+YEM,Workplaces,Ban
+YEM,Educational buildings,Ban
+YEM,Government offices,Ban
+YEM,Healthcare establishments,Ban
+YEM,Leisure events,Ban
+YEM,Parks and streets,Ban
+YEM,Public transport,Ban
+YEM,Places of worship,Ban
+YEM,Sporting events,Ban
+ZAF,Government offices,No restrictions
+ZAF,Workplaces,No restrictions
+ZAF,Sporting events,No restrictions
+ZAF,Places of worship,No restrictions
+ZAF,Public transport,No restrictions
+ZAF,Parks and streets,No restrictions
+ZAF,Healthcare establishments,No restrictions
+ZAF,Educational buildings,No restrictions
+ZAF,Leisure events,No restrictions
+ZMB,Places of worship,Voluntary/self-restricted
+ZMB,Healthcare establishments,Ban
+ZMB,Public transport,Ban
+ZMB,Workplaces,Ban
+ZMB,Sporting events,No restrictions
+ZMB,Parks and streets,No restrictions
+ZMB,Leisure events,No restrictions
+ZMB,Educational buildings,Voluntary/self-restricted
+ZMB,Government offices,Ban
+ZWE,Leisure events,No restrictions
+ZWE,Places of worship,Ban
+ZWE,Public transport,Ban
+ZWE,Parks and streets,Ban
+ZWE,Sporting events,Partial restriction
+ZWE,Government offices,Ban
+ZWE,Educational buildings,Ban
+ZWE,Workplaces,Ban
+ZWE,Healthcare establishments,Ban

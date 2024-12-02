@@ -1,19 +1,23 @@
 function chart5(geoData) {
   // Function to load data and update map
   function loadData(id) {
-    const file = d3.select(`button[data-id="${id}"]`).attr("data-file");
-    d3.csv("data/q1/" + file).then((data) => {
+    const file = chart.select(`button[data-id="${id}"]`).attr("data-file");
+    d3.csv("data/q5/" + file).then((data) => {
       currentData = data; // Save loaded data globally
 
-      d3.select(".filters").style("display", "block");
+      chart.select(".filters").style("display", "block");
 
-      if (id === "3") {
-        d3.select(".filters").style("display", "none");
+      if (id === "2") {
+        chart.select(".filters").style("display", "none");
+        currentKey = "Status";
+        currentUnit = "";
       } else {
         let newFilter;
 
         if (id === "1") {
-          newFilter = "Record Status";
+          newFilter = "Driver Type";
+          currentKey = "Limit";
+          currentUnit = "g/dl";
         } else if (id === "2") {
           newFilter = "Beverage Type";
         }
@@ -32,18 +36,8 @@ function chart5(geoData) {
         filter.property("value", currentFilterValue);
       }
 
-      const years = data.map((d) => +d.Year);
-      const yearMin = d3.min(years);
-      const yearMax = d3.max(years);
-
       if (id !== currentId) {
-        slider
-          .attr("min", yearMin)
-          .attr("max", yearMax)
-          .property("value", yearMin);
-        slider.node().dispatchEvent(new Event("input", { bubbles: true })); // Trigger input event to update map
         currentId = id;
-        currentYear = yearMin;
       }
 
       updateMap();
@@ -53,22 +47,18 @@ function chart5(geoData) {
   // Function to update the map based on current filters
   function updateMap() {
     const filteredData = currentData.filter(
-      (d) =>
-        (d[currentFilter] === currentFilterValue || currentId === "3") &&
-        +d.Year === currentYear
+      (d) => d[currentFilter] === currentFilterValue || currentId === "2"
     );
-    console.log(currentFilter);
-    console.log(currentFilterValue);
-    console.log(filteredData);
+    // console.log(currentFilter);
+    // console.log(currentFilterValue);
+    // console.log(filteredData);
 
     const dataByCountry = {};
     filteredData.forEach((d) => {
-      dataByCountry[d.AreaCode] = +d.LitresPerCapita;
+      dataByCountry[d.AreaCode] = +d[currentKey];
     });
 
     let domain = d3.extent(Object.values(dataByCountry));
-    domain[0] = Math.floor(domain[0]);
-    domain[1] = Math.ceil(domain[1]) + Math.ceil(domain[1]) % 2; // Round up to nearest even number
     colorScale.domain(domain);
     drawLegend(colorScale, svg);
 
@@ -153,6 +143,8 @@ function chart5(geoData) {
       .domain(colorScale.domain())
       .range([cellWidth * 2, legendWidth]);
 
+    // console.log(d3.ticks(...colorScale.domain(), domainSize));
+
     // Add ticks
     const axis = d3
       .axisBottom(legendScale)
@@ -167,37 +159,41 @@ function chart5(geoData) {
       .remove(); // Remove the axis line
   }
 
-
   // Show tooltip
   function mouseOver(event, d) {
     const value = currentData.find(
       (e) =>
         e.AreaCode === d.id &&
-        (e[currentFilter] === currentFilterValue || currentId === "3") &&
-        +e.Year === currentYear
+        (e[currentFilter] === currentFilterValue || currentId === "2")
     );
+
     let data = "No Data";
     if (value) {
-      data = (+value.LitresPerCapita).toFixed(3) + " litres";
+      data = !isNaN(+value[currentKey])
+        ? (+value[currentKey]).toFixed(3)
+        : value[currentKey] + " " + currentUnit;
     }
-    d3.select(".tooltip")
+    container
+      .select(".tooltip")
       .style("display", "block")
-      .html(
-        `${d.properties.name} - ${currentFilterValue} (${currentYear}): ${data}`
-      );
+      .html(`${d.properties.name} - ${currentFilterValue}: ${data} ${currentUnit}`);
 
     svg.selectAll("path").attr("stroke-width", 0.5);
     d3.select(this).attr("stroke-width", 2);
 
-    console.log(+value.LitresPerCapita);
+    // console.log(+value.LitresPerCapita);
     svg
       .selectAll(".legend rect")
       .filter((d, i) => {
-        console.log(d);
+        // console.log(d);
         if (value === undefined) {
           return d[0] === null;
         }
-        return d[0] <= +value.LitresPerCapita && +value.LitresPerCapita <= d[1] && d[0] !== null;
+        return (
+          d[0] <= +value[currentKey] &&
+          +value[currentKey] <= d[1] &&
+          d[0] !== null
+        );
       })
       .attr("stroke", "black")
       .attr("stroke-width", "2px");
@@ -209,14 +205,15 @@ function chart5(geoData) {
     const svgBounds = svg.node().getBoundingClientRect();
 
     // Adjust tooltip position based on SVG's offset
-    d3.select(".tooltip")
+    container
+      .select(".tooltip")
       .style("top", `${y - 10 + svgBounds.top}px`) // Add 10px offset for better placement
       .style("left", `${x + 20 + svgBounds.left}px`);
   }
 
   // Hide tooltip
   function mouseOut() {
-    d3.select(".tooltip").style("display", "none");
+    container.select(".tooltip").style("display", "none");
     d3.select(this).attr("stroke-width", 0.5);
     svg
       .selectAll(".legend rect")
@@ -225,8 +222,9 @@ function chart5(geoData) {
   }
 
   // Create an SVG container
-  const container = d3.select("#chart-1 .chart-container");
-  const svg = d3
+  const chart = d3.select("#chart-5");
+  const container = chart.select(".chart-container");
+  const svg = chart
     .select(".chart-svg")
     .attr("width", "100%")
     .attr("height", "100%");
@@ -235,11 +233,9 @@ function chart5(geoData) {
   let size = container.node().getBoundingClientRect();
   container.style("height", size.width / 2 + "px");
 
-  const dataButtons = d3.selectAll(".data-toggle button");
-  const filter = d3.select(".filter-select#filter-1");
-  const filterLabel = d3.select(".filter-label[for='filter-1']");
-  const slider = d3.select(".slider-input#year-slider");
-  const sliderDisplay = d3.select(".slider-display[for='year-slider']");
+  const dataButtons = chart.selectAll(".data-toggle button");
+  const filter = chart.select(".filter-select");
+  const filterLabel = chart.select(".filter-label");
 
   // Button click handler to switch files
   dataButtons.on("click", function () {
@@ -251,13 +247,6 @@ function chart5(geoData) {
   // Dropdown change handler for RecordStatus
   filter.on("change", function () {
     currentFilterValue = this.value;
-    updateMap();
-  });
-
-  // Slider change handler for Year
-  slider.on("input", function () {
-    currentYear = +this.value;
-    sliderDisplay.text(currentYear); // Update year display
     updateMap();
   });
 
@@ -281,8 +270,9 @@ function chart5(geoData) {
   // Global variables to track state
   let currentData = null;
   let currentId = "1";
-  let currentYear = 2000;
   let currentFilterValue = "Total";
+  let currentKey = "Limit";
+  let currentUnit = "g/dl";
 
   loadData(currentId); // Load the first tabulateDataset
 }

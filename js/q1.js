@@ -1,14 +1,14 @@
 function chart1(geoData) {
   // Function to load data and update map
   function loadData(id) {
-    const file = d3.select(`button[data-id="${id}"]`).attr("data-file");
+    const file = chart.select(`button[data-id="${id}"]`).attr("data-file");
     d3.csv("data/q1/" + file).then((data) => {
       currentData = data; // Save loaded data globally
 
-      d3.select(".filters").style("display", "block");
+      chart.select(".filters").style("display", "block");
 
       if (id === "3") {
-        d3.select(".filters").style("display", "none");
+        chart.select(".filters").style("display", "none");
       } else {
         let newFilter;
 
@@ -180,7 +180,8 @@ function chart1(geoData) {
     if (value) {
       data = (+value.LitresPerCapita).toFixed(3) + " litres";
     }
-    d3.select(".tooltip")
+    container
+      .select(".tooltip")
       .style("display", "block")
       .html(
         `${d.properties.name} - ${currentFilterValue} (${currentYear}): ${data}`
@@ -209,14 +210,15 @@ function chart1(geoData) {
     const svgBounds = svg.node().getBoundingClientRect();
 
     // Adjust tooltip position based on SVG's offset
-    d3.select(".tooltip")
+    container
+      .select(".tooltip")
       .style("top", `${y - 10 + svgBounds.top}px`) // Add 10px offset for better placement
       .style("left", `${x + 20 + svgBounds.left}px`);
   }
 
   // Hide tooltip
   function mouseOut() {
-    d3.select(".tooltip").style("display", "none");
+    container.select(".tooltip").style("display", "none");
     d3.select(this).attr("stroke-width", 0.5);
     svg
       .selectAll(".legend rect")
@@ -225,8 +227,9 @@ function chart1(geoData) {
   }
 
   // Create an SVG container
-  const container = d3.select("#chart-1 .chart-container");
-  const svg = d3
+  const chart = d3.select("#chart-1");
+  const container = chart.select(".chart-container");
+  const svg = chart
     .select(".chart-svg")
     .attr("width", "100%")
     .attr("height", "100%");
@@ -235,11 +238,11 @@ function chart1(geoData) {
   let size = container.node().getBoundingClientRect();
   container.style("height", size.width / 2 + "px");
 
-  const dataButtons = d3.selectAll(".data-toggle button");
-  const filter = d3.select(".filter-select#filter-1");
-  const filterLabel = d3.select(".filter-label[for='filter-1']");
-  const slider = d3.select(".slider-input#year-slider");
-  const sliderDisplay = d3.select(".slider-display[for='year-slider']");
+  const dataButtons = chart.selectAll(".data-toggle button");
+  const filter = chart.select(".filter-select");
+  const filterLabel = chart.select(".filter-label");
+  const slider = chart.select(".slider-input");
+  const sliderDisplay = chart.select(".slider-display");
 
   // Button click handler to switch files
   dataButtons.on("click", function () {

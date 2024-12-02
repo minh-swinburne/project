@@ -17,7 +17,7 @@
 ## Team members:
 - Nguyen Thi Thanh Minh:
   - Student ID: 104169617
-  - Email: minhnttswd00087@fpt.edu.vn
+  - Email: [minhnttswd00087@fpt.edu.vn](mailto:minhnttswd00087@fpt.edu.vn)
 - Nguyen Sy Thanh Trung:
   - Student ID: <to be added>
   - Email: <to be added>
