@@ -3,8 +3,8 @@ function init() {
 
   const app = Vue.createApp();
 
-  app.component("chart-container", ChartContainer);
-  app.component("view-container", ViewContainer);
+  app.component("v-chart", ChartContainer);
+  app.component("v-view", View);
   app.mount("#app");
 }
 

@@ -1,6 +1,6 @@
-const ViewContainer = {
+const View = {
   template: `
-      <div class="view-container">
+      <div class="v-view view-container">
         <div class="view-controller">
           <button
             v-for="dataset, index in datasets"
@@ -15,11 +15,11 @@ const ViewContainer = {
           <h2>{{ current.title }}</h2>
           <p>{{ current.description }}</p>
         </div>
-        <chart-container
+        <v-chart
           :path="path"
           :file="current.file"
           :charts="current.charts">
-        </chart-container>
+        </v-chart>
       </div>
     `,
   props: ["path"],
