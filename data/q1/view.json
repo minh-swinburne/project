@@ -1,0 +1,61 @@
+[
+  {
+    "id": 1,
+    "name": "View 1",
+    "title": "Alcohol Consumption by Beverage Type",
+    "description": "This view shows the alcohol consumption by beverage type.",
+    "unit": "litres of pure alcohol per capita",
+    "file": "recorded-litres-per-capita-by-beverage-type.csv",
+    "source": "WHO - Global Information System on Alcohol and Health: Alcohol levels of consumption",
+    "sourceURL": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/alcohol-recorded-per-capita-(15-)-consumption-(in-litres-of-pure-alcohol)",
+    "charts": [
+      {
+        "type": "choropleth",
+        "key": "AreaCode",
+        "value": "Litres"
+      },
+      {
+        "type": "bar",
+        "key": "AreaCode",
+        "value": "Litres"
+      },
+      {
+        "type": "grouped-bar",
+        "key": "AreaCode",
+        "value": "Litres",
+        "group": "BeverageType"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "View 2",
+    "title": "Alcohol Consumption by Record Status",
+    "description": "This view shows the alcohol consumption by record status.",
+    "unit": "litres of pure alcohol per capita",
+    "file": "litres-per-capita-by-record-status.csv",
+    "source": "WHO - Global Information System on Alcohol and Health: Alcohol levels of consumption",
+    "sourceURL": [
+      "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/alcohol-recorded-per-capita-(15-)-consumption-(in-litres-of-pure-alcohol)-3-year-average-with-95-ci",
+      "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/alcohol-unrecorded-per-capita-(15-)-consumption-(in-litres-of-pure-alcohol)-with-95-ci"
+    ],
+    "charts": [
+      {
+        "type": "choropleth",
+        "key": "AreaCode",
+        "value": "Litres"
+      },
+      {
+        "type": "bar",
+        "key": "AreaCode",
+        "value": "Litres"
+      },
+      {
+        "type": "grouped-bar",
+        "key": "AreaCode",
+        "value": "Litres",
+        "group": "RecordStatus"
+      }
+    ]
+  }
+]
