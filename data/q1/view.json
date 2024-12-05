@@ -10,7 +10,7 @@
     "sourceURL": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/alcohol-recorded-per-capita-(15-)-consumption-(in-litres-of-pure-alcohol)",
     "charts": [
       {
-        "type": "choropleth",
+        "type": "geo",
         "key": "AreaCode",
         "value": "Litres"
       },
@@ -41,7 +41,7 @@
     ],
     "charts": [
       {
-        "type": "choropleth",
+        "type": "geo",
         "key": "AreaCode",
         "value": "Litres"
       },
