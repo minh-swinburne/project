@@ -40,7 +40,9 @@ const ChartContainer = {
         <div class="chart-canvas">
           <component
             :is="current"
-            :data="data"
+            :data="filteredData"
+            :key-col="keyCol"
+            :val-col="valCol"
             :filters="options"
             :config="currentConfig"
           ></component>
@@ -62,8 +64,8 @@ const ChartContainer = {
       filters: [],
       options: {},
       currentConfig: {
-        width: "100%",
-        height: "100%",
+        width: "100%", // 800,
+        height: "100%", // 600,
         projection: [
           // { method: "scale", args: [200] },
           // { method: "translate", args: [100, 100] },
@@ -144,6 +146,24 @@ const ChartContainer = {
       };
 
       return chartMap[this.getChartType(this.type)];
+    },
+
+    filteredData() {
+      return this.data
+        .filter((data) => {
+          for (const [key, value] of Object.entries(this.options)) {
+        if (data[key] !== value) {
+          return false;
+        }
+          }
+          return true;
+        })
+        .map((data) => {
+          if (!isNaN(data[this.valCol])) {
+            data[this.valCol] = +data[this.valCol];
+          }
+          return data;
+        });
     },
   },
 };

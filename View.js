@@ -33,8 +33,8 @@ const View = {
           :id="currentDs.id + '-' + currentChart.type"
           :data="data"
           :type="currentChart.type"
-          :keyCol="currentChart.key"
-          :valCol="currentChart.value"
+          :key-col="currentChart.key"
+          :val-col="currentChart.value"
           :config="currentChart.config"
         </v-chart>
       </div>

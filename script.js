@@ -5,6 +5,7 @@ function init() {
   let geoData;
   d3.json("data/countries.geo.json").then((geo) => {
     geoData = geo; // Save GeoJSON globally
+    app.provide("geoKey", "id");
     app.provide("geoData", geoData);
   });
 

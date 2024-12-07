@@ -63,7 +63,7 @@ function chart1(geoData) {
 
     const dataByCountry = {};
     filteredData.forEach((d) => {
-      dataByCountry[d.AreaCode] = +d.LitresPerCapita;
+      dataByCountry[d.AreaCode] = +d.Litres;
     });
 
     let domain = d3.extent(Object.values(dataByCountry));
@@ -71,6 +71,9 @@ function chart1(geoData) {
     domain[1] = Math.ceil(domain[1]) + Math.ceil(domain[1]) % 2; // Round up to nearest even number
     colorScale.domain(domain);
     drawLegend(colorScale, svg);
+
+    // console.log(path);
+    // console.log(geoData.features);
 
     // Bind data and update the map
     svg
@@ -178,7 +181,7 @@ function chart1(geoData) {
     );
     let data = "No Data";
     if (value) {
-      data = (+value.LitresPerCapita).toFixed(3) + " litres";
+      data = (+value.Litres).toFixed(3) + " litres";
     }
     container
       .select(".tooltip")
@@ -190,7 +193,7 @@ function chart1(geoData) {
     svg.selectAll("path").attr("stroke-width", 0.5);
     d3.select(this).attr("stroke-width", 2);
 
-    // console.log(+value.LitresPerCapita);
+    // console.log(+value.Litres);
     svg
       .selectAll(".legend rect")
       .filter((d, i) => {
@@ -198,7 +201,7 @@ function chart1(geoData) {
         if (value === undefined) {
           return d[0] === null;
         }
-        return d[0] <= +value.LitresPerCapita && +value.LitresPerCapita <= d[1] && d[0] !== null;
+        return d[0] <= +value.Litres && +value.Litres <= d[1] && d[0] !== null;
       })
       .attr("stroke", "black")
       .attr("stroke-width", "2px");
