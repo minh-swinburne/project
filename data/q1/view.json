@@ -12,7 +12,19 @@
       {
         "type": "geo",
         "key": "AreaCode",
-        "value": "Litres"
+        "value": "Litres",
+        "config": {
+          "projection": [
+            {
+              "method": "scale",
+              "args": [200]
+            },
+            {
+              "method": "translate",
+              "args": [400, 100]
+            }
+          ]
+        }
       },
       {
         "type": "bar",
