@@ -1,3 +1,12 @@
+function debounce(func, delay) {
+  let timer;
+  return function (...args) {
+    const context = this;
+    clearTimeout(timer);
+    timer = setTimeout(() => func.apply(context, args), delay);
+  };
+}
+
 const ChartContainer = {
   template: `
       <div class="v-chart chart--container">
@@ -38,15 +47,7 @@ const ChartContainer = {
           </div>
         </div>
         <div class="chart-canvas">
-          <component
-            v-if="filteredData.length > 0"
-            :is="current"
-            :data="filteredData"
-            :key-col="keyCol"
-            :val-col="valCol"
-            :filters="options"
-            :config="currentConfig"
-          ></component>
+          {{ filteredData }}
         </div>
       </div>
     `,
@@ -63,6 +64,7 @@ const ChartContainer = {
   data() {
     return {
       filters: {},
+      filteredData: [],
       options: {},
       currentConfig: {
         width: "100%", // 800,
@@ -93,6 +95,12 @@ const ChartContainer = {
         // console.log(this.currentConfig);
       },
     },
+    options: {
+      deep: true,
+      handler: debounce(function () {
+        this.updateData();
+      }, 100),
+    },
   },
 
   methods: {
@@ -101,7 +109,6 @@ const ChartContainer = {
     },
 
     getFilterName(string, joiner = "-") {
-      console.log(string);
       return string
         .trim()
         .split(/\.?(?=[A-Z])/)
@@ -119,7 +126,6 @@ const ChartContainer = {
     },
 
     updateFilters() {
-      // console.log("Updating filters");
       let filters = Object.keys(this.data[0]).filter(
         (col) => col !== this.keyCol && col !== this.valCol
       );
@@ -129,26 +135,12 @@ const ChartContainer = {
         this.options[column] = this.filters[column][0];
       });
 
-      console.log(this.filters);
-    },
-  },
-
-  computed: {
-    current() {
-      const chartMap = {
-        bar: "BarChart",
-        line: "LineChart",
-        pie: "PieChart",
-        geo: "v-geo-chart",
-        grouped_bar: "GroupedBarChart",
-      };
-
-      return chartMap[this.getChartType(this.type)];
+      console.log("Updating filters", this.filters);
     },
 
-    filteredData() {
-      // console.log("Filtering data");
-      return this.data
+    updateData() {
+      console.log("Updating data... Current filter options: ", this.options);
+      this.filteredData = this.data
         .filter((data) => {
           for (const [key, value] of Object.entries(this.options)) {
             if (data[key] !== value) {
@@ -163,6 +155,20 @@ const ChartContainer = {
           }
           return data;
         });
+    }
+  },
+
+  computed: {
+    current() {
+      const chartMap = {
+        bar: "BarChart",
+        line: "LineChart",
+        pie: "PieChart",
+        geo: "v-geo-chart",
+        grouped_bar: "GroupedBarChart",
+      };
+
+      return chartMap[this.getChartType(this.type)];
     },
   },
 };
