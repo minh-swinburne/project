@@ -1,22 +1,22 @@
 const ChartContainer = {
   template: `
-      <div class="chart--container">
+      <div class="v-chart chart--container">
         <div class="chart-controller">
           <div
-            v-for="filter, index in filters"
+            v-for="(values, column) in filters"
             class="chart-filter"
           >
-            <label :for="getFilterId(filter)">
-              {{ getFilterName(filter, " ") }}:
+            <label :for="getFilterId(column)">
+              {{ getFilterName(column, " ") }}:
             </label>
 
             <select
-              v-model="options[filter]"
-              v-if="data[0][filter] && isNaN(data[0][filter])"
-              :id="getFilterId(filter)"
+              v-model="options[column]"
+              v-if="isNaN(data[0][column])"
+              :id="getFilterId(column)"
             >
               <option
-                v-for="value, index in getUniqueValues(filter)"
+                v-for="value, index in values"
                 :value="value"
                 :selected="index === 0"
               >
@@ -26,19 +26,20 @@ const ChartContainer = {
 
             <input
               type="range"
-              v-model="options[filter]"
+              v-model="options[column]"
               v-else
-              :id="getFilterId(filter)"
-              :value="options[filter]"
-              :min="Math.min(...getUniqueValues(filter))"
-              :max="Math.max(...getUniqueValues(filter))"
+              :id="getFilterId(column)"
+              :value="options[column]"
+              :min="Math.min(...values)"
+              :max="Math.max(...values)"
             />
 
-            <span>{{ options[filter] }}</span>
+            <span>{{ options[column] }}</span>
           </div>
         </div>
         <div class="chart-canvas">
           <component
+            v-if="filteredData.length > 0"
             :is="current"
             :data="filteredData"
             :key-col="keyCol"
@@ -52,16 +53,16 @@ const ChartContainer = {
 
   props: {
     id: { type: String, required: true },
-    data: { type: Array, required: true },
     type: { type: String, required: true },
     keyCol: { type: String, required: true },
     valCol: { type: String, required: true },
+    data: { type: Array, default: () => [] },
     config: { type: Object, default: () => ({}) },
   },
 
   data() {
     return {
-      filters: [],
+      filters: {},
       options: {},
       currentConfig: {
         width: "100%", // 800,
@@ -75,19 +76,13 @@ const ChartContainer = {
   },
 
   mounted() {
-    // console.log(this.$refs.svg);
-    // this.chart = new Chart(this.$refs.svg.getContext("2d"), {
-    //   type: this.dataset.type,
-    //   data: this.dataset.data,
-    //   options: this.dataset.options,
-    // });
+    this.updateFilters();
   },
 
   watch: {
-    data: "updateFilters",
     keyCol: "updateFilters",
     valCol: "updateFilters",
-    options: {
+    config: {
       deep: true,
       handler() {
         // console.log("Updating options");
@@ -106,6 +101,7 @@ const ChartContainer = {
     },
 
     getFilterName(string, joiner = "-") {
+      console.log(string);
       return string
         .trim()
         .split(/\.?(?=[A-Z])/)
@@ -124,14 +120,16 @@ const ChartContainer = {
 
     updateFilters() {
       // console.log("Updating filters");
-      this.filters = this.data[0]
-        ? Object.keys(this.data[0]).filter(
-            (col) => col !== this.keyCol && col !== this.valCol
-          )
-        : [];
-      this.filters.forEach((filter) => {
-        this.options[filter] = this.getUniqueValues(filter)[0];
+      let filters = Object.keys(this.data[0]).filter(
+        (col) => col !== this.keyCol && col !== this.valCol
+      );
+
+      filters.forEach((column) => {
+        this.filters[column] = this.getUniqueValues(column);
+        this.options[column] = this.filters[column][0];
       });
+
+      console.log(this.filters);
     },
   },
 
@@ -149,12 +147,13 @@ const ChartContainer = {
     },
 
     filteredData() {
+      // console.log("Filtering data");
       return this.data
         .filter((data) => {
           for (const [key, value] of Object.entries(this.options)) {
-        if (data[key] !== value) {
-          return false;
-        }
+            if (data[key] !== value) {
+              return false;
+            }
           }
           return true;
         })

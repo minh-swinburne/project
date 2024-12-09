@@ -2,13 +2,18 @@ const View = {
   template: `
       <div class="v-view view-container">
         <div class="view-controller">
+          <h3>Choose a dataset:</h3>
+
           <button
+            v-if="datasets.length > 0"
             v-for="dataset, index in datasets"
             :class="{ active: dataset.id === currentDs.id }"
             @click="switchDataset(index)"
             >
             {{ dataset.name }}
           </button>
+
+          <p v-else>Loading datasets...</p>
         </div>
         <div class="view-info">
           <h2>{{ currentDs.title }}</h2>
@@ -29,14 +34,19 @@ const View = {
             {{ capitalizeFirstLetter(chart.type, "-") }}
           </button>
         </div>
-        <v-chart
-          :id="currentDs.id + '-' + currentChart.type"
-          :data="data"
-          :type="currentChart.type"
-          :key-col="currentChart.key"
-          :val-col="currentChart.value"
-          :config="currentChart.config"
-        </v-chart>
+        <div class="view-canvas">
+          <v-chart
+            v-if="data.length > 0"
+            v-bind:data="data"
+            :id="currentDs.id + '-' + currentChart.type"
+            :type="currentChart.type"
+            :key-col="currentChart.key"
+            :val-col="currentChart.value"
+            :config="currentChart.config"
+          </v-chart>
+
+          <p v-else>Loading data...</p>
+        </div>
       </div>
     `,
 
@@ -46,6 +56,10 @@ const View = {
     return {
       datasets: [],
       data: [],
+
+      datasetsLoaded: false,
+      dataLoaded: false,
+
       currentDs: {
         id: "",
         name: "",
@@ -78,7 +92,9 @@ const View = {
     },
 
     async loadCsv(file) {
-      return d3.csv(this.path + "/" + file).catch((error) => console.error(error));
+      return d3
+        .csv(this.path + "/" + file)
+        .catch((error) => console.error(error));
     },
 
     switchDataset(index) {
@@ -88,12 +104,12 @@ const View = {
       this.loadCsv(this.currentDs.file).then((data) => {
         this.data = data;
       });
-      console.log("Switching to dataset with index " + index);
+      // console.log("Switching to dataset with index " + index);
     },
 
     switchChart(index) {
       this.currentChart = this.currentDs.charts[index];
-      console.log("Switching to chart with index " + index);
+      // console.log("Switching to chart with index " + index);
     },
 
     capitalizeFirstLetter(string, separator = " ", joiner = " ") {
