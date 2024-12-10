@@ -13,7 +13,9 @@ const View = {
             {{ dataset.name }}
           </button>
 
-          <p v-else>Loading datasets...</p>
+          <div v-else>
+            <p>Loading datasets...</p>
+          </div>
         </div>
         <div class="view-info">
           <h2>{{ currentDs.title }}</h2>
@@ -45,7 +47,9 @@ const View = {
             :config="currentChart.config"
           </v-chart>
 
-          <p v-else>Loading data...</p>
+          <div v-else>
+            <p>Loading data...</p>
+          </div>
         </div>
       </div>
     `,
@@ -112,12 +116,7 @@ const View = {
       // console.log("Switching to chart with index " + index);
     },
 
-    capitalizeFirstLetter(string, separator = " ", joiner = " ") {
-      return string
-        .split(separator)
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(joiner);
-    },
+    capitalizeFirstLetter,
   },
 
   computed: {},

@@ -1,7 +1,6 @@
 const GeoChart = {
   template: `
     <div class="chart geo-chart">
-    {{ count }}
       <svg v-once ref="svg" class="chart-svg"></svg>
     </div>`,
 
@@ -9,6 +8,7 @@ const GeoChart = {
     data: { type: Array, required: true },
     keyCol: { type: String, required: true },
     valCol: { type: String, required: true },
+    maxVal: { type: Number, default: 0 },
     filters: { type: Object, default: () => ({}) },
     config: { type: Object, default: () => ({}) },
   },
@@ -24,12 +24,12 @@ const GeoChart = {
       domainSize: 10,
       colorRange: null,
       colorScale: null,
-
-      count: 0,
     };
   },
 
   mounted() {
+    console.log("GeoChart mounted");
+    console.log(this.maxVal);
     this.svg = d3
       .select(this.$refs.svg)
       .attr("width", this.config.width || 500)
@@ -47,13 +47,17 @@ const GeoChart = {
       .range(this.colorRange);
 
     this.configProjection();
+    this.fitProjection();
+    this.drawMap();
 
     window.addEventListener("resize", this.fitProjection);
   },
 
   methods: {
     drawMap() {
-      this.count++;
+      console.log("Drawing map");
+      // console.log(this.geoData.features);
+
       this.svg
         .selectAll("path.geo-chart-path")
         .data(this.geoData.features)
@@ -64,6 +68,11 @@ const GeoChart = {
           const value = this.data.find(
             (row) => row[this.keyCol] === d[this.geoKey]
           );
+
+          if ((value !== undefined && value[this.keyCol]) === "USA") {
+            console.log(value);
+            console.log(this.colorScale(value[this.valCol]));
+          }
           return value !== undefined
             ? this.colorScale(value[this.valCol])
             : "#ccc";
@@ -124,7 +133,7 @@ const GeoChart = {
     domain() {
       return d3.nice(
         0, //d3.min(this.data, (d) => d[this.keyCol]),
-        d3.max(this.data, (d) => d[this.valCol]),
+        this.maxVal || d3.max(this.data, (d) => d[this.valCol]),
         this.domainSize
       );
     },

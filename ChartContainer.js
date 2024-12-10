@@ -1,12 +1,3 @@
-function debounce(func, delay) {
-  let timer;
-  return function (...args) {
-    const context = this;
-    clearTimeout(timer);
-    timer = setTimeout(() => func.apply(context, args), delay);
-  };
-}
-
 const ChartContainer = {
   template: `
       <div class="v-chart chart--container">
@@ -47,7 +38,20 @@ const ChartContainer = {
           </div>
         </div>
         <div class="chart-canvas">
-          {{ filteredData }}
+          <component
+            v-if="filteredData.length > 0"
+            v-bind:data="filteredData"
+            :is="current"
+            :key-col="keyCol"
+            :val-col="valCol"
+            :max-val="maxValue"
+            :filters="options"
+            :config="currentConfig"
+          ></component>
+
+          <div v-else>
+            <p>No data available</p>
+          </div>
         </div>
       </div>
     `,
@@ -67,8 +71,10 @@ const ChartContainer = {
       filteredData: [],
       options: {},
       currentConfig: {
-        width: "100%", // 800,
-        height: "100%", // 600,
+        width: "100%",
+        width: 600,
+        height: "100%",
+        height: 400,
         projection: [
           // { method: "scale", args: [200] },
           // { method: "translate", args: [100, 100] },
@@ -99,7 +105,7 @@ const ChartContainer = {
       deep: true,
       handler: debounce(function () {
         this.updateData();
-      }, 100),
+      }, 200),
     },
   },
 
@@ -155,7 +161,7 @@ const ChartContainer = {
           }
           return data;
         });
-    }
+    },
   },
 
   computed: {
@@ -170,5 +176,9 @@ const ChartContainer = {
 
       return chartMap[this.getChartType(this.type)];
     },
+
+    maxValue() {
+      return Math.max(...this.data.map((d) => d[this.valCol]));
+    }
   },
 };
