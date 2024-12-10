@@ -167,11 +167,11 @@ const ChartContainer = {
   computed: {
     current() {
       const chartMap = {
-        bar: "BarChart",
-        line: "LineChart",
-        pie: "PieChart",
+        bar: "v-bar-chart",
+        line: "v-line-chart",
+        pie: "v-pie-chart",
         geo: "v-geo-chart",
-        grouped_bar: "GroupedBarChart",
+        grouped_bar: "v-grouped-bar-chart",
       };
 
       return chartMap[this.getChartType(this.type)];
