@@ -10,6 +10,7 @@ const GeoChart = {
     valCol: { type: String, required: true },
     minVal: { type: Number, default: 0 },
     maxVal: { type: Number, default: 0 },
+    domainSize: { type: Number, default: 9 },
     filters: { type: Object, default: () => ({}) },
     config: { type: Object, default: () => ({}) },
   },
@@ -23,7 +24,6 @@ const GeoChart = {
       path: null,
       legend: null,
 
-      domainSize: 10,
       colorRange: null,
       colorScale: null,
       colorNull: "#ccc",
@@ -122,7 +122,7 @@ const GeoChart = {
       const axis = d3
         .axisBottom(legendScale)
         .ticks(this.domainSize)
-        .tickFormat(d3.format(".1f"))
+        .tickFormat(d3.format(".2"))
         .tickValues(thresholds)
         .tickSize(tickSize);
 
@@ -200,11 +200,10 @@ const GeoChart = {
 
   computed: {
     domain() {
-      return d3.nice(
-        this.minVal,
-        this.maxVal, // || d3.max(this.data, (d) => d[this.valCol]),
-        this.domainSize
-      );
+      return [
+        Math.floor(this.minVal),
+        Math.ceil(this.maxVal),
+      ];
     },
 
     size() {
