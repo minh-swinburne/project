@@ -9,6 +9,7 @@ function init() {
     app.provide("geoData", geoData);
   });
 
+  app.component("v-bar-chart", BarChart);
   app.component("v-geo-chart", GeoChart);
   app.component("v-chart", ChartContainer);
   app.component("v-view", View);

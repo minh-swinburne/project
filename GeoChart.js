@@ -8,6 +8,7 @@ const GeoChart = {
     data: { type: Array, required: true },
     keyCol: { type: String, required: true },
     valCol: { type: String, required: true },
+    minVal: { type: Number, default: 0 },
     maxVal: { type: Number, default: 0 },
     filters: { type: Object, default: () => ({}) },
     config: { type: Object, default: () => ({}) },
@@ -20,10 +21,12 @@ const GeoChart = {
       svg: null,
       projection: null,
       path: null,
+      legend: null,
 
       domainSize: 10,
       colorRange: null,
       colorScale: null,
+      colorNull: "#ccc",
     };
   },
 
@@ -50,6 +53,10 @@ const GeoChart = {
     this.fitProjection();
     this.drawMap();
 
+    console.log(this.colorScale.domain());
+    console.log(this.colorScale.range());
+    this.drawLegend();
+
     window.addEventListener("resize", this.fitProjection);
   },
 
@@ -69,25 +76,21 @@ const GeoChart = {
             (row) => row[this.keyCol] === d[this.geoKey]
           );
 
-          if ((value !== undefined && value[this.keyCol]) === "USA") {
-            console.log(value);
-            console.log(this.colorScale(value[this.valCol]));
-          }
           return value !== undefined
             ? this.colorScale(value[this.valCol])
-            : "#ccc";
+            : this.colorNull;
         })
         .attr("stroke", "#333")
         .attr("stroke-width", 0.5)
         .on("mouseover", this.mouseOver)
         .on("mousemove", this.mouseMove)
         .on("mouseout", this.mouseOut);
-
-      // Add your D3.js geo chart logic here, using `this.data`
-      // console.log("Rendering Geo Chart", this.data);
     },
 
     drawLegend() {
+      console.log("Drawing legend");
+      // console.log(this.colorScale.range().map(this.colorScale.invertExtent));
+
       // Legend dimensions
       const legendHeight = 10; // Height of the gradient
       const legendWidth = this.size.width * 0.8; // Legend spans 80% of the SVG width
@@ -95,7 +98,73 @@ const GeoChart = {
       const legendY = 30; // Position at the bottom
       const tickSize = 6; // Tick height
 
-      this.svg.select("g.legend").remove();
+      const colors = this.colorScale.range();
+      colors.unshift(hexToRgb(this.colorNull)); // Add the "No Data" color at the beginning
+
+      const cellWidth = legendWidth / (colors.length + 1);
+      const strokeColor = "#666";
+      const thresholds = this.colorScale
+        .thresholds()
+        .concat(this.colorScale.domain());
+
+      // console.log(colors);
+      // console.log(this.colorScale.thresholds());
+      // console.log(this.domainSize);
+      // console.log(d3.ticks(...this.colorScale.domain(), this.domainSize));
+
+      // Scale for ticks
+      const legendScale = d3
+        .scaleLinear()
+        .domain(this.domain)
+        .range([cellWidth * 2, legendWidth]);
+
+      // Axis for ticks
+      const axis = d3
+        .axisBottom(legendScale)
+        .ticks(this.domainSize)
+        .tickFormat(d3.format(".1f"))
+        .tickValues(thresholds)
+        .tickSize(tickSize);
+
+      this.legend = this.svg
+        .append("g")
+        .classed("chart-legend", true)
+        .attr(
+          "transform",
+          `translate(${legendX}, ${this.size.height - legendY})`
+        );
+
+      this.legend
+        .selectAll("rect.chart-legend-color")
+        .data(colors)
+        .join("rect")
+        .classed("chart-legend-color", true)
+        .attr("x", (d, i) => (i === 0 ? 0 : (i + 1) * cellWidth))
+        .attr("y", 0)
+        .attr("width", cellWidth)
+        .attr("height", legendHeight)
+        .attr("stroke", strokeColor)
+        .attr("fill", (d) => d);
+
+      // Add text for "No Data" cell
+      this.legend
+        .append("text")
+        .attr("x", cellWidth / 2)
+        .attr("y", legendHeight + 15)
+        .attr("text-anchor", "middle")
+        .attr("font-size", "12px")
+        .text("No Data");
+
+      this.legend
+        .append("g")
+        .classed("chart-legend-axis", true)
+        .attr("transform", `translate(0, ${legendHeight})`)
+        .call(axis)
+        .select(".domain")
+        .remove(); // Remove the axis line
+
+      // console.log(this.legend.selectAll("g.tick line"));
+      this.legend.selectAll("g.tick line").attr("stroke", strokeColor);
     },
 
     configProjection() {
@@ -119,7 +188,7 @@ const GeoChart = {
     fitProjection() {
       // console.log("Fitting projection");
       this.projection.fitSize(
-        [this.size.width, this.size.height],
+        [this.size.width, this.size.height - 50],
         this.geoData
       );
     },
@@ -132,8 +201,8 @@ const GeoChart = {
   computed: {
     domain() {
       return d3.nice(
-        0, //d3.min(this.data, (d) => d[this.keyCol]),
-        this.maxVal || d3.max(this.data, (d) => d[this.valCol]),
+        this.minVal,
+        this.maxVal, // || d3.max(this.data, (d) => d[this.valCol]),
         this.domainSize
       );
     },

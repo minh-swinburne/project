@@ -72,7 +72,7 @@ const ChartContainer = {
       options: {},
       currentConfig: {
         width: "100%",
-        width: 600,
+        width: 800,
         height: "100%",
         height: 400,
         projection: [
