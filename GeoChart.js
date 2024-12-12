@@ -1,7 +1,17 @@
 const GeoChart = {
   template: `
     <div class="chart geo-chart">
-      <svg v-once ref="svg" class="chart-svg"></svg>
+      <svg v-once ref="svg" class="chart-svg">
+        <defs>
+          <pattern id="diagonalHatch"
+            width="4.5" height="4.5"
+            patternTransform="rotate(45)"
+            patternUnits="userSpaceOnUse"
+          >
+            <line x1="0" y1="0" x2="0" y2="4.5" stroke="#ccc" stroke-width="2" />
+          </pattern>
+        </defs>
+      </svg>
     </div>`,
 
   props: {
@@ -26,7 +36,8 @@ const GeoChart = {
 
       colorRange: null,
       colorScale: null,
-      colorNull: "#ccc",
+      // colorNull: "#ccc",
+      colorNull: "url(#diagonalHatch)",
     };
   },
 

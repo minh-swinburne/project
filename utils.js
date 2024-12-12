@@ -15,6 +15,10 @@ function capitalizeFirstLetter(string, separator = " ", joiner = " ") {
 }
 
 function hexToRgb(hex) {
+  if (!hex.match(/^#([A-Fa-f0-9]{3}){1,2}$/)) {
+    return hex;
+  }
+
   let hexValue = hex.replace("#", "");
 
   if (hexValue.length === 3) {
@@ -22,10 +26,6 @@ function hexToRgb(hex) {
       .split("")
       .map((char) => char + char)
       .join("");
-  }
-
-  if (hexValue.length !== 6) {
-    throw new Error("Invalid hex value");
   }
 
   const r = parseInt(hexValue.substring(0, 2), 16);
