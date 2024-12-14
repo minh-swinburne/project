@@ -47,6 +47,7 @@ const ChartContainer = {
             :max-val="maxValue"
             :filters="options"
             :config="currentConfig"
+            color="YlOrRd"
           ></component>
 
           <div v-else>
@@ -179,6 +180,6 @@ const ChartContainer = {
 
     maxValue() {
       return Math.max(...this.data.map((d) => d[this.valCol]));
-    }
+    },
   },
 };

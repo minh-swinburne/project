@@ -21,6 +21,7 @@ const GeoChart = {
     minVal: { type: Number, default: 0 },
     maxVal: { type: Number, default: 0 },
     domainSize: { type: Number, default: 9 },
+    color: { type: String, default: "YlOrRd" },
     filters: { type: Object, default: () => ({}) },
     config: { type: Object, default: () => ({}) },
   },
@@ -43,7 +44,8 @@ const GeoChart = {
 
   mounted() {
     console.log("GeoChart mounted");
-    console.log(this.maxVal);
+    // console.log(this.maxVal);
+
     this.svg = d3
       .select(this.$refs.svg)
       .attr("width", this.config.width || 500)
@@ -54,21 +56,31 @@ const GeoChart = {
 
     this.colorRange = d3
       .range(0, 1, 1 / this.domainSize)
-      .map(d3.interpolateYlOrRd);
+      .map(d3["interpolate" + this.color] || d3.interpolateYlGnBu);
+    // console.log(this.color);
+
     this.colorScale = d3
       .scaleQuantize()
       .domain(this.domain)
       .range(this.colorRange);
 
+    this.updateSize();
     this.configProjection();
     this.fitProjection();
     this.drawMap();
 
-    console.log(this.colorScale.domain());
-    console.log(this.colorScale.range());
+    // console.log(this.colorScale.domain());
+    // console.log(this.colorScale.range());
     this.drawLegend();
 
-    window.addEventListener("resize", this.fitProjection);
+    window.addEventListener(
+      "resize",
+      debounce(() => {
+        this.updateSize();
+        this.fitProjection();
+        this.drawMap();
+      }, 100)
+    );
   },
 
   methods: {
@@ -178,6 +190,10 @@ const GeoChart = {
       this.legend.selectAll("g.tick line").attr("stroke", strokeColor);
     },
 
+    updateSize() {
+      this.size = this.svg.node().getBoundingClientRect();
+    },
+
     configProjection() {
       // console.log(this.projection.scale());
       const projectionConfig = this.config.projection;
@@ -197,7 +213,9 @@ const GeoChart = {
     },
 
     fitProjection() {
-      // console.log("Fitting projection");
+      console.log("Fitting projection");
+      // console.log(this.size);
+
       this.projection.fitSize(
         [this.size.width, this.size.height - 50],
         this.geoData
@@ -206,19 +224,19 @@ const GeoChart = {
   },
 
   beforeDestroy() {
-    window.removeEventListener("resize", this.fitProjection);
+    window.removeEventListener(
+      "resize",
+      debounce(() => {
+        this.updateSize();
+        this.fitProjection();
+        this.drawMap();
+      }, 100)
+    );
   },
 
   computed: {
     domain() {
-      return [
-        Math.floor(this.minVal),
-        Math.ceil(this.maxVal),
-      ];
-    },
-
-    size() {
-      return this.svg.node().getBoundingClientRect();
+      return [Math.floor(this.minVal), Math.ceil(this.maxVal)];
     },
   },
 
