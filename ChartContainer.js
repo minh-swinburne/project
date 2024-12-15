@@ -47,7 +47,6 @@ const ChartContainer = {
             :max-val="maxValue"
             :filters="options"
             :config="currentConfig"
-            color="YlOrRd"
           ></component>
 
           <div v-else>
@@ -73,13 +72,19 @@ const ChartContainer = {
       options: {},
       currentConfig: {
         width: "100%",
-        width: 800,
+        // width: 800,
         height: "100%",
         height: 400,
         projection: [
           // { method: "scale", args: [200] },
           // { method: "translate", args: [100, 100] },
         ],
+        padding: {
+          // x: 10,
+          // y: 10,
+          // inner: 0.02,
+          // outer: 0.05,
+        }
       },
     };
   },

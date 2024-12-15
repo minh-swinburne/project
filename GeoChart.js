@@ -31,6 +31,8 @@ const GeoChart = {
   data() {
     return {
       svg: null,
+      size: null,
+
       projection: null,
       path: null,
       legend: null,
@@ -67,7 +69,7 @@ const GeoChart = {
     this.updateSize();
     this.configProjection();
     this.fitProjection();
-    this.drawMap();
+    this.render();
 
     // console.log(this.colorScale.domain());
     // console.log(this.colorScale.range());
@@ -78,13 +80,13 @@ const GeoChart = {
       debounce(() => {
         this.updateSize();
         this.fitProjection();
-        this.drawMap();
+        this.render();
       }, 100)
     );
   },
 
   methods: {
-    drawMap() {
+    render() {
       console.log("Drawing map");
       // console.log(this.geoData.features);
 
@@ -108,6 +110,8 @@ const GeoChart = {
         .on("mouseover", this.mouseOver)
         .on("mousemove", this.mouseMove)
         .on("mouseout", this.mouseOut);
+
+      this.drawLegend();
     },
 
     drawLegend() {
@@ -148,6 +152,8 @@ const GeoChart = {
         .tickFormat(d3.format(".2"))
         .tickValues(thresholds)
         .tickSize(tickSize);
+
+      this.svg.selectAll("g.chart-legend").remove();
 
       this.legend = this.svg
         .append("g")
@@ -229,7 +235,7 @@ const GeoChart = {
       debounce(() => {
         this.updateSize();
         this.fitProjection();
-        this.drawMap();
+        this.render();
       }, 100)
     );
   },
@@ -253,7 +259,7 @@ const GeoChart = {
       deep: true,
       handler() {
         this.fitProjection();
-        this.drawMap();
+        this.render();
         // this.drawLegend();
       },
     },

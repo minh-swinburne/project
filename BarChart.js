@@ -4,8 +4,18 @@ const BarChart = {
       <svg ref="svg" class="chart-svg">
         <v-axis
           v-if="svg"
+          ref="axisX"
           orient="bottom"
-          :scale="xScale"
+          class="axis-x"
+          :scale="scaleX"
+          :config="axisConfig"
+        ></v-axis>
+        <v-axis
+          v-if="svg"
+          ref="axisY"
+          orient="left"
+          class="axis-y"
+          :scale="scaleY"
           :config="axisConfig"
         ></v-axis>
       </svg>
@@ -17,6 +27,7 @@ const BarChart = {
     valCol: { type: String, required: true },
     minVal: { type: Number, default: 0 },
     maxVal: { type: Number, default: 0 },
+    color: { type: String, default: "steelblue" },
     filters: { type: Object, default: () => ({}) },
     config: { type: Object, default: () => ({}) },
   },
@@ -24,29 +35,31 @@ const BarChart = {
   data() {
     return {
       svg: null,
-      xScale: null,
-      yScale: null,
-      xPadding: 30,
-      yPadding: 50,
+      size: null,
+
+      scaleX: null,
+      scaleY: null,
+
+      padding: {
+        x: 50,
+        y: 40,
+        inner: 0.05,
+        outer: 0.1,
+      },
     };
   },
 
   created() {
-    this.xScale = d3
-      .scaleBand()
-      .domain(this.data.map((d) => d[this.keyCol]))
-      .range([0, this.config.width || 500])
-      .padding(0.1);
+    this.scaleX = d3.scaleBand();
+    this.scaleY = d3.scaleLinear();
 
-    // console.log(this.xScale);
+    if (this.config.padding) {
+      console.log("Padding exists");
 
-    this.yScale = d3
-      .scaleLinear()
-      .domain([
-        this.minVal,
-        this.maxVal || d3.max(this.data, (d) => d[this.valCol]),
-      ])
-      .range([this.config.height || 300, 0]);
+      for (let p in this.config.padding) {
+        this.padding[p] = this.config.padding[p];
+      }
+    }
   },
 
   mounted() {
@@ -60,26 +73,77 @@ const BarChart = {
 
     console.log(this.svg ? "SVG exists" : "SVG does not exist");
 
-    this.$nextTick(() => {
-      // this.config.width = 888;
-    });
+    this.updateSize();
+    this.updateScales();
+    this.render();
+
+    this.resizeHandler = debounce(() => {
+      this.updateSize();
+      this.updateScales();
+      this.render();
+    }, 100);
+
+    window.addEventListener("resize", this.resizeHandler);
+
+    // this.$nextTick(() => {
+    //   // this.config.width = 888;
+    // });
 
     // console.log(this.$refs.svg.attributes["width"].value);
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("resize", this.resizeHandler);
   },
 
   methods: {
     render() {
       console.log("Rendering BarChart");
-      console.log(this.data);
+      console.log(this.keys.length);
+
+      this.svg
+        .selectAll("rect.bar-chart-rect")
+        .data(this.data)
+        .join("rect")
+        .classed("chart-rect bar-chart-rect", true)
+        .attr("x", (d) => this.scaleX(d[this.keyCol]))
+        .attr("y", (d) => this.scaleY(d[this.valCol]))
+        .attr("width", this.scaleX.bandwidth())
+        .attr("height", (d) => this.size.height - this.scaleY(d[this.valCol]) - this.padding.y)
+        .attr("fill", this.color);
+    },
+
+    updateSize() {
+      this.size = this.svg.node().getBoundingClientRect();
+      console.log(this.size);
+    },
+
+    updateScales() {
+      console.log("Updating scales");
+      console.log(this.padding.outer);
+
+      this.scaleX
+        .domain(this.keys)
+        .rangeRound([this.padding.x, this.size.width - this.padding.x])
+        .paddingInner(this.padding.inner)
+        .paddingOuter(this.padding.outer);
+
+      this.scaleY
+        .domain([this.minVal, this.maxVal])
+        .range([this.size.height - this.padding.y, this.padding.y]);
     },
   },
 
   computed: {
+    keys() {
+      return this.data.map((d) => d[this.keyCol]);
+    },
+
     axisConfig() {
       return {
-        width: this.config.width,
-        height: this.config.height,
-        padding: [this.xPadding, this.yPadding],
+        width: this.size.width,
+        height: this.size.height,
+        padding: this.padding,
       };
     },
   },
@@ -88,6 +152,11 @@ const BarChart = {
     data: {
       deep: true,
       handler() {
+        this.updateScales();
+
+        this.$refs.axisX.update();
+        this.$refs.axisY.update();
+
         this.render();
       },
     },
@@ -98,5 +167,5 @@ const BarChart = {
         this.render();
       },
     },
-  }
+  },
 };
