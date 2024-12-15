@@ -103,13 +103,16 @@ const BarChart = {
 
       this.svg
         .selectAll("rect.bar-chart-rect")
-        .data(this.data)
+        .data(this.sortedData)
         .join("rect")
         .classed("chart-rect bar-chart-rect", true)
         .attr("x", (d) => this.scaleX(d[this.keyCol]))
         .attr("y", (d) => this.scaleY(d[this.valCol]))
         .attr("width", this.scaleX.bandwidth())
-        .attr("height", (d) => this.size.height - this.scaleY(d[this.valCol]) - this.padding.y)
+        .attr(
+          "height",
+          (d) => this.size.height - this.scaleY(d[this.valCol]) - this.padding.y
+        )
         .attr("fill", this.color);
     },
 
@@ -131,12 +134,23 @@ const BarChart = {
       this.scaleY
         .domain([this.minVal, this.maxVal])
         .range([this.size.height - this.padding.y, this.padding.y]);
+
+      console.log(this.scaleX.domain());
+      console.log(this.scaleX.range());
     },
   },
 
   computed: {
+    sortedData() {
+      let sorted = [...this.data].sort((a, b) => b[this.valCol] - a[this.valCol]);
+
+      return filterCountries(sorted)
+        .concat(sorted[0])  // Add the highest value to the end
+        .sort((a, b) => b[this.valCol] - a[this.valCol]); // Sort again
+    },
+
     keys() {
-      return this.data.map((d) => d[this.keyCol]);
+      return this.sortedData.map((d) => d[this.keyCol]);
     },
 
     axisConfig() {

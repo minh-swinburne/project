@@ -34,3 +34,39 @@ function hexToRgb(hex) {
 
   return `rgb(${r}, ${g}, ${b})`;
 }
+
+function filterCountries(data, dataCol = "AreaCode", counCol = "code") {
+  let countries = [
+    { code: "DZA", name: "Algeria", region: "Africa" },
+    { code: "AGO", name: "Angola", region: "Africa" },
+    { code: "BEN", name: "Benin", region: "Africa" },
+    { code: "BWA", name: "Botswana", region: "Africa" },
+    { code: "IOT", name: "British Indian Ocean Territory", region: "Africa" },
+    { code: "CAN", name: "Canada", region: "Americas" },
+    { code: "USA", name: "United States", region: "Americas" },
+    { code: "BRA", name: "Brazil", region: "Americas" },
+    { code: "ARG", name: "Argentina", region: "Americas" },
+    { code: "MEX", name: "Mexico", region: "Americas" },
+    { code: "CHN", name: "China", region: "Asia" },
+    { code: "IND", name: "India", region: "Asia" },
+    { code: "JPN", name: "Japan", region: "Asia" },
+    { code: "SGP", name: "Singapore", region: "Asia" },
+    { code: "KOR", name: "South Korea", region: "Asia" },
+    { code: "VNM", name: "Viet Nam", region: "Asia" },
+    { code: "FRA", name: "France", region: "Europe" },
+    { code: "DEU", name: "Germany", region: "Europe" },
+    { code: "ESP", name: "Spain", region: "Europe" },
+    { code: "ITA", name: "Italy", region: "Europe" },
+    { code: "GBR", name: "United Kingdom", region: "Europe" },
+    { code: "AUS", name: "Australia", region: "Oceania" },
+    { code: "NZL", name: "New Zealand", region: "Oceania" },
+    { code: "FJI", name: "Fiji", region: "Oceania" },
+    { code: "VUT", name: "Vanuatu", region: "Oceania" },
+  ];
+
+  countries = countries.map((d) => d[counCol]);
+
+  return data.length > 25
+    ? data.filter((d) => countries.includes(d[dataCol]))
+    : [...data];  // Return a copy of the data
+}
