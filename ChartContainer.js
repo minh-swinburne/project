@@ -84,29 +84,38 @@ const ChartContainer = {
           // y: 10,
           // inner: 0.02,
           // outer: 0.05,
-        }
+        },
+        color: {
+          geo: "YlOrRd",
+          bar: "steelblue",
+          line: "Observable10",
+        },
       },
     };
   },
 
   mounted() {
     this.updateFilters();
+    console.log(this.data.find((d) => d[this.valCol] == this.maxValue));
   },
 
   watch: {
     keyCol: "updateFilters",
     valCol: "updateFilters",
+
     config: {
       deep: true,
+      immediate: true,
       handler() {
         // console.log("Updating options");
         // console.log(this.currentConfig);
         for (let config in this.config) {
           this.currentConfig[config] = this.config[config];
         }
-        // console.log(this.currentConfig);
+        console.log(this.config);
       },
     },
+
     options: {
       deep: true,
       handler: debounce(function () {

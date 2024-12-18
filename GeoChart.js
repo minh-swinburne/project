@@ -21,7 +21,6 @@ const GeoChart = {
     minVal: { type: Number, default: 0 },
     maxVal: { type: Number, default: 0 },
     domainSize: { type: Number, default: 9 },
-    color: { type: String, default: "YlOrRd" },
     filters: { type: Object, default: () => ({}) },
     config: { type: Object, default: () => ({}) },
   },
@@ -58,7 +57,10 @@ const GeoChart = {
 
     this.colorRange = d3
       .range(0, 1, 1 / this.domainSize)
-      .map(d3["interpolate" + this.color] || d3.interpolateYlGnBu);
+      .map(
+        d3["interpolate" + (this.config.color || "YlGnBu")] ||
+          d3.interpolateYlGnBu
+      );
     // console.log(this.color);
 
     this.colorScale = d3

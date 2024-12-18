@@ -70,3 +70,9 @@ function filterCountries(data, dataCol = "AreaCode", counCol = "code") {
     ? data.filter((d) => countries.includes(d[dataCol]))
     : [...data];  // Return a copy of the data
 }
+
+function isColor(strColor) {
+  var s = new Option().style;
+  s.color = strColor;
+  return s.color == strColor;
+}

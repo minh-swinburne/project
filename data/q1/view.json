@@ -12,7 +12,10 @@
       {
         "type": "bar",
         "key": "AreaCode",
-        "value": "Litres"
+        "value": "Litres",
+        "config": {
+          "color": "firebrick"
+        }
       },
       {
         "type": "geo",
@@ -28,7 +31,8 @@
               "method": "translate",
               "args": [400, 100]
             }
-          ]
+          ],
+          "color": "YlOrRd"
         }
       },
       {

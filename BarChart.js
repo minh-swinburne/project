@@ -27,7 +27,6 @@ const BarChart = {
     valCol: { type: String, required: true },
     minVal: { type: Number, default: 0 },
     maxVal: { type: Number, default: 0 },
-    color: { type: String, default: "steelblue" },
     filters: { type: Object, default: () => ({}) },
     config: { type: Object, default: () => ({}) },
   },
@@ -50,6 +49,7 @@ const BarChart = {
   },
 
   created() {
+    this.color = isColor(this.config.color) ? this.config.color : "steelblue";
     this.scaleX = d3.scaleBand();
     this.scaleY = d3.scaleLinear();
 
@@ -99,7 +99,6 @@ const BarChart = {
   methods: {
     render() {
       console.log("Rendering BarChart");
-      console.log(this.keys.length);
 
       this.svg
         .selectAll("rect.bar-chart-rect")
@@ -132,9 +131,10 @@ const BarChart = {
         .paddingOuter(this.padding.outer);
 
       this.scaleY
-        .domain([this.minVal, this.maxVal])
+        .domain(this.domain)
         .range([this.size.height - this.padding.y, this.padding.y]);
 
+      console.log(this.keys.length);
       console.log(this.scaleX.domain());
       console.log(this.scaleX.range());
     },
@@ -142,15 +142,23 @@ const BarChart = {
 
   computed: {
     sortedData() {
-      let sorted = [...this.data].sort((a, b) => b[this.valCol] - a[this.valCol]);
+      let sorted = [...this.data].sort(
+        (a, b) => b[this.valCol] - a[this.valCol]
+      );
+      let max = sorted[0];
 
-      return filterCountries(sorted)
-        .concat(sorted[0])  // Add the highest value to the end
-        .sort((a, b) => b[this.valCol] - a[this.valCol]); // Sort again
+      sorted = filterCountries(sorted);
+      sorted.unshift(max);
+
+      return [...new Set(sorted)];
     },
 
     keys() {
       return this.sortedData.map((d) => d[this.keyCol]);
+    },
+
+    domain() {
+      return [Math.floor(this.minVal), Math.ceil(this.maxVal)];
     },
 
     axisConfig() {

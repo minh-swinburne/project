@@ -74,7 +74,7 @@ const Axis = {
           : 0;
 
       this.axis.scale(this.scale).ticks(this.config.ticks || 5);
-      console.log(x, y);
+      // console.log(x, y);
       // console.log(this.axis);
       // console.log(this.scale);
 
