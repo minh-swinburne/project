@@ -7,6 +7,12 @@ function debounce(func, delay = 300) {
   };
 }
 
+function omit(obj, keys) {
+  return Object.fromEntries(
+    Object.entries(obj).filter(([key]) => !keys.includes(key))
+  );
+}
+
 function capitalizeFirstLetter(string, separator = " ", joiner = " ") {
   return string
     .split(separator)

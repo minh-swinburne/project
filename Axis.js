@@ -1,6 +1,7 @@
 const Axis = {
   template: `
-    <g class="axis" ref="axis"></g>`,
+    <g class="axis" ref="axis"></g>
+  `,
 
   props: {
     scale: { type: Function, required: true },

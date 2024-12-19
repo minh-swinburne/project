@@ -1,58 +1,59 @@
 const View = {
   template: `
-      <div class="v-view view-container">
-        <div class="view-controller">
-          <h3>Choose a dataset:</h3>
+    <div class="v-view view-container">
+      <div class="view-controller">
+        <h3>Choose a dataset:</h3>
 
-          <button
-            v-if="datasets.length > 0"
-            v-for="dataset, index in datasets"
-            :class="{ active: dataset.id === currentDs.id }"
-            @click="switchDataset(index)"
-            >
-            {{ dataset.name }}
-          </button>
+        <button
+          v-if="datasets.length > 0"
+          v-for="dataset, index in datasets"
+          :class="{ active: dataset.id === currentDs.id }"
+          @click="switchDataset(index)"
+          >
+          {{ dataset.name }}
+        </button>
 
-          <div v-else>
-            <p>Loading datasets...</p>
-          </div>
-        </div>
-        <div class="view-info">
-          <h2>{{ currentDs.title }}</h2>
-          <p>{{ currentDs.description }}</p>
-
-          <small>
-            Data count:
-            {{ data.length }}
-          </small>
-        </div>
-        <div class="view-charts">
-          <button
-            v-for="chart, index in currentDs.charts"
-            :chart-type="chart.type"
-            :class="{ active: chart.type === currentChart.type }"
-            @click="switchChart(index)"
-            >
-            {{ capitalizeFirstLetter(chart.type, "-") }}
-          </button>
-        </div>
-        <div class="view-canvas">
-          <v-chart
-            v-if="data.length > 0"
-            v-bind:data="data"
-            :id="currentDs.id + '-' + currentChart.type"
-            :type="currentChart.type"
-            :key-col="currentChart.key"
-            :val-col="currentChart.value"
-            :config="currentChart.config"
-          </v-chart>
-
-          <div v-else>
-            <p>Loading data...</p>
-          </div>
+        <div v-else>
+          <p>Loading datasets...</p>
         </div>
       </div>
-    `,
+      <div class="view-info">
+        <h2>{{ currentDs.title }}</h2>
+        <p>{{ currentDs.description }}</p>
+
+        <small>
+          Data count:
+          {{ data.length }}
+        </small>
+      </div>
+      <div class="view-charts">
+        <button
+          v-for="chart, index in currentDs.charts"
+          :chart-type="chart.type"
+          :class="{ active: chart.type === currentChart.type }"
+          @click="switchChart(index)"
+          >
+          {{ capitalizeFirstLetter(chart.type, "-") }}
+        </button>
+      </div>
+      <div class="view-canvas">
+        <v-chart
+          v-if="data.length > 0"
+          :data="data"
+          :id="currentDs.id + '-' + currentChart.type"
+          :type="currentChart.type"
+          :features="currentChart.features"
+          :key-col="currentChart.key"
+          :val-col="currentChart.value"
+          :config="currentChart.config"
+        </v-chart>
+
+        <div v-else>
+          <p>Loading data...</p>
+        </div>
+      </div>
+    </div>
+  `,
 
   props: ["path"],
 
@@ -76,6 +77,7 @@ const View = {
         type: "",
         key: "",
         value: "",
+        columns: {},
         config: {},
       },
     };

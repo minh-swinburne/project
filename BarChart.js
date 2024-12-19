@@ -19,7 +19,8 @@ const BarChart = {
           :config="axisConfig"
         ></v-axis>
       </svg>
-    </div>`,
+    </div>
+  `,
 
   props: {
     data: { type: Array, required: true },
@@ -27,7 +28,6 @@ const BarChart = {
     valCol: { type: String, required: true },
     minVal: { type: Number, default: 0 },
     maxVal: { type: Number, default: 0 },
-    filters: { type: Object, default: () => ({}) },
     config: { type: Object, default: () => ({}) },
   },
 

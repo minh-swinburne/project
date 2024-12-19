@@ -12,7 +12,8 @@ const GeoChart = {
           </pattern>
         </defs>
       </svg>
-    </div>`,
+    </div>
+  `,
 
   props: {
     data: { type: Array, required: true },
@@ -21,7 +22,6 @@ const GeoChart = {
     minVal: { type: Number, default: 0 },
     maxVal: { type: Number, default: 0 },
     domainSize: { type: Number, default: 9 },
-    filters: { type: Object, default: () => ({}) },
     config: { type: Object, default: () => ({}) },
   },
 

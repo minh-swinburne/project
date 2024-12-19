@@ -1,64 +1,41 @@
 const ChartContainer = {
   template: `
-      <div class="v-chart chart--container">
-        <div class="chart-controller">
-          <div
-            v-for="(values, column) in filters"
-            class="chart-filter"
-          >
-            <label :for="getFilterId(column)">
-              {{ getFilterName(column, " ") }}:
-            </label>
+    <div class="v-chart chart--container">
+      <div class="chart-controller">
+        <v-filter
+          v-for="(filter, feature) in filters"
+          v-model="filter.selected"
+          :key="feature"
+          :id="id + '-' + feature"
+          :type="filter.type"
+          :feature="feature"
+          :options="filter.options"
+        ></v-filter>
+      </div>
 
-            <select
-              v-model="options[column]"
-              v-if="isNaN(data[0][column])"
-              :id="getFilterId(column)"
-            >
-              <option
-                v-for="value, index in values"
-                :value="value"
-                :selected="index === 0"
-              >
-                {{ value }}
-              </option>
-            </select>
+      <div class="chart-canvas">
+        <component
+          v-if="filteredData.length > 0"
+          :data="filteredData"
+          :is="current"
+          :key-col="keyCol"
+          :val-col="valCol"
+          :max-val="maxValue"
+          :features="omit(features, ['filters'])"
+          :config="currentConfig"
+        ></component>
 
-            <input
-              type="range"
-              v-model="options[column]"
-              v-else
-              :id="getFilterId(column)"
-              :value="options[column]"
-              :min="Math.min(...values)"
-              :max="Math.max(...values)"
-            />
-
-            <span>{{ options[column] }}</span>
-          </div>
-        </div>
-        <div class="chart-canvas">
-          <component
-            v-if="filteredData.length > 0"
-            v-bind:data="filteredData"
-            :is="current"
-            :key-col="keyCol"
-            :val-col="valCol"
-            :max-val="maxValue"
-            :filters="options"
-            :config="currentConfig"
-          ></component>
-
-          <div v-else>
-            <p>No data available</p>
-          </div>
+        <div v-else>
+          <p>No data available</p>
         </div>
       </div>
-    `,
+    </div>
+  `,
 
   props: {
     id: { type: String, required: true },
     type: { type: String, required: true },
+    features: { type: Object, required: true },
     keyCol: { type: String, required: true },
     valCol: { type: String, required: true },
     data: { type: Array, default: () => [] },
@@ -69,7 +46,6 @@ const ChartContainer = {
     return {
       filters: {},
       filteredData: [],
-      options: {},
       currentConfig: {
         width: "100%",
         // width: 800,
@@ -95,19 +71,34 @@ const ChartContainer = {
   },
 
   mounted() {
-    this.updateFilters();
     console.log(this.data.find((d) => d[this.valCol] == this.maxValue));
+    // this.updateData();
   },
 
   watch: {
     keyCol: "updateFilters",
     valCol: "updateFilters",
 
+    features: {
+      deep: true,
+      immediate: true,
+      handler: "updateFilters",
+    },
+
+    filters: {
+      deep: true,
+      immediate: true,
+      handler: debounce(function () {
+        console.log("Filters changed");
+        this.updateData();
+      }, 200),
+    },
+
     config: {
       deep: true,
       immediate: true,
       handler() {
-        // console.log("Updating options");
+        // console.log("Updating config...");
         // console.log(this.currentConfig);
         for (let config in this.config) {
           this.currentConfig[config] = this.config[config];
@@ -115,56 +106,74 @@ const ChartContainer = {
         console.log(this.config);
       },
     },
-
-    options: {
-      deep: true,
-      handler: debounce(function () {
-        this.updateData();
-      }, 200),
-    },
   },
 
   methods: {
+    omit,
+
     getChartType(string) {
       return string.trim().split("-").join("_");
     },
 
-    getFilterName(string, joiner = "-") {
-      return string
+    getFilterName(string, joiner = "-", lower = true) {
+      let result = string
         .trim()
         .split(/\.?(?=[A-Z])/)
         .join(joiner);
+      return lower ? result.toLowerCase() : result;
     },
 
     getFilterId(string) {
-      return this.id + "-filter-" + this.getFilterName(string).toLowerCase();
+      return this.id + "-filter-" + this.getFilterName(string);
     },
 
-    getUniqueValues(column) {
-      let values = this.data.map((item) => item[column]);
+    getUniqueValues(feature) {
+      let values = this.data.map((item) => item[feature]);
       values = [...new Set(values)];
       return isNaN(values[0]) ? values : values.sort();
     },
 
     updateFilters() {
-      let filters = Object.keys(this.data[0]).filter(
-        (col) => col !== this.keyCol && col !== this.valCol
-      );
+      console.log("Updating filters...");
+      console.log(this.filters);
 
-      filters.forEach((column) => {
-        this.filters[column] = this.getUniqueValues(column);
-        this.options[column] = this.filters[column][0];
-      });
+      if (this.features.filters) {
+        for (const [feature, type] of Object.entries(this.features.filters)) {
+          let options = this.getUniqueValues(feature);
 
-      console.log("Updating filters", this.filters);
+          this.filters[feature] = {
+            type: type,
+            options: options,
+            selected: options[0],
+          };
+        }
+      } else {
+        let filters = Object.keys(this.data[0]).filter(
+          (feature) =>
+            feature !== this.features.key && feature !== this.features.value
+        );
+
+        filters.forEach((feature) => {
+          let options = this.getUniqueValues(feature);
+
+          this.filters[feature] = {
+            type: isNaN(this.data[0][feature]) ? "select" : "slider",
+            options: options,
+            selected: options[0],
+          };
+        });
+      }
+
+      console.log(this.filters);
     },
 
     updateData() {
-      console.log("Updating data... Current filter options: ", this.options);
+      console.log("Updating data... Current filters: ", this.filters);
+
       this.filteredData = this.data
         .filter((data) => {
-          for (const [key, value] of Object.entries(this.options)) {
-            if (data[key] !== value) {
+          for (const [feature, filter] of Object.entries(this.filters)) {
+            if (data[feature] !== filter.selected) {
               return false;
             }
           }
