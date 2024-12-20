@@ -113,7 +113,8 @@ const View = {
 
     switchChart(index) {
       this.currentChart = this.currentDs.charts[index];
-      // console.log("Switching to chart with index " + index);
+      console.log("Switching to chart with index " + index);
+      console.log(this.currentChart.config);
     },
 
     capitalizeFirstLetter,

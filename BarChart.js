@@ -48,6 +48,8 @@ const BarChart = {
   },
 
   created() {
+    console.log(this.config);
+
     this.color = isColor(this.config.color) ? this.config.color : "steelblue";
     this.scaleX = d3.scaleBand();
     this.scaleY = d3.scaleLinear();

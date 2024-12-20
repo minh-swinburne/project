@@ -19,8 +19,6 @@
             "BeverageType": "dropdown"
           }
         },
-        "key": "AreaCode",
-        "value": "Litres",
         "config": {
           "color": "firebrick"
         }
@@ -31,8 +29,6 @@
           "key": "AreaCode",
           "value": "Litres"
         },
-        "key": "AreaCode",
-        "value": "Litres",
         "config": {
           "projection": [
             {
@@ -53,10 +49,7 @@
           "key": "AreaCode",
           "value": "Litres",
           "group": "BeverageType"
-        },
-        "key": "AreaCode",
-        "value": "Litres",
-        "group": "BeverageType"
+        }
       }
     ]
   },

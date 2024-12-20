@@ -17,7 +17,7 @@ const ChartContainer = {
         <component
           v-if="filteredData.length > 0"
           :data="filteredData"
-          :is="current"
+          :is="currentType"
           :max-val="maxValue"
           :features="omit(features, ['filters'])"
           :config="currentConfig"
@@ -42,7 +42,7 @@ const ChartContainer = {
     return {
       filters: {},
       filteredData: [],
-      currentConfig: {
+      defaultConfig: {
         width: "100%",
         // width: 800,
         height: "100%",
@@ -87,25 +87,23 @@ const ChartContainer = {
       }, 200),
     },
 
-    config: {
-      deep: true,
-      immediate: true,
-      handler() {
-        // console.log("Updating config...");
-        // console.log(this.currentConfig);
-        for (let config in this.config) {
-          this.currentConfig[config] = this.config[config];
-        }
-        console.log(this.config);
-      },
-    },
+    // config: {
+    //   deep: true,
+    //   immediate: true,
+    //   handler() {
+    //     console.log("Updating config...");
+    //     console.log(this.config);
+    //     console.log(this.defaultConfig);
+    //     console.log(this.currentConfig);
+    //   },
+    // },
   },
 
   methods: {
     omit,
 
     getChartType(string) {
-      return string.trim().split("-").join("_");
+      return capitalizeFirstLetter(string, "-", "");
     },
 
     getUniqueValues(feature) {
@@ -147,7 +145,7 @@ const ChartContainer = {
         });
       }
 
-      // Save selected values
+      // Recover selected values
       for (const [feature, filter] of Object.entries(this.filters)) {
         if (newFilters[feature]) {
           newFilters[feature].selected = filter.selected;
@@ -180,16 +178,20 @@ const ChartContainer = {
   },
 
   computed: {
-    current() {
+    currentType() {
       const chartMap = {
-        bar: "v-bar-chart",
-        line: "v-line-chart",
-        pie: "v-pie-chart",
-        geo: "v-geo-chart",
-        grouped_bar: "v-grouped-bar-chart",
+        Bar: "v-bar-chart",
+        Line: "v-line-chart",
+        Pie: "v-pie-chart",
+        Geo: "v-geo-chart",
+        GroupedBar: "v-grouped-bar-chart",
       };
 
       return chartMap[this.getChartType(this.type)];
+    },
+
+    currentConfig() {
+      return { ...this.defaultConfig, ...this.config };
     },
 
     maxValue() {

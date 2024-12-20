@@ -10,8 +10,9 @@ function init() {
   });
 
   app.component("v-axis", Axis);
-  app.component("v-bar-chart", BarChart);
   app.component("v-geo-chart", GeoChart);
+  app.component("v-bar-chart", BarChart);
+  app.component("v-grouped-bar-chart", GroupedBarChart);
   app.component("v-filter", Filter);
   app.component("v-chart", ChartContainer);
   app.component("v-view", View);

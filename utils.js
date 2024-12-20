@@ -15,6 +15,7 @@ function omit(obj, keys) {
 
 function capitalizeFirstLetter(string, separator = " ", joiner = " ") {
   return string
+    .trim()
     .split(separator)
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(joiner);
