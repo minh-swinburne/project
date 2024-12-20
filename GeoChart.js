@@ -17,8 +17,7 @@ const GeoChart = {
 
   props: {
     data: { type: Array, required: true },
-    keyCol: { type: String, required: true },
-    valCol: { type: String, required: true },
+    features: { type: Object, required: true },
     minVal: { type: Number, default: 0 },
     maxVal: { type: Number, default: 0 },
     domainSize: { type: Number, default: 9 },
@@ -100,11 +99,11 @@ const GeoChart = {
         .attr("d", this.path)
         .attr("fill", (d) => {
           const value = this.data.find(
-            (row) => row[this.keyCol] === d[this.geoKey]
+            (row) => row[this.features.key] === d[this.geoKey]
           );
 
           return value !== undefined
-            ? this.colorScale(value[this.valCol])
+            ? this.colorScale(value[this.features.value])
             : this.colorNull;
         })
         .attr("stroke", "#333")

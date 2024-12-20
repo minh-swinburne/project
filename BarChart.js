@@ -24,8 +24,7 @@ const BarChart = {
 
   props: {
     data: { type: Array, required: true },
-    keyCol: { type: String, required: true },
-    valCol: { type: String, required: true },
+    features: { type: Object, required: true },
     minVal: { type: Number, default: 0 },
     maxVal: { type: Number, default: 0 },
     config: { type: Object, default: () => ({}) },
@@ -105,12 +104,12 @@ const BarChart = {
         .data(this.sortedData)
         .join("rect")
         .classed("chart-rect bar-chart-rect", true)
-        .attr("x", (d) => this.scaleX(d[this.keyCol]))
-        .attr("y", (d) => this.scaleY(d[this.valCol]))
+        .attr("x", (d) => this.scaleX(d[this.features.key]))
+        .attr("y", (d) => this.scaleY(d[this.features.value]))
         .attr("width", this.scaleX.bandwidth())
         .attr(
           "height",
-          (d) => this.size.height - this.scaleY(d[this.valCol]) - this.padding.y
+          (d) => this.size.height - this.scaleY(d[this.features.value]) - this.padding.y
         )
         .attr("fill", this.color);
     },
@@ -143,7 +142,7 @@ const BarChart = {
   computed: {
     sortedData() {
       let sorted = [...this.data].sort(
-        (a, b) => b[this.valCol] - a[this.valCol]
+        (a, b) => b[this.features.value] - a[this.features.value]
       );
       let max = sorted[0];
 
@@ -154,7 +153,7 @@ const BarChart = {
     },
 
     keys() {
-      return this.sortedData.map((d) => d[this.keyCol]);
+      return this.sortedData.map((d) => d[this.features.key]);
     },
 
     domain() {

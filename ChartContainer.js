@@ -18,8 +18,6 @@ const ChartContainer = {
           v-if="filteredData.length > 0"
           :data="filteredData"
           :is="current"
-          :key-col="keyCol"
-          :val-col="valCol"
           :max-val="maxValue"
           :features="omit(features, ['filters'])"
           :config="currentConfig"
@@ -36,8 +34,6 @@ const ChartContainer = {
     id: { type: String, required: true },
     type: { type: String, required: true },
     features: { type: Object, required: true },
-    keyCol: { type: String, required: true },
-    valCol: { type: String, required: true },
     data: { type: Array, default: () => [] },
     config: { type: Object, default: () => ({}) },
   },
@@ -71,14 +67,11 @@ const ChartContainer = {
   },
 
   mounted() {
-    console.log(this.data.find((d) => d[this.valCol] == this.maxValue));
+    console.log(this.data.find((d) => d[this.features.value] == this.maxValue));
     // this.updateData();
   },
 
   watch: {
-    keyCol: "updateFilters",
-    valCol: "updateFilters",
-
     features: {
       deep: true,
       immediate: true,
@@ -115,18 +108,6 @@ const ChartContainer = {
       return string.trim().split("-").join("_");
     },
 
-    getFilterName(string, joiner = "-", lower = true) {
-      let result = string
-        .trim()
-        .split(/\.?(?=[A-Z])/)
-        .join(joiner);
-      return lower ? result.toLowerCase() : result;
-    },
-
-    getFilterId(string) {
-      return this.id + "-filter-" + this.getFilterName(string);
-    },
-
     getUniqueValues(feature) {
       let values = this.data.map((item) => item[feature]);
       values = [...new Set(values)];
@@ -137,11 +118,13 @@ const ChartContainer = {
       console.log("Updating filters...");
       console.log(this.filters);
 
+      const newFilters = {};
+
       if (this.features.filters) {
         for (const [feature, type] of Object.entries(this.features.filters)) {
           let options = this.getUniqueValues(feature);
 
-          this.filters[feature] = {
+          newFilters[feature] = {
             type: type,
             options: options,
             selected: options[0],
@@ -156,14 +139,22 @@ const ChartContainer = {
         filters.forEach((feature) => {
           let options = this.getUniqueValues(feature);
 
-          this.filters[feature] = {
-            type: isNaN(this.data[0][feature]) ? "select" : "slider",
+          newFilters[feature] = {
+            type: isNaN(this.data[0][feature]) ? "dropdown" : "slider",
             options: options,
             selected: options[0],
           };
         });
       }
 
+      // Save selected values
+      for (const [feature, filter] of Object.entries(this.filters)) {
+        if (newFilters[feature]) {
+          newFilters[feature].selected = filter.selected;
+        }
+      }
+
+      this.filters = newFilters;
       console.log(this.filters);
     },
 
@@ -180,8 +171,8 @@ const ChartContainer = {
           return true;
         })
         .map((data) => {
-          if (!isNaN(data[this.valCol])) {
-            data[this.valCol] = +data[this.valCol];
+          if (!isNaN(data[this.features.value])) {
+            data[this.features.value] = +data[this.features.value];
           }
           return data;
         });
@@ -202,7 +193,11 @@ const ChartContainer = {
     },
 
     maxValue() {
-      return Math.max(...this.data.map((d) => d[this.valCol]));
+      return Math.max(...this.data.map((d) => d[this.features.value]));
+    },
+
+    minValue() {
+      return Math.min(...this.data.map((d) => d[this.features.value]));
     },
   },
 };
