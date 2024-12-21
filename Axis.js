@@ -70,13 +70,14 @@ const Axis = {
   methods: {
     update() {
       console.log("Axis update");
-      // console.log(this.config.width);
+      console.log(this.$parent.size);
+      console.log(this.config);
 
       const { x: paddingX, y: paddingY } = this.config.padding
-        || { x: 0, y: 0 };
+        || { x: 60, y: 50 };
 
-      const width = this.config.width || 500;
-      const height = this.config.height || 300;
+      const width = this.$parent.size.width || 500;
+      const height = this.$parent.size.height || 300;
 
       const x = this.orient === "right"
         ? width - paddingX
@@ -96,7 +97,28 @@ const Axis = {
 
       this.g
         .call(this.axis)
-        .attr("transform", `translate(${x}, ${y})`);
+        .attr("transform", `translate(${x}, ${y})`)
+        .append("text")
+        .classed("axis-label", true)
+        .attr("fill", "currentColor")
+        .attr(
+          "x",
+          this.orient === "left" || this.orient === "right" ? 0 : width / 2
+        )
+        .attr(
+          "y",
+          this.orient === "top"
+            ? -15 - this.axis.tickSize() - this.axis.tickPadding()
+            : paddingY - 15
+        )
+        // .attr("dx", this.orient === "left" || this.orient === "right" ? "0.5em" : 0)
+        // .attr(
+        //   "dy",
+        //   this.orient === "left" || this.orient === "right" ? "1em" : "-1em"
+        // )
+        .attr("text-anchor", "middle")
+        .attr("font-size", "13px")
+        .text(this.config.label || "");
 
       if (this.config.domainLine !== undefined && !this.config.domainLine) {
         this.g.select(".domain").remove();
@@ -124,11 +146,6 @@ const Axis = {
                 g.attr("y2", paddingY * 2 - height);
                 break;
             }
-            // if (this.orient === "left" || this.orient === "right") {
-            //   g.attr("x2", width);
-            // } else {
-            //   g.attr("y2", height);
-            // }
           });
       }
     },

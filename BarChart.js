@@ -11,6 +11,7 @@ const BarChart = {
           :config="{
             tickSizeOuter: 0,
             ...axisConfig,
+            ...config.axis.x,
           }"
         ></v-axis>
         <v-axis
@@ -23,6 +24,7 @@ const BarChart = {
             domainLine: false,
             gridLines: true,
             ...axisConfig,
+            ...config.axis.y,
           }"
         ></v-axis>
       </svg>
@@ -46,8 +48,8 @@ const BarChart = {
       scaleY: null,
 
       padding: {
-        x: 50,
-        y: 40,
+        x: 60,
+        y: 50,
         inner: 0.05,
         outer: 0.1,
       },
@@ -174,16 +176,9 @@ const BarChart = {
 
     axisConfig() {
       return omitUndefined({
-        width: this.size.width,
-        height: this.size.height,
-        padding: this.padding,
-
-        ticks: this.config.ticks,
-        tickSize: this.config.tickSize,
-        tickPadding: this.config.tickPadding,
-
-        domainLine: this.config.domainLine,
-        gridLines: this.config.gridLines,
+        // width: this.size.width,
+        // height: this.size.height,
+        padding: omit(this.padding, ["inner", "outer"]),
       });
     },
   },

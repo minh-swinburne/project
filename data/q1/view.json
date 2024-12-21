@@ -20,7 +20,17 @@
           }
         },
         "config": {
-          "color": "firebrick"
+          "color": "firebrick",
+          "axis": {
+            "x":{
+              "domainLine": true,
+              "label": "Country"
+            },
+            "y": {
+              "domainLine": true,
+              "label": "Litres"
+            }
+          }
         }
       },
       {
