@@ -89,8 +89,10 @@ const Axis = {
 
       this.g
         .call(this.axis)
-        .attr("transform", `translate(${x}, ${y})`)
-        .append("text")
+        .attr("transform", `translate(${x}, ${y})`);
+
+      this.g.selectAll("text.axis-label").remove();
+      this.g.append("text")
         .classed("axis-label", true)
         .attr("fill", "currentColor")
         .attr(
