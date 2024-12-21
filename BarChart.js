@@ -8,7 +8,10 @@ const BarChart = {
           orient="bottom"
           class="axis-x"
           :scale="scaleX"
-          :config="axisConfig"
+          :config="{
+            tickSizeOuter: 0,
+            ...axisConfig,
+          }"
         ></v-axis>
         <v-axis
           v-if="svg"
@@ -16,7 +19,11 @@ const BarChart = {
           orient="left"
           class="axis-y"
           :scale="scaleY"
-          :config="axisConfig"
+          :config="{
+            domainLine: false,
+            gridLines: true,
+            ...axisConfig,
+          }"
         ></v-axis>
       </svg>
     </div>
@@ -111,7 +118,10 @@ const BarChart = {
         .attr("width", this.scaleX.bandwidth())
         .attr(
           "height",
-          (d) => this.size.height - this.scaleY(d[this.features.value]) - this.padding.y
+          (d) =>
+            this.size.height -
+            this.scaleY(d[this.features.value]) -
+            this.padding.y
         )
         .attr("fill", this.color);
     },
@@ -163,11 +173,18 @@ const BarChart = {
     },
 
     axisConfig() {
-      return {
+      return omitUndefined({
         width: this.size.width,
         height: this.size.height,
         padding: this.padding,
-      };
+
+        ticks: this.config.ticks,
+        tickSize: this.config.tickSize,
+        tickPadding: this.config.tickPadding,
+
+        domainLine: this.config.domainLine,
+        gridLines: this.config.gridLines,
+      });
     },
   },
 

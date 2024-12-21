@@ -7,12 +7,15 @@ const Axis = {
     scale: { type: Function, required: true },
     orient: { type: String, required: true },
     class: { type: String, default: "" },
+    domainLine: { type: Boolean, default: true },
+    gridLines: { type: Boolean, default: false },
     config: { type: Object, default: () => ({}) },
   },
 
   data() {
     return {
       axis: null,
+      g: null,
     };
   },
 
@@ -40,13 +43,25 @@ const Axis = {
     // console.log(this.scale.range());
     this.axis
       .scale(this.scale)
-      .tickSize(this.config.tickSize || 10)
-      .tickPadding(this.config.tickPadding || 5);
+      .tickSize(this.config.tickSize !== undefined
+        ? this.config.tickSize
+        : 10
+      )
+      .tickPadding(this.config.tickPadding !== undefined
+        ? this.config.tickPadding
+        : 5
+      )
+      .tickSizeOuter(this.config.tickSizeOuter !== undefined
+        ? this.config.tickSizeOuter
+        : 10
+      );
 
-    d3.select(this.$refs.axis).classed(this.orient, true);
+    this.g = d3.select(this.$refs.axis);
+
+    this.g.classed(this.orient, true);
     this.class
       .split(" ")
-      .forEach((c) => d3.select(this.$refs.axis).classed(c, true));
+      .forEach((c) => this.g.classed(c, true));
 
     console.log(this.config);
     this.update();
@@ -79,9 +94,43 @@ const Axis = {
       // console.log(this.axis);
       // console.log(this.scale);
 
-      d3.select(this.$refs.axis)
+      this.g
         .call(this.axis)
         .attr("transform", `translate(${x}, ${y})`);
+
+      if (this.config.domainLine !== undefined && !this.config.domainLine) {
+        this.g.select(".domain").remove();
+      }
+
+      if (this.config.gridLines) {
+        this.g.selectAll(".grid-line").remove();
+        this.g
+          .selectAll(".tick line")
+          .clone()
+          .classed("grid-line", true)
+          .attr("stroke-opacity", 0.1)
+          .call((g) => {
+            switch (this.orient) {
+              case "left":
+                g.attr("x2", width - paddingX * 2);
+                break;
+              case "right":
+                g.attr("x2", paddingX * 2 - width);
+                break;
+              case "top":
+                g.attr("y2", height - paddingY * 2);
+                break;
+              case "bottom":
+                g.attr("y2", paddingY * 2 - height);
+                break;
+            }
+            // if (this.orient === "left" || this.orient === "right") {
+            //   g.attr("x2", width);
+            // } else {
+            //   g.attr("y2", height);
+            // }
+          });
+      }
     },
   },
 

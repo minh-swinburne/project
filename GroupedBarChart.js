@@ -1,6 +1,6 @@
 const GroupedBarChart = {
   template: `
-    <div class="chart grouped-bar-chart">
+    <div class="chart bar-chart">
       <svg ref="svg" class="chart-svg">
         <v-axis
           v-if="svg"
@@ -8,7 +8,10 @@ const GroupedBarChart = {
           orient="bottom"
           class="axis-x"
           :scale="scaleX"
-          :config="axisConfig"
+          :config="{
+            tickSizeOuter: 0,
+            ...axisConfig,
+          }"
         ></v-axis>
         <v-axis
           v-if="svg"
@@ -16,7 +19,11 @@ const GroupedBarChart = {
           orient="left"
           class="axis-y"
           :scale="scaleY"
-          :config="axisConfig"
+          :config="{
+            domainLine: false,
+            gridLines: true,
+            ...axisConfig,
+          }"
         ></v-axis>
       </svg>
     </div>
@@ -49,7 +56,7 @@ const GroupedBarChart = {
 
   created() {
     console.log(this.config);
-    
+
     this.color = isColor(this.config.color) ? this.config.color : "steelblue";
     this.scaleX = d3.scaleBand();
     this.scaleY = d3.scaleLinear();
@@ -166,11 +173,18 @@ const GroupedBarChart = {
     },
 
     axisConfig() {
-      return {
+      return omitUndefined({
         width: this.size.width,
         height: this.size.height,
         padding: this.padding,
-      };
+
+        ticks: this.config.ticks,
+        tickSize: this.config.tickSize,
+        tickPadding: this.config.tickPadding,
+
+        domainLine: this.config.domainLine,
+        gridLines: this.config.gridLines,
+      });
     },
   },
 

@@ -13,6 +13,15 @@ function omit(obj, keys) {
   );
 }
 
+function omitUndefined(obj) {
+  return Object.entries(obj).reduce((acc, [key, value]) => {
+    if (value !== undefined) {
+      acc[key] = value;
+    }
+    return acc;
+  }, {});
+}
+
 function capitalizeFirstLetter(string, separator = " ", joiner = " ") {
   return string
     .trim()
@@ -75,7 +84,7 @@ function filterCountries(data, dataCol = "AreaCode", counCol = "code") {
 
   return data.length > 25
     ? data.filter((d) => countries.includes(d[dataCol]))
-    : [...data];  // Return a copy of the data
+    : [...data]; // Return a copy of the data
 }
 
 function isColor(strColor) {
