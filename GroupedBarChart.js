@@ -146,26 +146,10 @@ const GroupedBarChart = {
     updateColor() {
       let range = colorRange(
         this.groups.length,
-        this.config.color || "Turbo"
-      ).reverse();
-      console.log(range);
-
-      // let cssObj = window.getComputedStyle(this.$el);
-      // let bgColor = cssObj.getPropertyValue("background-color");
-
-      if (this.$refs.svg && this.groups.length > 1) {
-        // console.log(this.$refs.svg.parentElement);
-        range = range.map((color) =>
-          enhanceContrast(color, getBgColor(this.$refs.svg), 2)
-        );
-        console.log(range);
-      }
+        this.config.color || "Inferno"
+      );
 
       this.colorScale.domain(this.groups).range(range);
-
-      try{console.log(
-        enhanceContrast(this.colorScale.range()[1], "rgb(249, 249, 249)")
-      );}catch(e){console.log(e);}
     },
 
     updateScales() {
