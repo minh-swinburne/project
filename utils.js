@@ -127,7 +127,8 @@ function hslToRgb([h, s, l], string = false) {
   * Some recommended color scales are: Viridis, Plasma, Inferno, Magma, etc.
   * @param {number} count - Number of colors to generate
   * @param {string} name - Name of the color scale
-  * @param {number} bias - Bias of the color scale, distance from two ends. Default is 0.1
+  * @param {number} weight - Weight of the color scale, distance from the center. Default is 0.1
+  * @param {number} bias - Bias of the color scale, makes the colors closer to one end. Default is 0
   * @returns {array} Array of colors
   * @example
   * colorRange(5, "Viridis")
@@ -136,7 +137,7 @@ function hslToRgb([h, s, l], string = false) {
   * colorRange(5, "Plasma", 0)
   * // Returns ["#0D0887", "#46039F", "#7201A8", "#9C179E", "#BD3786"]
 */
-function colorRange(count, name, bias = 0.1) {
+function colorRange(count, name, weight = 0.1, bias = 0) {
   let interpolator =
     d3[`interpolate${capitalizeFirstLetter(name || "Viridis")}`];
 
@@ -145,7 +146,7 @@ function colorRange(count, name, bias = 0.1) {
     interpolator = d3.interpolateViridis;
   }
 
-  return d3.quantize((t) => interpolator(t * (1 - bias * 2) + bias), count);
+  return d3.quantize((t) => interpolator(t * (1 - weight * 2 - bias) + weight + bias), count);
 }
 
 function getLuminance([r, g, b]) {

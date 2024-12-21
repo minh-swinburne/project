@@ -10,14 +10,6 @@
     "sourceURL": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/alcohol-recorded-per-capita-(15-)-consumption-(in-litres-of-pure-alcohol)",
     "charts": [
       {
-        "type": "grouped-bar",
-        "features": {
-          "key": "AreaCode",
-          "value": "Litres",
-          "group": ["BeverageType"]
-        }
-      },
-      {
         "type": "geo",
         "features": {
           "key": "AreaCode",
@@ -38,6 +30,25 @@
         }
       },
       {
+        "type": "grouped-bar",
+        "features": {
+          "key": "AreaCode",
+          "value": "Litres",
+          "group": ["BeverageType"]
+        },
+        "config": {
+          "color": "YlOrRd",
+          "axis": {
+            "x": {
+              "label": "Country"
+            },
+            "y": {
+              "label": "Litres"
+            }
+          }
+        }
+      },
+      {
         "type": "bar",
         "features": {
           "key": "AreaCode",
@@ -55,7 +66,6 @@
               "label": "Country"
             },
             "y": {
-              "domainLine": true,
               "label": "Litres"
             }
           }
@@ -78,19 +88,44 @@
     "charts": [
       {
         "type": "geo",
-        "key": "AreaCode",
-        "value": "Litres"
-      },
-      {
-        "type": "bar",
-        "key": "AreaCode",
-        "value": "Litres"
+        "features": {
+          "key": "AreaCode",
+          "value": "Litres"
+        },
+        "config": {
+          "color": "YlOrRd"
+        }
       },
       {
         "type": "grouped-bar",
-        "key": "AreaCode",
-        "value": "Litres",
-        "group": "RecordStatus"
+        "features": {
+          "key": "AreaCode",
+          "value": "Litres",
+          "group": ["RecordStatus"]
+        },
+        "config": {
+          "color": "YlOrRd"
+        }
+      },
+      {
+        "type": "bar",
+        "features": {
+          "key": "AreaCode",
+          "value": "Litres"
+        },
+        "config": {
+          "color": "firebrick",
+          "axis": {
+            "x": {
+              "domainLine": true,
+              "label": "Country"
+            },
+            "y": {
+              "domainLine": true,
+              "label": "Litres"
+            }
+          }
+        }
       }
     ]
   }
