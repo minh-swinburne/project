@@ -43,18 +43,10 @@ const Axis = {
     // console.log(this.scale.range());
     this.axis
       .scale(this.scale)
-      .tickSize(this.config.tickSize !== undefined
-        ? this.config.tickSize
-        : 10
-      )
-      .tickPadding(this.config.tickPadding !== undefined
-        ? this.config.tickPadding
-        : 5
-      )
-      .tickSizeOuter(this.config.tickSizeOuter !== undefined
-        ? this.config.tickSizeOuter
-        : 10
-      );
+      .ticks(this.config.ticks ?? 5)
+      .tickSize(this.config.tickSize ?? 10)
+      .tickPadding(this.config.tickPadding ?? 5)
+      .tickSizeOuter(this.config.tickSizeOuter ?? 10);
 
     this.g = d3.select(this.$refs.axis);
 
@@ -90,7 +82,7 @@ const Axis = {
           ? paddingY
           : 0;
 
-      this.axis.scale(this.scale).ticks(this.config.ticks || 5);
+      this.axis.scale(this.scale);
       // console.log(x, y);
       // console.log(this.axis);
       // console.log(this.scale);
@@ -120,7 +112,7 @@ const Axis = {
         .attr("font-size", "13px")
         .text(this.config.label || "");
 
-      if (this.config.domainLine !== undefined && !this.config.domainLine) {
+      if (this.config.domainLine === false) {
         this.g.select(".domain").remove();
       }
 

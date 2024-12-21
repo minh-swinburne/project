@@ -38,6 +38,7 @@ const GeoChart = {
       colorRange: null,
       colorScale: null,
       // colorNull: "#ccc",
+      colorDefault: "YlGnBu",
       colorNull: "url(#diagonalHatch)",
     };
   },
@@ -54,13 +55,10 @@ const GeoChart = {
     this.projection = d3.geoEqualEarth();
     this.path = d3.geoPath().projection(this.projection);
 
-    this.colorRange = d3
-      .range(0, 1, 1 / this.domainSize)
-      .map(
-        d3["interpolate" + (this.config.color || "YlGnBu")] ||
-          d3.interpolateYlGnBu
-      );
-    // console.log(this.color);
+    this.colorRange = colorRange(
+      this.domainSize,
+      this.config.color || this.colorDefault
+    );
 
     this.colorScale = d3
       .scaleQuantize()
@@ -201,6 +199,10 @@ const GeoChart = {
       this.size = this.svg.node().getBoundingClientRect();
     },
 
+    updateColor() {
+      this.colorScale.domain(this.domain);
+    },
+
     configProjection() {
       // console.log(this.projection.scale());
       const projectionConfig = this.config.projection;
@@ -248,6 +250,8 @@ const GeoChart = {
   },
 
   watch: {
+    domain: "updateColor",
+
     config: {
       deep: true,
       handler() {

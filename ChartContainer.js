@@ -57,11 +57,6 @@ const ChartContainer = {
           // inner: 0.02,
           // outer: 0.05,
         },
-        color: {
-          geo: "YlOrRd",
-          bar: "steelblue",
-          line: "Observable10",
-        },
       },
     };
   },
@@ -75,7 +70,10 @@ const ChartContainer = {
     features: {
       deep: true,
       immediate: true,
-      handler: "updateFilters",
+      handler() {
+        console.log("Features changed");
+        this.updateFilters();
+      },
     },
 
     filters: {
@@ -112,7 +110,7 @@ const ChartContainer = {
       return isNaN(values[0]) ? values : values.sort();
     },
 
-    updateFilters() {
+    updateFilters(excludes = []) {
       console.log("Updating filters...");
       console.log(this.filters);
 
@@ -129,9 +127,14 @@ const ChartContainer = {
           };
         }
       } else {
+        console.log("No filters specified. Generating default filters...");
+        console.log(excludes);
+
         let filters = Object.keys(this.data[0]).filter(
           (feature) =>
-            feature !== this.features.key && feature !== this.features.value
+            feature !== this.features.key &&
+            feature !== this.features.value &&
+            !excludes.includes(feature)
         );
 
         filters.forEach((feature) => {
@@ -153,7 +156,7 @@ const ChartContainer = {
       }
 
       this.filters = newFilters;
-      console.log(this.filters);
+      console.log({...this.filters});
     },
 
     updateData() {

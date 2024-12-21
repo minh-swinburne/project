@@ -10,27 +10,11 @@
     "sourceURL": "https://www.who.int/data/gho/data/indicators/indicator-details/GHO/alcohol-recorded-per-capita-(15-)-consumption-(in-litres-of-pure-alcohol)",
     "charts": [
       {
-        "type": "bar",
+        "type": "grouped-bar",
         "features": {
           "key": "AreaCode",
           "value": "Litres",
-          "filters": {
-            "Year": "slider",
-            "BeverageType": "dropdown"
-          }
-        },
-        "config": {
-          "color": "firebrick",
-          "axis": {
-            "x":{
-              "domainLine": true,
-              "label": "Country"
-            },
-            "y": {
-              "domainLine": true,
-              "label": "Litres"
-            }
-          }
+          "group": ["BeverageType"]
         }
       },
       {
@@ -54,11 +38,27 @@
         }
       },
       {
-        "type": "grouped-bar",
+        "type": "bar",
         "features": {
           "key": "AreaCode",
           "value": "Litres",
-          "group": "BeverageType"
+          "filters": {
+            "Year": "slider",
+            "BeverageType": "dropdown"
+          }
+        },
+        "config": {
+          "color": "firebrick",
+          "axis": {
+            "x": {
+              "domainLine": true,
+              "label": "Country"
+            },
+            "y": {
+              "domainLine": true,
+              "label": "Litres"
+            }
+          }
         }
       }
     ]

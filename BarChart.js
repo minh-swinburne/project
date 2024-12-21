@@ -11,7 +11,7 @@ const BarChart = {
           :config="{
             tickSizeOuter: 0,
             ...axisConfig,
-            ...config.axis.x,
+            ...(config.axis?.x || {}),
           }"
         ></v-axis>
         <v-axis
@@ -24,7 +24,7 @@ const BarChart = {
             domainLine: false,
             gridLines: true,
             ...axisConfig,
-            ...config.axis.y,
+            ...(config.axis?.y || {}),
           }"
         ></v-axis>
       </svg>
@@ -59,9 +59,9 @@ const BarChart = {
   created() {
     console.log(this.config);
 
-    this.color = isColor(this.config.color) ? this.config.color : "steelblue";
     this.scaleX = d3.scaleBand();
     this.scaleY = d3.scaleLinear();
+    this.color = isColor(this.config.color) ? this.config.color : "steelblue";
 
     if (this.config.padding) {
       console.log("Padding exists");
@@ -74,14 +74,11 @@ const BarChart = {
 
   mounted() {
     console.log("BarChart mounted");
-    console.log(this.svg ? "SVG exists" : "SVG does not exist");
 
     this.svg = d3
       .select(this.$refs.svg)
       .attr("width", this.config.width || 500)
       .attr("height", this.config.height || 300);
-
-    console.log(this.svg ? "SVG exists" : "SVG does not exist");
 
     this.updateSize();
     this.updateScales();
@@ -98,8 +95,6 @@ const BarChart = {
     // this.$nextTick(() => {
     //   // this.config.width = 888;
     // });
-
-    // console.log(this.$refs.svg.attributes["width"].value);
   },
 
   beforeDestroy() {
@@ -111,31 +106,30 @@ const BarChart = {
       console.log("Rendering BarChart");
 
       this.svg
-        .selectAll("rect.bar-chart-rect")
+        .selectAll("rect.chart-rect")
         .data(this.sortedData)
         .join("rect")
         .classed("chart-rect bar-chart-rect", true)
         .attr("x", (d) => this.scaleX(d[this.features.key]))
         .attr("y", (d) => this.scaleY(d[this.features.value]))
         .attr("width", this.scaleX.bandwidth())
-        .attr(
-          "height",
-          (d) =>
-            this.size.height -
-            this.scaleY(d[this.features.value]) -
-            this.padding.y
-        )
+        .attr("height", (d) => {
+          let maxY = this.scaleY(this.minVal);
+          let y = this.scaleY(d[this.features.value]);
+
+          return maxY - y < 0 ? 0 : maxY - y;
+        })
         .attr("fill", this.color);
     },
 
     updateSize() {
       this.size = this.svg.node().getBoundingClientRect();
-      console.log(this.size);
+      // console.log(this.size);
     },
 
     updateScales() {
       console.log("Updating scales");
-      console.log(this.padding.outer);
+      // console.log(this.padding.outer);
 
       this.scaleX
         .domain(this.keys)
@@ -144,8 +138,15 @@ const BarChart = {
         .paddingOuter(this.padding.outer);
 
       this.scaleY
-        .domain(this.domain)
+        .domain(this.domain).nice()
         .range([this.size.height - this.padding.y, this.padding.y]);
+
+      try {
+        this.$refs.axisX.update();
+        this.$refs.axisY.update();
+      } catch (e) {
+        console.log("Failed to update axes");
+      }
 
       console.log(this.keys.length);
       console.log(this.scaleX.domain());
@@ -188,10 +189,6 @@ const BarChart = {
       deep: true,
       handler() {
         this.updateScales();
-
-        this.$refs.axisX.update();
-        this.$refs.axisY.update();
-
         this.render();
       },
     },
