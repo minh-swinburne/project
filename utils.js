@@ -37,9 +37,7 @@ function capitalizeFirstLetter(string, separator = " ", joiner = " ") {
  */
 function parseRgb(rgb) {
   console.log(rgb);
-  return rgb
-    .match(/\d+/g)
-    .map(Number);
+  return rgb.match(/\d+/g).map(Number);
 }
 
 /**
@@ -96,7 +94,7 @@ function rgbToHsl([r, g, b], string = false) {
   const l = (max + min) / 2;
   const s = delta ? delta / (1 - Math.abs(2 * l - 1)) : 0;
 
-  return string ? `hsl(${h}, ${s * 100}, ${l * 100})` :[h, s * 100, l * 100];
+  return string ? `hsl(${h}, ${s * 100}, ${l * 100})` : [h, s * 100, l * 100];
 }
 
 function hslToRgb([h, s, l], string = false) {
@@ -123,20 +121,21 @@ function hslToRgb([h, s, l], string = false) {
 }
 
 /**
-  * Generate a color range based on the number of elements.
-  * Some recommended color scales are: Viridis, Plasma, Inferno, Magma, etc.
-  * @param {number} count - Number of colors to generate
-  * @param {string} name - Name of the color scale
-  * @param {number} bias - Bias of the color scale, distance from two ends. Default is 0.1
-  * @returns {array} Array of colors
-  * @example
-  * colorRange(5, "Viridis")
-  * // Returns ["#440154", "#3B528B", "#21908C", "#5DC863", "#FDE725"]
-  * @example
-  * colorRange(5, "Plasma", 0)
-  * // Returns ["#0D0887", "#46039F", "#7201A8", "#9C179E", "#BD3786"]
-*/
-function colorRange(count, name, bias = 0.1) {
+ * Generate a color range based on the number of elements.
+ * Some recommended color scales are: Viridis, Plasma, Inferno, Magma, etc.
+ * @param {number} count - Number of colors to generate
+ * @param {string} name - Name of the color scale
+ * @param {number} weight - Weight of the color scale, distance from the center. Default is 0.1
+ * @param {number} bias - Bias of the color scale, makes the colors closer to one end. Default is 0
+ * @returns {array} Array of colors
+ * @example
+ * colorRange(5, "Viridis")
+ * // Returns ["#440154", "#3B528B", "#21908C", "#5DC863", "#FDE725"]
+ * @example
+ * colorRange(5, "Plasma", 0)
+ * // Returns ["#0D0887", "#46039F", "#7201A8", "#9C179E", "#BD3786"]
+ */
+function colorRange(count, name, weight = 0.1, bias = 0) {
   let interpolator =
     d3[`interpolate${capitalizeFirstLetter(name || "Viridis")}`];
 
@@ -145,7 +144,10 @@ function colorRange(count, name, bias = 0.1) {
     interpolator = d3.interpolateViridis;
   }
 
-  return d3.quantize((t) => interpolator(t * (1 - bias * 2) + bias), count);
+  return d3.quantize(
+    (t) => interpolator(t * (1 - weight * 2 - bias) + weight + bias),
+    count
+  );
 }
 
 function getLuminance([r, g, b]) {
@@ -207,7 +209,11 @@ function getBgColor(element) {
     const computedStyle = getComputedStyle(currentElement);
     const bgColor = computedStyle.backgroundColor;
 
-    if (bgColor && bgColor !== "transparent" && bgColor !== "rgba(0, 0, 0, 0)") {
+    if (
+      bgColor &&
+      bgColor !== "transparent" &&
+      bgColor !== "rgba(0, 0, 0, 0)"
+    ) {
       return bgColor; // Found a non-transparent background
     }
 
@@ -218,40 +224,71 @@ function getBgColor(element) {
   return "rgb(255, 255, 255)";
 }
 
-function filterCountries(data, dataCol = "AreaCode", counCol = "code") {
+/**
+ * Filter long data to a specific number based on preferred countries.
+ * @param {array} data - The data to filter.
+ * @param {number} count - The number of countries to filter. Default is 26.
+ * @param {string} dataCol - The country column name of the data to filter. Default is "AreaCode".
+ * @param {string} counCol - The country column name of the preferred countries. Default is "code".
+ * @returns {array} The filtered data.
+ * @example
+ * filterCountries(data, 10)
+ * // Returns the top 10 countries in the data
+ */
+function filterCountries(
+  data,
+  count = 26,
+  dataCol = "AreaCode",
+  counCol = "code"
+) {
+  if (!data) return [];
+  if (data?.length <= count) return [...data]; // Return a copy of the data
+
   let countries = [
-    { code: "DZA", name: "Algeria", region: "Africa" },
-    { code: "AGO", name: "Angola", region: "Africa" },
-    { code: "BEN", name: "Benin", region: "Africa" },
-    { code: "BWA", name: "Botswana", region: "Africa" },
-    { code: "IOT", name: "British Indian Ocean Territory", region: "Africa" },
-    { code: "CAN", name: "Canada", region: "Americas" },
-    { code: "USA", name: "United States", region: "Americas" },
-    { code: "BRA", name: "Brazil", region: "Americas" },
-    { code: "ARG", name: "Argentina", region: "Americas" },
-    { code: "MEX", name: "Mexico", region: "Americas" },
-    { code: "CHN", name: "China", region: "Asia" },
-    { code: "IND", name: "India", region: "Asia" },
-    { code: "JPN", name: "Japan", region: "Asia" },
-    { code: "SGP", name: "Singapore", region: "Asia" },
-    { code: "KOR", name: "South Korea", region: "Asia" },
     { code: "VNM", name: "Viet Nam", region: "Asia" },
-    { code: "FRA", name: "France", region: "Europe" },
-    { code: "DEU", name: "Germany", region: "Europe" },
-    { code: "ESP", name: "Spain", region: "Europe" },
-    { code: "ITA", name: "Italy", region: "Europe" },
-    { code: "GBR", name: "United Kingdom", region: "Europe" },
     { code: "AUS", name: "Australia", region: "Oceania" },
+    { code: "USA", name: "United States", region: "Americas" },
+    { code: "FRA", name: "France", region: "Europe" },
+    { code: "DZA", name: "Algeria", region: "Africa" },
+    { code: "IND", name: "India", region: "Asia" },
+    { code: "ARG", name: "Argentina", region: "Americas" },
+    { code: "GBR", name: "United Kingdom", region: "Europe" },
+    { code: "BWA", name: "Botswana", region: "Africa" },
     { code: "NZL", name: "New Zealand", region: "Oceania" },
+    { code: "CHN", name: "China", region: "Asia" },
+    { code: "CAN", name: "Canada", region: "Americas" },
+    { code: "DEU", name: "Germany", region: "Europe" },
+    { code: "AGO", name: "Angola", region: "Africa" },
     { code: "FJI", name: "Fiji", region: "Oceania" },
+    { code: "JPN", name: "Japan", region: "Asia" },
+    { code: "MEX", name: "Mexico", region: "Americas" },
+    { code: "ESP", name: "Spain", region: "Europe" },
+    { code: "BEN", name: "Benin", region: "Africa" },
     { code: "VUT", name: "Vanuatu", region: "Oceania" },
+    { code: "KOR", name: "South Korea", region: "Asia" },
+    { code: "BRA", name: "Brazil", region: "Americas" },
+    { code: "SGP", name: "Singapore", region: "Asia" },
+    { code: "ITA", name: "Italy", region: "Europe" },
+    { code: "IOT", name: "British Indian Ocean Territory", region: "Africa" },
   ];
 
   countries = countries.map((d) => d[counCol]);
 
-  return data.length > 25
-    ? data.filter((d) => countries.includes(d[dataCol]))
-    : [...data]; // Return a copy of the data
+  let filteredData = data
+    .filter((d) => countries.includes(d[dataCol]))
+    .sort(
+      (a, b) => countries.indexOf(a[dataCol]) - countries.indexOf(b[dataCol])
+    )
+    .splice(0, count);
+
+  if (filteredData.length < count) {
+    let remaining = count - filteredData.length;
+    let remainingData = data.filter((d) => !filteredData.includes(d));
+
+    filteredData.push(...remainingData.splice(0, remaining));
+  }
+
+  return filteredData;
 }
 
 function isColor(strColor) {

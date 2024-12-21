@@ -144,14 +144,13 @@ const GroupedBarChart = {
     },
 
     updateColor() {
-      let range = this.groups.length > 1
-        ? colorRange(
-            this.groups.length,
+      let count = this.groups.length;
+      let range = colorRange(
+            count > 1 ? count : 2,
             this.config.color || "YlGnBu",
             0.1,
-            0.15
-          ).reverse()
-        : [this.color];
+            0.05
+          ).reverse();
 
       this.colorScale.domain(this.groups).range(range);
     },
@@ -198,6 +197,8 @@ const GroupedBarChart = {
 
       sorted = filterCountries(sorted);
       sorted.unshift(max);
+
+      console.log(sorted);
 
       return [...new Set(sorted)];
     },

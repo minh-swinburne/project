@@ -103,13 +103,8 @@ const Axis = {
           "y",
           this.orient === "top"
             ? -15 - this.axis.tickSize() - this.axis.tickPadding()
-            : paddingY - 15
+            : paddingY - 10
         )
-        // .attr("dx", this.orient === "left" || this.orient === "right" ? "0.5em" : 0)
-        // .attr(
-        //   "dy",
-        //   this.orient === "left" || this.orient === "right" ? "1em" : "-1em"
-        // )
         .attr("text-anchor", "middle")
         .attr("font-size", "13px")
         .text(this.config.label || "");

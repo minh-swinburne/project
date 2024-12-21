@@ -13,20 +13,7 @@
         "type": "geo",
         "features": {
           "key": "AreaCode",
-          "value": "Litres",
-          "filters" : {
-            "Year": {
-              "type": "slider",
-              "label": "Year",
-              "default": 1961,
-              "config": {
-                "min": 1960,
-                "max": 2020,
-                "step": 1
-              }
-            },
-            "BeverageType": "dropdown"
-          }
+          "value": "Litres"
         },
         "config": {
           "projection": [
@@ -68,29 +55,6 @@
           "value": "Litres",
           "filters": {
             "Year": "slider",
-            "BeverageType": "dropdown"
-          }
-        },
-        "config": {
-          "color": "firebrick",
-          "axis": {
-            "x": {
-              "domainLine": true,
-              "label": "Country"
-            },
-            "y": {
-              "label": "Litres"
-            }
-          }
-        }
-      },
-      {
-        "type": "line",
-        "features": {
-          "key": "Year",
-          "value": "Litres",
-          "line": ["AreaCode", "BeverageType"],
-          "filters": {
             "BeverageType": "dropdown"
           }
         },

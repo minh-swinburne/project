@@ -7,9 +7,11 @@ const ChartContainer = {
           v-model="filter.selected"
           :key="feature"
           :id="id + '-' + feature"
-          :type="filter.type"
           :feature="feature"
+          :type="filter.type"
+          :label="filter.label"
           :options="filter.options"
+          :config="filter.config"
         ></v-filter>
       </div>
 
@@ -117,13 +119,17 @@ const ChartContainer = {
       const newFilters = {};
 
       if (this.features.filters) {
-        for (const [feature, type] of Object.entries(this.features.filters)) {
+        for (const [feature, info] of Object.entries(this.features.filters)) {
           let options = this.getUniqueValues(feature);
+          let type = info.type ?? info;
+          let selected = info.default ?? options[0];
 
           newFilters[feature] = {
             type: type,
             options: options,
-            selected: options[0],
+            selected: `${selected}`,
+            label: info.label,
+            config: info.config,
           };
         }
       } else {
@@ -144,6 +150,7 @@ const ChartContainer = {
             type: isNaN(this.data[0][feature]) ? "dropdown" : "slider",
             options: options,
             selected: options[0],
+            config: undefined,
           };
         });
       }
@@ -156,7 +163,7 @@ const ChartContainer = {
       }
 
       this.filters = newFilters;
-      console.log({...this.filters});
+      console.log({ ...this.filters });
     },
 
     updateData() {

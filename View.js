@@ -102,19 +102,21 @@ const View = {
     },
 
     switchDataset(index) {
+      this.data = []; // Clear data when switching datasets
       this.currentDs = this.datasets[index];
-      this.currentChart = this.currentDs.charts[0];
+      this.switchChart(0);
 
       this.loadCsv(this.currentDs.file).then((data) => {
         this.data = data;
       });
-      // console.log("Switching to dataset with index " + index);
+      console.log("Switching to dataset with index " + index);
+      // console.log(this.currentChart);
     },
 
     switchChart(index) {
       this.currentChart = this.currentDs.charts[index];
       console.log("Switching to chart with index " + index);
-      console.log(this.currentChart.config);
+      // console.log(this.currentChart.config);
     },
 
     capitalizeFirstLetter,

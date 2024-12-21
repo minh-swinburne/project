@@ -2,13 +2,14 @@ const Filter = {
   template: `
     <div class="chart-filter">
       <label :for="filterId">
-        {{ getName(" ", false) }}:
+        {{ label || getName(" ", false) }}:
       </label>
 
       <select
         v-if="type === 'dropdown'"
         :value="modelValue"
         :id="filterId"
+        v-bind="config"
         @change="$emit('update:modelValue', $event.target.value)"
       >
         <option
@@ -28,6 +29,7 @@ const Filter = {
         :id="filterId"
         :min="Math.min(...options)"
         :max="Math.max(...options)"
+        v-bind="config"
         @input="$emit('update:modelValue', $event.target.value)"
       />
 
@@ -41,6 +43,8 @@ const Filter = {
     feature: { type: String, required: true },
     options: { type: Array, required: true },
     modelValue: { type: String, required: true },
+    label: { type: String, default: "" },
+    config: { type: Object, default: () => ({}) },
   },
 
   emits: ["update:modelValue"],

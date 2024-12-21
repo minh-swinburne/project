@@ -138,7 +138,8 @@ const BarChart = {
         .paddingOuter(this.padding.outer);
 
       this.scaleY
-        .domain(this.domain).nice()
+        .domain(this.domain)
+        .nice()
         .range([this.size.height - this.padding.y, this.padding.y]);
 
       try {
@@ -156,15 +157,27 @@ const BarChart = {
 
   computed: {
     sortedData() {
-      let sorted = [...this.data].sort(
+      return this.filteredData.sort(
         (a, b) => b[this.features.value] - a[this.features.value]
       );
-      let max = sorted[0];
+    },
 
-      sorted = filterCountries(sorted);
-      sorted.unshift(max);
+    filteredData() {
+      let count = (this.size.width - this.padding.x * 2) / 40;
+      let filtered = filterCountries(this.data, count);
+      let max = this.data.reduce(
+        (max, d) =>
+          d[this.features.value] > max[this.features.value] ? d : max,
+        this.data[0]
+      );
 
-      return [...new Set(sorted)];
+      console.log("Filtered data for BarChart");
+      console.log(filtered);
+      console.log(max);
+
+      return filtered.includes(max)
+        ? filtered
+        : [max, ...filtered.splice(0, count - 1)];
     },
 
     keys() {
