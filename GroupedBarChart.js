@@ -144,10 +144,14 @@ const GroupedBarChart = {
     },
 
     updateColor() {
-      let range = colorRange(
-        this.groups.length,
-        this.config.color || "Inferno"
-      );
+      let range = this.groups.length > 1
+        ? colorRange(
+            this.groups.length,
+            this.config.color || "YlGnBu",
+            0.1,
+            0.15
+          ).reverse()
+        : [this.color];
 
       this.colorScale.domain(this.groups).range(range);
     },
