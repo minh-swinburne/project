@@ -14,7 +14,7 @@
         "features": {
           "key": "AreaCode",
           "value": "Litres",
-          "filters" : {
+          "filters": {
             "Year": {
               "type": "slider",
               "label": "Year",
@@ -40,6 +40,25 @@
             }
           ],
           "color": "YlOrRd"
+        }
+      },
+      {
+        "type": "grouped-bar",
+        "features": {
+          "key": "AreaCode",
+          "value": "Litres",
+          "group": ["BeverageType"]
+        },
+        "config": {
+          "color": "YlOrRd",
+          "axis": {
+            "x": {
+              "label": "Country"
+            },
+            "y": {
+              "label": "Litres"
+            }
+          }
         }
       },
       {
