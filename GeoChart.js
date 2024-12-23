@@ -56,8 +56,9 @@ const GeoChart = {
     this.path = d3.geoPath().projection(this.projection);
 
     this.colorRange = colorRange(
+      "sequential",
+      this.config.color || this.colorDefault,
       this.domainSize,
-      this.config.color || this.colorDefault
     );
 
     this.colorScale = d3

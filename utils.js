@@ -123,8 +123,9 @@ function hslToRgb([h, s, l], string = false) {
 /**
  * Generate a color range based on the number of elements.
  * Some recommended color scales are: Viridis, Plasma, Inferno, Magma, etc.
+ * @param {string} type - Type of color scale, either "sequential" or "ordinal"
+ * @param {string} scheme - Name of the color scale
  * @param {number} count - Number of colors to generate
- * @param {string} name - Name of the color scale
  * @param {number} weight - Weight of the color scale, distance from the center. Default is 0.1
  * @param {number} bias - Bias of the color scale, makes the colors closer to one end. Default is 0
  * @returns {array} Array of colors
@@ -135,19 +136,36 @@ function hslToRgb([h, s, l], string = false) {
  * colorRange(5, "Plasma", 0)
  * // Returns ["#0D0887", "#46039F", "#7201A8", "#9C179E", "#BD3786"]
  */
-function colorRange(count, name, weight = 0.1, bias = 0) {
-  let interpolator =
-    d3[`interpolate${capitalizeFirstLetter(name || "Viridis")}`];
+function colorRange(type, scheme, count, weight = 0.1, bias = 0) {
+  type = type === "sequential" ? "interpolate" : "scheme";
+  scheme = capitalizeFirstLetter(scheme);
+  let interpolator = d3[type + scheme];
 
-  if (!interpolator) {
-    console.error(`Interpolator not found for ${name}, using Viridis`);
-    interpolator = d3.interpolateViridis;
+  switch (type) {
+    case "interpolate":
+      if (!interpolator) {
+        console.error(`Sequential interpolator not found for ${scheme}, using Viridis`);
+        scheme = "Viridis";
+      }
+      break;
+    case "scheme":
+      if (!interpolator) {
+        console.error(`Scheme not found for ${scheme}, using Tableau10`);
+        scheme = "Tableau10";
+      }
+      break;
+    default:
+      console.error(`Invalid type: ${type}, using interpolateSpectral`);
+      type = "interpolate";
+      scheme = "Spectral";
   }
 
-  return d3.quantize(
-    (t) => interpolator(t * (1 - weight * 2 - bias) + weight + bias),
-    count
-  );
+  return type === "scheme"
+    ? d3[type + scheme][count]
+    : d3.quantize(
+        (t) => interpolator(t * (1 - weight * 2 - bias) + weight + bias),
+        count
+      );
 }
 
 function getLuminance([r, g, b]) {

@@ -73,7 +73,6 @@ const GroupedBarChart = {
     this.colorScale = d3.scaleOrdinal().unknown(this.colorNull);
 
     this.currentGroup = this.features.group[0];
-    this.color = isColor(this.config.color) ? this.config.color : "steelblue";
 
     if (this.config.padding) {
       console.log("Padding exists");
@@ -146,11 +145,16 @@ const GroupedBarChart = {
     updateColor() {
       let count = this.groups.length;
       let range = colorRange(
-            count > 1 ? count : 2,
-            this.config.color || "YlGnBu",
-            0.1,
-            0.05
-          ).reverse();
+        this.config.color?.type,
+        this.config.color?.scheme || "YlGnBu",
+        count > 1 ? count : 2,
+        0.1,
+        0.05
+      );
+
+      if (this.config.color?.reverse) {
+        range.reverse();
+      }
 
       this.colorScale.domain(this.groups).range(range);
     },

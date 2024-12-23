@@ -50,26 +50,13 @@
           "group": ["BeverageType"]
         },
         "config": {
-          "color": "YlOrRd",
-          "axis": {
-            "x": {
-              "label": "Country"
-            },
-            "y": {
-              "label": "Litres"
-            }
-          }
-        }
-      },
-      {
-        "type": "grouped-bar",
-        "features": {
-          "key": "AreaCode",
-          "value": "Litres",
-          "group": ["BeverageType"]
-        },
-        "config": {
-          "color": "YlOrRd",
+          "color": {
+            "type": "sequential",
+            "scheme": "YlOrRd",
+            "reverse": true,
+            "weight": 0.1,
+            "bias": 0.05
+          },
           "axis": {
             "x": {
               "label": "Country"
@@ -108,13 +95,10 @@
         "features": {
           "key": "Year",
           "value": "Litres",
-          "line": ["AreaCode", "BeverageType"],
-          "filters": {
-            "BeverageType": "dropdown"
-          }
+          "line": ["AreaCode", "BeverageType"]
         },
         "config": {
-          "color": "firebrick",
+          "color": "YlOrRd",
           "axis": {
             "x": {
               "domainLine": true,
