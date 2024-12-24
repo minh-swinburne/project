@@ -143,10 +143,10 @@ const BarChart = {
         .range([this.size.height - this.padding.y, this.padding.y]);
 
       try {
-        this.$refs.axisX.update();
-        this.$refs.axisY.update();
+        this.$refs.axisX.render();
+        this.$refs.axisY.render();
       } catch (e) {
-        console.log("Failed to update axes");
+        console.log("Failed to update axes", e);
       }
 
       console.log(this.keys.length);

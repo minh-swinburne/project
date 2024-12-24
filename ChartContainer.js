@@ -1,7 +1,7 @@
 const ChartContainer = {
   template: `
     <div class="v-chart chart--container">
-      <div class="chart-controller">
+      <div ref="controller" class="chart-controller">
         <v-filter
           v-for="(filter, feature) in filters"
           v-model="filter.selected"

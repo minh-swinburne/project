@@ -77,9 +77,7 @@ const GroupedBarChart = {
     if (this.config.padding) {
       console.log("Padding exists");
 
-      for (let p in this.config.padding) {
-        this.padding[p] = this.config.padding[p];
-      }
+      this.padding = { ...this.padding, ...this.config.padding };
     }
   },
 
@@ -180,19 +178,23 @@ const GroupedBarChart = {
         .padding(this.padding.inner / 2);
 
       try {
-        this.$refs.axisX.update();
-        this.$refs.axisY.update();
+        this.$refs.axisX.render();
+        this.$refs.axisY.render();
       } catch (e) {
         console.log("Failed to update axes");
       }
 
-      console.log(this.keys.length);
-      console.log(this.scaleX.domain());
-      console.log(this.scaleX.range());
+      // console.log(this.keys.length);
+      // console.log(this.scaleX.domain());
+      // console.log(this.scaleX.range());
     },
   },
 
   computed: {
+    groupedData() {
+      return d3.group(this.sortedData, (d) => d[this.features.key]);
+    },
+
     sortedData() {
       let sorted = [...this.data].sort(
         (a, b) => b[this.features.value] - a[this.features.value]
@@ -207,8 +209,22 @@ const GroupedBarChart = {
       return [...new Set(sorted)];
     },
 
-    groupedData() {
-      return d3.group(this.sortedData, (d) => d[this.features.key]);
+    filteredData() {
+      let count = (this.size.width - this.padding.x * 2) / 40;
+      let filtered = filterCountries(this.data, count);
+      let max = this.data.reduce(
+        (max, d) =>
+          d[this.features.value] > max[this.features.value] ? d : max,
+        this.data[0]
+      );
+
+      console.log("Filtered data for BarChart");
+      console.log(filtered);
+      console.log(max);
+
+      return filtered.includes(max)
+        ? filtered
+        : [max, ...filtered.splice(0, count - 1)];
     },
 
     keys() {

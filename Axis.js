@@ -56,14 +56,14 @@ const Axis = {
       .forEach((c) => this.g.classed(c, true));
 
     console.log(this.config);
-    this.update();
+    this.render();
   },
 
   methods: {
-    update() {
-      console.log("Axis update");
-      console.log(this.$parent.size);
-      console.log(this.config);
+    render() {
+      console.log("Axis rendering...");
+      // console.log(this.$parent.size);
+      // console.log(this.config);
 
       const { x: paddingX, y: paddingY } = this.config.padding
         || { x: 60, y: 50 };
@@ -141,12 +141,12 @@ const Axis = {
   },
 
   watch: {
-    scale: "update",
+    scale: "render",
     config: {
       deep: true,
       handler() {
         console.log("Axis config changed");
-        this.update();
+        this.render();
       },
     },
   },

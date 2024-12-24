@@ -99,6 +99,7 @@
         },
         "config": {
           "color": "YlOrRd",
+          "maxLines": 6,
           "axis": {
             "x": {
               "domainLine": true,

@@ -11,6 +11,7 @@ function init() {
 
   app.component("v-axis", Axis);
   app.component("v-geo-chart", GeoChart);
+  app.component("v-line-chart", LineChart);
   app.component("v-bar-chart", BarChart);
   app.component("v-grouped-bar-chart", GroupedBarChart);
   app.component("v-filter", Filter);

@@ -144,7 +144,9 @@ function colorRange(type, scheme, count, weight = 0.1, bias = 0) {
   switch (type) {
     case "interpolate":
       if (!interpolator) {
-        console.error(`Sequential interpolator not found for ${scheme}, using Viridis`);
+        console.error(
+          `Sequential interpolator not found for ${scheme}, using Viridis`
+        );
         scheme = "Viridis";
       }
       break;
@@ -259,8 +261,14 @@ function filterCountries(
   dataCol = "AreaCode",
   counCol = "code"
 ) {
+  function uniqueCountries(dat) {
+    return new Set(dat.map((d) => d[dataCol]));
+  }
+
   if (!data) return [];
-  if (data?.length <= count) return [...data]; // Return a copy of the data
+
+  let unique = uniqueCountries(data);
+  if (unique.size <= count) return [...data]; // Return a copy of the data
 
   let countries = [
     { code: "VNM", name: "Viet Nam", region: "Asia" },
@@ -288,22 +296,25 @@ function filterCountries(
     { code: "SGP", name: "Singapore", region: "Asia" },
     { code: "ITA", name: "Italy", region: "Europe" },
     { code: "IOT", name: "British Indian Ocean Territory", region: "Africa" },
-  ];
-
-  countries = countries.map((d) => d[counCol]);
+  ].map((d) => d[counCol]);
 
   let filteredData = data
-    .filter((d) => countries.includes(d[dataCol]))
+    .filter((d) => countries.splice(0, count).includes(d[dataCol]))
     .sort(
       (a, b) => countries.indexOf(a[dataCol]) - countries.indexOf(b[dataCol])
-    )
-    .splice(0, count);
+    );
+  unique = uniqueCountries(filteredData);
 
-  if (filteredData.length < count) {
-    let remaining = count - filteredData.length;
-    let remainingData = data.filter((d) => !filteredData.includes(d));
+  if (unique.size < count) {
+    let remaining = count - unique.size;
+    let remainingCountries = [...uniqueCountries(data)]
+      .filter((c) => !unique.has(c))
+      .splice(0, remaining);
+    let remainingData = data.filter((d) =>
+      remainingCountries.includes(d[dataCol])
+    );
 
-    filteredData.push(...remainingData.splice(0, remaining));
+    filteredData.push(...remainingData);
   }
 
   return filteredData;
