@@ -17,7 +17,6 @@ const ChartContainer = {
 
       <div class="chart-canvas">
         <component
-          v-if="filteredData.length > 0"
           :data="filteredData"
           :is="currentType"
           :max-val="maxValue"
@@ -25,7 +24,7 @@ const ChartContainer = {
           :config="currentConfig"
         ></component>
 
-        <div v-else>
+        <div>
           <p>No data available</p>
         </div>
       </div>
@@ -74,15 +73,18 @@ const ChartContainer = {
       immediate: true,
       handler() {
         console.log("Features changed");
-        this.updateFilters();
+        // this.getFilters([], true);
+        if (this.config.autoUpdate) {
+          this.getFilters([], true);
+        }
       },
     },
 
     filters: {
       deep: true,
-      immediate: true,
+      // immediate: true,
       handler: debounce(function () {
-        console.log("Filters changed");
+        console.log("Filters changed: ", this.filters);
         this.updateData();
       }, 200),
     },
@@ -112,9 +114,8 @@ const ChartContainer = {
       return isNaN(values[0]) ? values : values.sort();
     },
 
-    updateFilters(excludes = []) {
-      console.log("Updating filters...");
-      console.log(this.filters);
+    getFilters(excludes = [], inplace = false) {
+      console.log("Generating filters...");
 
       const newFilters = {};
 
@@ -134,7 +135,7 @@ const ChartContainer = {
         }
       } else {
         console.log("No filters specified. Generating default filters...");
-        console.log(excludes);
+        // console.log(excludes);
 
         let filters = Object.keys(this.data[0]).filter(
           (feature) =>
@@ -162,8 +163,16 @@ const ChartContainer = {
         }
       }
 
-      this.filters = newFilters;
-      console.log({ ...this.filters });
+      if (inplace) {
+        console.log("Updating filters INPLACE...");
+        this.filters = newFilters;
+      } else {
+        console.log("Returning new filters...");
+        return newFilters;
+      }
+
+      // return newFilters;
+      // console.log({ ...this.filters });
     },
 
     updateData() {

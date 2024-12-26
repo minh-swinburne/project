@@ -149,9 +149,9 @@ const BarChart = {
         console.log("Failed to update axes", e);
       }
 
-      console.log(this.keys.length);
-      console.log(this.scaleX.domain());
-      console.log(this.scaleX.range());
+      console.log("Keys: ", this.keys.length);
+      console.log("Scale X Domain: ", this.scaleX.domain());
+      console.log("Scale X Range: ", this.scaleX.range());
     },
   },
 
@@ -163,7 +163,7 @@ const BarChart = {
     },
 
     filteredData() {
-      let count = (this.size.width - this.padding.x * 2) / 40;
+      let count = Math.round((this.size.width - this.padding.x * 2) / 40);
       let filtered = filterCountries(this.data, count);
       let max = this.data.reduce(
         (max, d) =>
@@ -171,9 +171,7 @@ const BarChart = {
         this.data[0]
       );
 
-      console.log("Filtered data for BarChart");
-      console.log(filtered);
-      console.log(max);
+      console.log("Filtered data for BarChart: ", filtered);
 
       return filtered.includes(max)
         ? filtered
@@ -199,7 +197,6 @@ const BarChart = {
 
   watch: {
     data: {
-      deep: true,
       handler() {
         this.updateScales();
         this.render();

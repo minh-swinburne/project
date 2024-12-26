@@ -66,6 +66,7 @@ const GeoChart = {
       .domain(this.domain)
       .range(this.colorRange);
 
+    this.$parent.getFilters([], true);
     this.updateSize();
     this.configProjection();
     this.fitProjection();
@@ -88,6 +89,7 @@ const GeoChart = {
   methods: {
     render() {
       console.log("Drawing map");
+      // console.log(this.data);
       // console.log(this.geoData.features);
 
       this.svg

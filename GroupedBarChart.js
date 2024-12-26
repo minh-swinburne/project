@@ -72,8 +72,6 @@ const GroupedBarChart = {
     this.scaleFX = d3.scaleBand();
     this.colorScale = d3.scaleOrdinal().unknown(this.colorNull);
 
-    this.currentGroup = this.features.group[0];
-
     if (this.config.padding) {
       console.log("Padding exists");
 
@@ -88,6 +86,8 @@ const GroupedBarChart = {
       .select(this.$refs.svg)
       .attr("width", this.config.width || 500)
       .attr("height", this.config.height || 300);
+
+    this.currentGroup = Object.keys(this.features.group)[0];
 
     this.updateSize();
     this.updateColor();
@@ -111,7 +111,6 @@ const GroupedBarChart = {
     render() {
       console.log("Rendering GroupedBarChart");
       console.log(this.groups);
-      console.log(d3.group(this.sortedData, (d) => d[this.features.key]));
 
       this.svg
         .selectAll("g.chart-group")
@@ -155,6 +154,10 @@ const GroupedBarChart = {
       }
 
       this.colorScale.domain(this.groups).range(range);
+
+      console.log(this.colorScale.domain());
+      console.log(this.colorScale.range());
+      console.log(this.colorScale("Spirits"));
     },
 
     updateScales() {
@@ -192,25 +195,11 @@ const GroupedBarChart = {
 
   computed: {
     groupedData() {
-      return d3.group(this.sortedData, (d) => d[this.features.key]);
-    },
-
-    sortedData() {
-      let sorted = [...this.data].sort(
-        (a, b) => b[this.features.value] - a[this.features.value]
-      );
-      let max = sorted[0];
-
-      sorted = filterCountries(sorted);
-      sorted.unshift(max);
-
-      console.log(sorted);
-
-      return [...new Set(sorted)];
+      return d3.group(this.filteredData, (d) => d[this.features.key]);
     },
 
     filteredData() {
-      let count = (this.size.width - this.padding.x * 2) / 40;
+      let count = Math.round((this.size.width - this.padding.x * 2) / 100);
       let filtered = filterCountries(this.data, count);
       let max = this.data.reduce(
         (max, d) =>
@@ -218,7 +207,7 @@ const GroupedBarChart = {
         this.data[0]
       );
 
-      console.log("Filtered data for BarChart");
+      console.log("Filtered data for GroupedBarChart");
       console.log(filtered);
       console.log(max);
 
@@ -228,12 +217,44 @@ const GroupedBarChart = {
     },
 
     keys() {
-      return this.sortedData.map((d) => d[this.features.key]);
+      let keys = [
+        ...new Set(this.filteredData.map((d) => d[this.features.key])),
+      ];
+      let keyData = this.filteredData.filter(
+        (d) =>
+          d[this.currentGroup] ===
+            this.features.group[this.currentGroup]?.sortKey ?? this.groups[0]
+      );
+
+      keys.sort(
+        (a, b) =>
+          (this.features.group[this.currentGroup]?.sortOrder === "asc"
+            ? 1
+            : -1) *
+          (keyData.find((d) => d[this.features.key] === a)[
+            this.features.value
+          ] -
+            keyData.find((d) => d[this.features.key] === b)[
+              this.features.value
+            ])
+      );
+      console.log(keys);
+      return keys;
     },
 
     groups() {
-      let groups = this.sortedData.map((d) => d[this.currentGroup]);
-      return [...new Set(groups)];
+      let groups = [
+        ...new Set(this.filteredData.map((d) => d[this.currentGroup])),
+      ];
+
+      groups.sort((a, b) =>
+        this.features.group[this.currentGroup]?.groupOrder
+          ? this.features.group[this.currentGroup]?.groupOrder.indexOf(a) -
+            this.features.group[this.currentGroup]?.groupOrder.indexOf(b)
+          : a.localeCompare(b)
+      );
+
+      return groups;
     },
 
     domain() {
@@ -250,28 +271,30 @@ const GroupedBarChart = {
   },
 
   watch: {
-    groups: "updateColor",
-
     currentGroup: {
       immediate: true,
       handler(newVal) {
         console.log("Group changed: " + newVal);
-        this.$parent.updateFilters([newVal]);
+        this.$parent.getFilters([newVal], true);
+        this.$parent.updateData();
       },
     },
 
     data: {
-      deep: true,
       handler() {
-        this.updateScales();
-        this.render();
+        if (this.svg) {
+          this.updateScales();
+          this.render();
+        }
       },
     },
 
     config: {
       deep: true,
       handler() {
-        this.render();
+        if (this.svg) {
+          this.render();
+        }
       },
     },
   },

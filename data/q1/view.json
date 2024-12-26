@@ -47,7 +47,13 @@
         "features": {
           "key": "AreaCode",
           "value": "Litres",
-          "group": ["BeverageType"]
+          "group": {
+            "BeverageType": {
+              "sortKey": "All",
+              "sortOrder": "desc",
+              "groupOrder": ["All", "Beer", "Wine", "Spirits", "Others"]
+            }
+          }
         },
         "config": {
           "color": {

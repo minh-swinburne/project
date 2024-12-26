@@ -296,14 +296,17 @@ function filterCountries(
     { code: "SGP", name: "Singapore", region: "Asia" },
     { code: "ITA", name: "Italy", region: "Europe" },
     { code: "IOT", name: "British Indian Ocean Territory", region: "Africa" },
-  ].map((d) => d[counCol]);
+  ].map((d) => d[counCol]).slice(0, count);
 
   let filteredData = data
-    .filter((d) => countries.splice(0, count).includes(d[dataCol]))
+    .filter((d) => countries.includes(d[dataCol]))
     .sort(
       (a, b) => countries.indexOf(a[dataCol]) - countries.indexOf(b[dataCol])
     );
   unique = uniqueCountries(filteredData);
+
+  // console.log("Filtered data: ", filteredData);
+  // console.log("Unique countries: ", unique);
 
   if (unique.size < count) {
     let remaining = count - unique.size;
